@@ -24,7 +24,7 @@ import static org.junit.Assert.assertSame;
 
 
 
-public class SampleIntegrationTest {
+public class SampleIT {
     @Test
 /*
     public void sampleIntegrationTest(){
@@ -50,8 +50,8 @@ public class SampleIntegrationTest {
                     String result = EntityUtils.toString(entity);
                     System.out.println(result);
                     //System.out.println(result.charAt(13));
-                 //   assertEquals('H', result.charAt(0));
-                   // assertEquals("Hello world.\n", result.toString());
+                    assertEquals('H', result.charAt(0));
+                    assertEquals("Hello world.", result.toString().trim()); //we use trim to avoid mistakes when compare to strings
                     //assertSame("Hello world.\n", result);
 
                 }
