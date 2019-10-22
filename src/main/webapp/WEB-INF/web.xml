@@ -4,13 +4,50 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+<!--    <servlet>-->
+<!--        <servlet-name>FormServlet</servlet-name>-->
+<!--        <servlet-class>by.sam.apklimovich.FormServlet</servlet-class>-->
+<!--    </servlet>-->
     <servlet>
-        <servlet-name>FormServlet</servlet-name>
-        <servlet-class>by.sam.apklimovich.FormServlet</servlet-class>
+        <servlet-name>MedicineApp</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>
+                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>by.sam.apklimovich.WebMvcConfig</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
+
+
+
     <servlet-mapping>
-        <servlet-name>FormServlet</servlet-name>
-        <url-pattern>/calculateServlet</url-pattern>
+        <servlet-name>MedicineApp</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+<!--    <context-param>-->
+<!--        <param-name>contextConfigLocation</param-name>-->
+<!--        <param-value>/WEB-INF/MedicineApp-servlet.xml</param-value>-->
+<!--    </context-param>-->
+<!--    <listener>-->
+<!--        <listener-class>-->
+<!--            org.springframework.web.context.ContextLoaderListener-->
+<!--        </listener-class>-->
+<!--    </listener>-->
+
+
+
+    <!--    <servlet-mapping>-->
+<!--        <servlet-name>FormServlet</servlet-name>-->
+<!--        <url-pattern>/calculateServlet</url-pattern>-->
+<!--    </servlet-mapping>-->
 
 </web-app>
