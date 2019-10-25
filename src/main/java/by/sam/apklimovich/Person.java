@@ -37,8 +37,7 @@ public class Person {
         public void updatePerson(Person person);
         public void deletePerson(Person person);
     }
-    //abstract PersonDAOImplement(){};
-    //
+
     class PersonDAOImplement implements PersonDAO{
         List<Person> Person;
         public PersonDAOImplement(){

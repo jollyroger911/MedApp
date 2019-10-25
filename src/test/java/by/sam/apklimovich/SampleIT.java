@@ -1,9 +1,7 @@
 package by.sam.apklimovich;
 
 import io.restassured.RestAssured;
-
 import org.junit.Test;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import static io.restassured.RestAssured.when;
@@ -15,7 +13,6 @@ public class SampleIT {
         Logger logger = LoggerFactory.getLogger(SampleIT.class);
         logger.info("Integration test");
         logger.debug("greetingTest method created ");
-
         RestAssured ra = new RestAssured();
         try{
             logger.info("in try test 1 ");
@@ -25,9 +22,5 @@ public class SampleIT {
         finally {
 
         }
-
-
     }
-
-
 }
