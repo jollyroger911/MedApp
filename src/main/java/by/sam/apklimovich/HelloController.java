@@ -11,8 +11,7 @@ public class HelloController {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public String printHello() {
-
-        return "Hello world.";
+        return "hello";
     }
 }
 
