@@ -7,11 +7,20 @@ public class Person {
     private String name;
     private int id;
     private String visitData;
+    public String content;
     Person(String name, int id, String data){
         this.name = name;
         this.id = id;
         this.visitData = data;
     }
+    public String getContent() {
+        return content;
+    }
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+
     public String getName(){
         return name;
     }
@@ -37,6 +46,8 @@ public class Person {
         public void updatePerson(Person person);
         public void deletePerson(Person person);
     }
+
+
 
     class PersonDAOImplement implements PersonDAO{
         List<Person> Person;
