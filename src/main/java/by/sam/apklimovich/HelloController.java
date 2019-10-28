@@ -2,11 +2,15 @@ package by.sam.apklimovich;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
-//@RequestMapping("/hello")
 public class HelloController {
+
 
     @GetMapping("/hello")
     public String hello(
@@ -18,20 +22,13 @@ public class HelloController {
         return "hello"; //view
     }
 
-//    @PostMapping("/hello")
-//    public String greetingSubmit(@ModelAttribute Person person) {
-//        return "result";
-//    }
-
-
-/*   // @RequestMapping(method = RequestMethod.GET)
-    //@ResponseBody
-   //public String printHello() {
-   @GetMapping({"/", "/hello"})
-   public String hello(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
-       model.addAttribute("name", name);
-
-        return "hello";
-    }*/
+    @RequestMapping(value = "/formVal", method = RequestMethod.GET)
+    public String formVal(@Validated @ModelAttribute(value = "person") Person person, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        model.addAttribute("name", person.getName());
+        return "name";
+    }
 }
 

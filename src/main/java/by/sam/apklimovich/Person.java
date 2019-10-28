@@ -1,57 +1,73 @@
 package by.sam.apklimovich;
 
+import org.springframework.lang.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
+    @NonNull
     private String name;
+
     private int id;
+
     private String visitData;
+
     public String content;
-    Person(String name, int id, String data){
+
+    Person(){}
+
+    Person(String name, int id, String data) {
         this.name = name;
         this.id = id;
         this.visitData = data;
     }
+
     public String getContent() {
         return content;
     }
+
     public void setContent(String content) {
         this.content = content;
     }
 
-
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String newName){
+
+    public void setName(String newName) {
         this.name = newName;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
-    public void setId(int newId){
+
+    public void setId(int newId) {
         this.id = newId;
     }
-    public String getVisitData(){
+
+    public String getVisitData() {
         return visitData;
     }
-    public void setVisitData(String newVisitData){
+
+    public void setVisitData(String newVisitData) {
         this.visitData = newVisitData;
     }
 
-    interface PersonDAO{
+    interface PersonDAO {
         public List<Person> getAllPersons();
+
         public void updatePerson(Person person);
+
         public void deletePerson(Person person);
     }
 
 
-
-    class PersonDAOImplement implements PersonDAO{
+    class PersonDAOImplement implements PersonDAO {
         List<Person> Person;
-        public PersonDAOImplement(){
+
+        public PersonDAOImplement() {
             Person = new ArrayList<>();
 
         }
