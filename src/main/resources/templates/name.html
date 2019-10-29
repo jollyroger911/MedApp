@@ -1,13 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-
-    <title>Spring Boot Thymeleaf Hello World Example</title>
-
 </head>
 
 <body>
-<td>attributeName</td>
+<h1>Result</h1>
+<p th:text = "'Name: '+ ${person.name}"></p>
 </body>
 </html>

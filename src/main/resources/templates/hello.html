@@ -6,7 +6,6 @@
 
     <title>Spring Boot Thymeleaf Hello World Example</title>
 
-    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 
 </head>
@@ -15,9 +14,11 @@
 
 <h1>Spring Boot Web Thymeleaf Example</h1>
 
-<form action="#" th:action="@{/formVal}" th:object="${person}" method="get">
+<form action="#" th:action="@{/formVal}" th:object="${person}" method="post">
     <fieldset>
-        <input type="text" th:name="answer"/>
+        <p>
+        Name: <input type="text" th:field="*{name}"/>
+        </p>
         <input type="submit" value="Validate!" th:value="validate"/>
     </fieldset>
 </form>

@@ -2,11 +2,11 @@ package by.sam.apklimovich;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.constraints.NotEmpty;
 
 @Controller
 public class HelloController {
@@ -15,19 +15,15 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello(
             @RequestParam(name = "name", required = false, defaultValue = "")
-                    String name, Model model) {
-
+            @NotEmpty String name, Model model, Person person) {
         model.addAttribute("message", name);
-
         return "hello"; //view
     }
 
-    @RequestMapping(value = "/formVal", method = RequestMethod.GET)
-    public String formVal(@Validated @ModelAttribute(value = "person") Person person, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
+    @PostMapping(value = "/formVal")
+    public String processName(Person person) {
+        if (person.getName().isEmpty())
             return "error";
-        }
-        model.addAttribute("name", person.getName());
         return "name";
     }
 }

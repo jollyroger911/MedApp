@@ -2,11 +2,13 @@ package by.sam.apklimovich;
 
 import org.springframework.lang.NonNull;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
-    @NonNull
+
+    @NotEmpty(message = "Name may not be null")
     private String name;
 
     private int id;
