@@ -11,6 +11,12 @@
 </head>
 
 <body>
-    <h1>Error</h1>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/error?lang=en}">Name (English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/error?lang=nl}">Naam (Dutch)</a>
+</div>
+    <h1 th:text="#{er.error}"></h1>
+<p th:text="#{err.mes}"></p>
 </body>
 </html>

@@ -1,14 +1,12 @@
 package by.sam.apklimovich;
 
-import org.springframework.lang.NonNull;
-
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
 
-    @NotEmpty(message = "Name may not be null")
+    @Size(min = 1)
     private String name;
 
     private int id;
@@ -17,7 +15,8 @@ public class Person {
 
     public String content;
 
-    Person(){}
+    Person() {
+    }
 
     Person(String name, int id, String data) {
         this.name = name;

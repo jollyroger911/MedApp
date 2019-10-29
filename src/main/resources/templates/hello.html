@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,15 +11,19 @@
 </head>
 
 <body>
-
-<h1>Spring Boot Web Thymeleaf Example</h1>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/hello?lang=en}">Name (English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/hello?lang=nl}">Naam (Dutch)</a>
+</div>
+<h1 th:text = "#{str.first}"></h1>
 
 <form action="#" th:action="@{/formVal}" th:object="${person}" method="post">
     <fieldset>
         <p>
-        Name: <input type="text" th:field="*{name}"/>
+            <strong th:text="#{str.name}"></strong><input type="text" th:field="*{name}"/>
         </p>
-        <input type="submit" value="Validate!" th:value="validate"/>
+        <input type="submit" value="Validate!" th:value="#{label.validate}"/>
     </fieldset>
 </form>
 
