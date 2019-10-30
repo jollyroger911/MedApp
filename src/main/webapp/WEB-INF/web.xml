@@ -21,7 +21,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>by.sam.apklimovich.WebMvcConfig</param-value>
+            <param-value>by.sam.apklimovich.config.WebMvcConfig</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

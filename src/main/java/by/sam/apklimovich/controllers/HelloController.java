@@ -1,5 +1,6 @@
-package by.sam.apklimovich;
+package by.sam.apklimovich.controllers;
 
+import by.sam.apklimovich.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

@@ -1,4 +1,4 @@
-package by.sam.apklimovich;
+package by.sam.apklimovich.config;
 
 
 import org.springframework.context.MessageSource;
