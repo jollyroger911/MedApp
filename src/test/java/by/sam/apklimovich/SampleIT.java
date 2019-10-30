@@ -1,26 +1,32 @@
 package by.sam.apklimovich;
 
+import groovy.json.JsonBuilder;
+import groovy.json.JsonOutput;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static io.restassured.RestAssured.when;
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
 
 public class SampleIT {
 
     @Test
     public void greetingTest() throws Exception {
+        Person person = new Person();
+        person.setName("Anton");
         Logger logger = LoggerFactory.getLogger(SampleIT.class);
         logger.info("Integration test");
         logger.debug("greetingTest method created ");
-        RestAssured ra = new RestAssured();
-        try {
-            logger.info("in try test 1 ");
-            when().get("http://localhost:8080/MedicineApp/hello").then().assertThat().equals("Hello world.");
-            logger.info("in try test 2");
-        } finally {
-
-        }
+        ValidatableResponse response = null;
+        RestAssured.baseURI = "http://localhost:8080/MedicineApp";
+        given().urlEncodingEnabled(true).param("Anton").get("/hello").then().statusCode(200);
+        response = given().contentType(ContentType.JSON).post("/formVal").then().statusCode(200);
+        logger.info(response.toString());
     }
 }
