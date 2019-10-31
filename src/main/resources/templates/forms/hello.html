@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org"
+       th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,6 +12,12 @@
 </head>
 
 <body>
+
+<!--<select id="locales">-->
+<!--    <option value=""></option>-->
+<!--    <option value="en" th:text="#{lang.en}"></option>-->
+<!--    <option value="ru" th:text="#{lang.ru}"></option>-->
+<!--</select>-->
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
     <a th:href="@{/hello?lang=en}">Name (English)</a>
     &nbsp;|&nbsp;

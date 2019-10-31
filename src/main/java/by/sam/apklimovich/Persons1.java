@@ -4,7 +4,8 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Person {
+public class Persons1 {
+
 
     @Size(min = 1)
     private String name;
@@ -15,10 +16,10 @@ public class Person {
 
     public String content;
 
-    Person() {
+    Persons1() {
     }
 
-    Person(String name, int id, String data) {
+    Persons1(String name, int id, String data) {
         this.name = name;
         this.id = id;
         this.visitData = data;
@@ -57,16 +58,15 @@ public class Person {
     }
 
     interface PersonDAO {
-        public List<Person> getAllPersons();
+        public List<Persons1> getAllPersons();
 
-        public void updatePerson(Person person);
+        public void updatePerson(Persons1 person);
 
-        public void deletePerson(Person person);
+        public void deletePerson(Persons1 person);
     }
 
-
     class PersonDAOImplement implements PersonDAO {
-        List<Person> Person;
+        List<Persons1> Person;
 
         public PersonDAOImplement() {
             Person = new ArrayList<>();
@@ -74,17 +74,17 @@ public class Person {
         }
 
         @Override
-        public List<by.sam.apklimovich.Person> getAllPersons() {
+        public List<Persons1> getAllPersons() {
             return null;
         }
 
         @Override
-        public void updatePerson(by.sam.apklimovich.Person person) {
+        public void updatePerson(Persons1 person) {
 
         }
 
         @Override
-        public void deletePerson(by.sam.apklimovich.Person person) {
+        public void deletePerson(Persons1 person) {
 
         }
     }
