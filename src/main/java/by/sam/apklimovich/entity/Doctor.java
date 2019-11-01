@@ -1,8 +1,7 @@
 package by.sam.apklimovich.entity;
 
-
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

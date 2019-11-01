@@ -27,10 +27,11 @@
 </div>
 <h1 th:text = "#{str.first}"></h1>
 
-<form action="#" th:action="@{/formVal}" th:object="${person}" method="post">
+<form action="#" th:action="@{formVal}" th:object="${person}" method="post">
     <fieldset>
         <p>
-            <strong th:text="#{str.name}"></strong><input type="text" th:field="*{name}"/>
+            <strong th:text="#{str.name}"> </strong>
+            <input type="text" th:value="*{name}"/>
         </p>
         <input type="submit" value="Validate!" th:value="#{label.validate}"/>
     </fieldset>
