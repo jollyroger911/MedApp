@@ -27,7 +27,9 @@
 </div>
 <h1 th:text = "#{str.first}"></h1>
 
-<form action="#" th:action="@{formVal}" th:object="${person}" method="post">
+
+<!--/*@thymesVar id="person" type=""*/-->
+<form action="#" th:action="@{formVal}" th:object="${persons1}" method="post">
     <fieldset>
         <p>
             <strong th:text="#{str.name}"> </strong>

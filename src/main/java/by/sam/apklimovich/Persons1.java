@@ -16,7 +16,7 @@ public class Persons1 {
 
     public String content;
 
-    Persons1() {
+    public Persons1() {
     }
 
     Persons1(String name, int id, String data) {

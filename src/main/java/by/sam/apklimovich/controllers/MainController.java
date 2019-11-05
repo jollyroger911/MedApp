@@ -1,6 +1,8 @@
 package by.sam.apklimovich.controllers;
 
 import by.sam.apklimovich.Persons1;
+import by.sam.apklimovich.repository.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,9 @@ import javax.validation.Valid;
 
 @Controller
 public class MainController {
+    @Autowired
+    PersonRepository pr;
+
     @RequestMapping("/")
     public String main(){
         return "index.html";
@@ -22,7 +27,7 @@ public class MainController {
     @GetMapping("/hello")
     public String hello(
             @RequestParam(name = "name", required = false, defaultValue = "")
-                    String name, Model model, Persons1 person) {
+                    String name, Model model, Persons1 persons1) {
         model.addAttribute("message", name);
         return "forms/hello"; //view
     }
