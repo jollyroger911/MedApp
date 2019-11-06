@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.Locale;
 
 @Controller
 public class MainController {
@@ -27,7 +28,7 @@ public class MainController {
     @GetMapping("/hello")
     public String hello(
             @RequestParam(name = "name", required = false, defaultValue = "")
-                    String name, Model model, PersonDto person) {
+                    String name, Model model, PersonDto person, Locale locale) {
         model.addAttribute("message", name);
         return "forms/hello"; //view
     }
