@@ -8,7 +8,7 @@ public class SampleIT {
 
     @Test
     public void greetingTest() throws Exception {
-        Persons1 persons1 = new Persons1();
+        PersonDto persons1 = new PersonDto();
         persons1.setName("Anton");
 //        Logger logger = LoggerFactory.getLogger(SampleIT.class);
 //        logger.info("Integration test");

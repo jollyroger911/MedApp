@@ -1,7 +1,7 @@
 package by.sam.apklimovich.controllers;
 
-import by.sam.apklimovich.Persons1;
-import by.sam.apklimovich.repository.PersonRepository;
+import by.sam.apklimovich.PersonDto;
+import by.sam.apklimovich.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +15,9 @@ import javax.validation.Valid;
 
 @Controller
 public class MainController {
+
     @Autowired
-    PersonRepository pr;
+    public PersonService personService;
 
     @RequestMapping("/")
     public String main(){
@@ -26,18 +27,19 @@ public class MainController {
     @GetMapping("/hello")
     public String hello(
             @RequestParam(name = "name", required = false, defaultValue = "")
-                    String name, Model model, Persons1 persons1) {
+                    String name, Model model, PersonDto person) {
         model.addAttribute("message", name);
         return "forms/hello"; //view
     }
 
 
     @PostMapping(value = "/formVal")
-    public String processName(@Valid Persons1 person, BindingResult br) {
+    public String processName(@Valid PersonDto person, BindingResult br) {
         if (br.hasErrors()) {
             return "forms/error";
         }
         else {
+            personService.createPerson();
             return "forms/name";
         }
     }

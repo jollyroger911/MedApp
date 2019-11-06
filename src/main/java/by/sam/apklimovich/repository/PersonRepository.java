@@ -1,8 +1,8 @@
 package by.sam.apklimovich.repository;
 
-import by.sam.apklimovich.entity.Foo;
+import by.sam.apklimovich.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PersonRepository extends JpaRepository<Foo, Long> {
+public interface PersonRepository extends JpaRepository<Person, Long> {
 
 }

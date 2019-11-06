@@ -4,7 +4,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Persons1 {
+public class PersonDto {
 
 
     @Size(min = 1)
@@ -16,10 +16,10 @@ public class Persons1 {
 
     public String content;
 
-    public Persons1() {
+    public PersonDto() {
     }
 
-    Persons1(String name, int id, String data) {
+    PersonDto(String name, int id, String data) {
         this.name = name;
         this.id = id;
         this.visitData = data;
@@ -55,37 +55,5 @@ public class Persons1 {
 
     public void setVisitData(String newVisitData) {
         this.visitData = newVisitData;
-    }
-
-    interface PersonDAO {
-        public List<Persons1> getAllPersons();
-
-        public void updatePerson(Persons1 person);
-
-        public void deletePerson(Persons1 person);
-    }
-
-    class PersonDAOImplement implements PersonDAO {
-        List<Persons1> Person;
-
-        public PersonDAOImplement() {
-            Person = new ArrayList<>();
-
-        }
-
-        @Override
-        public List<Persons1> getAllPersons() {
-            return null;
-        }
-
-        @Override
-        public void updatePerson(Persons1 person) {
-
-        }
-
-        @Override
-        public void deletePerson(Persons1 person) {
-
-        }
     }
 }
