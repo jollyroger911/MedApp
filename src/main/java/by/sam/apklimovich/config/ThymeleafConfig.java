@@ -23,7 +23,7 @@ public class ThymeleafConfig implements ApplicationContextAware {
 
 
     @Bean
-    public SpringResourceTemplateResolver templateResolver(){
+    public SpringResourceTemplateResolver templateResolver() {
         // SpringResourceTemplateResolver automatically integrates with Spring's own
         // resource resolution infrastructure, which is highly recommended.
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
@@ -38,8 +38,9 @@ public class ThymeleafConfig implements ApplicationContextAware {
         return templateResolver;
     }
 
+
     @Bean
-    public SpringTemplateEngine templateEngine(){
+    public SpringTemplateEngine templateEngine() {
         // SpringTemplateEngine automatically applies SpringStandardDialect and
         // enables Spring's own MessageSource message resolution mechanisms.
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -54,12 +55,12 @@ public class ThymeleafConfig implements ApplicationContextAware {
     }
 
     @Bean
-    public ThymeleafViewResolver viewResolver(){
+    public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         // NOTE 'order' and 'viewNames' are optional
         viewResolver.setOrder(1);
-        viewResolver.setViewNames(new String[] {"*"});
+        viewResolver.setViewNames(new String[]{"*"});
         viewResolver.setCacheUnresolved(false);
         return viewResolver;
     }

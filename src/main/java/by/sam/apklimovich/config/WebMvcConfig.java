@@ -12,6 +12,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import java.util.Locale;
+import java.util.spi.LocaleServiceProvider;
+
 
 @Configuration
 @ComponentScan(basePackages = {"by.sam.apklimovich"})
@@ -29,6 +32,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         lci.setParamName("lang");
         return lci;
     }
+
+
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

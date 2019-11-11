@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
-<html  xmlns:th="http://www.thymeleaf.org"
-       th:with="lang=${#locale.language}" th:lang="${lang}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:mvc="http://www.w3.org/1999/xlink"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Spring Boot Thymeleaf Hello World Example</title>
 
-    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet"   th:href="@{http://localhost:8080/MedicineApp/WEB-INF/static/css/main.css}"/>
 
 </head>
 

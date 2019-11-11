@@ -1,6 +1,7 @@
 package by.sam.apklimovich.controllers;
 
 import by.sam.apklimovich.PersonDto;
+import by.sam.apklimovich.config.WebMvcConfig;
 import by.sam.apklimovich.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,9 @@ import java.util.Locale;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    WebMvcConfig wmvc;
 
     @Autowired
     public PersonService personService;
@@ -44,5 +48,10 @@ public class MainController {
             return "forms/name";
         }
     }
+    @GetMapping(value = "/login")
+    public String logInAction(){
+        return "forms/login_form.html";
+    }
+
 }
 
