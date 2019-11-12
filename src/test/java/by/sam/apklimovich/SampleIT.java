@@ -1,5 +1,6 @@
 package by.sam.apklimovich;
 
+import by.sam.apklimovich.model.PersonDto;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;

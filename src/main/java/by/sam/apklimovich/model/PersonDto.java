@@ -1,8 +1,6 @@
-package by.sam.apklimovich;
+package by.sam.apklimovich.model;
 
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PersonDto {
 
