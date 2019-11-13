@@ -1,6 +1,9 @@
 package by.sam.apklimovich.model;
 
+import org.springframework.context.annotation.Bean;
+
 import javax.validation.constraints.Size;
+
 
 public class PersonDto {
 

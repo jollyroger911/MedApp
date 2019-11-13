@@ -7,7 +7,7 @@
 
     <title>Spring Boot Thymeleaf Hello World Example</title>
 
-    <link rel="stylesheet"   th:href="@{http://localhost:8080/MedicineApp/WEB-INF/static/css/main.css}"/>
+    <link rel="stylesheet"   th:href="@{http://localhost:8080/MedicineApp/static/css/main.css}"/>
 
 </head>
 
@@ -28,14 +28,18 @@
 <h1 th:text = "#{str.first}"></h1>
 
 
+<!--<form action="#" data-th-action="@{/editMenu}" data-th-object="${menuItem}" method="post">-->
+<!--    <label data-th-text="#{text.name}">name</label>-->
+<!--    <input type="hidden" data-th-value="${menuItem.id}" data-th-name="id"/>-->
+
+
 <!--/*@thymesVar id="person" type=""*/-->
-<form action="#" th:action="@{formVal}" th:object="${person}" method="post">
+<form action="#" data-th-action="@{/hello}" data-th-object="${person}" method="post">
     <fieldset>
-        <p>
-            <strong th:text="#{str.name}"> </strong>
-            <input type="text" th:value="*{name}"/>
-        </p>
-        <input type="submit" value="Validate!" th:value="#{label.validate}"/>
+    <strong th:text="#{str.name}"> </strong>
+
+    <input  type="text" th:value="${name}" data-th-name="name"/> </p>
+    <p><input type="submit" value="Validate!" data-th-value="#{label.validate}"/></p>
     </fieldset>
 </form>
 
