@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
-</body>
+    <div><a th:href="@{/chat}">Chat page</a></div>
+    <div><a th:href="@{/hello}">Name page</a></div>
+    <div><a th:href="@{/visit_time}">Visit time page</a></div>
+    <div><a th:href="@{/forms/login_form}">Log in page</a></div>
+    </body>
 </html>

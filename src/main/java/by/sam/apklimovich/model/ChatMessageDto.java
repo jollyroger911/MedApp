@@ -1,7 +1,10 @@
 package by.sam.apklimovich.model;
 
-public class ChatMessage {
+import javax.validation.constraints.Size;
+
+public class ChatMessageDto {
     private MessageType type;
+    @Size(min = 1)
     private String content;
     private String sender;
 

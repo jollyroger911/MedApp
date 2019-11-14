@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:mvc="http://www.w3.org/1999/xlink"
+<html xmlns:th="http://www.thymeleaf.org"
       th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
 
     <title>Spring Boot Thymeleaf Hello World Example</title>
 
-    <link rel="stylesheet"   th:href="@{http://localhost:8080/MedicineApp/static/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/css/main.css}"/>
 
 </head>
 
@@ -25,21 +25,17 @@
     &nbsp;|&nbsp;
     <a th:href="@{/hello?lang=ru}">Имя (Rus)</a>
 </div>
-<h1 th:text = "#{str.first}"></h1>
+<h1 class="first" th:text="#{str.first}"></h1>
 
-
-<!--<form action="#" data-th-action="@{/editMenu}" data-th-object="${menuItem}" method="post">-->
-<!--    <label data-th-text="#{text.name}">name</label>-->
-<!--    <input type="hidden" data-th-value="${menuItem.id}" data-th-name="id"/>-->
-
-
-<!--/*@thymesVar id="person" type=""*/-->
 <form action="#" data-th-action="@{/hello}" data-th-object="${person}" method="post">
     <fieldset>
-    <strong th:text="#{str.name}"> </strong>
-
-    <input  type="text" th:value="${name}" data-th-name="name"/> </p>
-    <p><input type="submit" value="Validate!" data-th-value="#{label.validate}"/></p>
+        <strong th:text="#{str.name}"> </strong>
+        <input type="text" th:value="${name}" data-th-name="name"/> </p>
+        <strong th:text="#{str.surname}"> </strong>
+        <input type="text" th:value="${surname}" data-th-name="surname"/> </p>
+        <strong th:text="#{str.who}"> </strong>
+        <input type="text" th:value="${who}" data-th-name="who"/> </p>
+        <p><input type="submit" value="Validate!" data-th-value="#{label.validate}"/></p>
     </fieldset>
 </form>
 

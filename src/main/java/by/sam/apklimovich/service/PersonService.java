@@ -15,11 +15,29 @@ public class PersonService {
     @Autowired
     PersonRepository pr;
 
-    public void createPerson() {
+    public void createPerson(Person p) {
         Logger logger = LoggerFactory.getLogger(PersonService.class);
         logger.info("personService object created ");
         pr.findAll();
-        pr.save(new Person("Name", "LastName", 0));
+        pr.save(p);
         pr.flush();
     }
+
+    public void createPerson(String name, String surname, int who) {
+        Logger logger = LoggerFactory.getLogger(PersonService.class);
+        logger.info("personService object created ");
+        pr.findAll();
+        pr.save(new Person(name, surname, who));
+        pr.flush();
+    }
+
+    public String geussWho(int who){
+        if(who == 1){
+            return "Doctor";
+        }
+        else{
+            return "Patient";
+        }
+    }
+
 }

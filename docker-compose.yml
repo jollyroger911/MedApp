@@ -1,0 +1,27 @@
+version: '2.1'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    container_name: medapp-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: M5e60v10
+      MYSQL_DATABASE: spring_hibernate5_01
+  tomcat:
+    image: tomcat:9.0.27-jdk13-openjdk-oracle
+    container_name: medapp-tomcat
+    environment:
+      - CATALINA_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000"
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+      - "8000:8000"
+    volumes:
+      - ./target/MedicineApp.war:/usr/local/tomcat/webapps/MedicineApp.war
+    command: /bin/sh -c "sleep 30 ; catalina.sh run"
+
+

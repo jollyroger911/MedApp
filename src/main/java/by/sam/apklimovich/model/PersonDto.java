@@ -11,6 +11,13 @@ public class PersonDto {
     @Size(min = 1)
     private String name;
 
+    private int who;
+
+    private String status;
+
+    @Size(min=1)
+    private String surname;
+
     private int id;
 
     private String visitData;
@@ -20,10 +27,27 @@ public class PersonDto {
     public PersonDto() {
     }
 
-    PersonDto(String name, int id, String data) {
+    PersonDto(String name, String surname, int id, String data) {
         this.name = name;
+        this.surname = surname;
         this.id = id;
         this.visitData = data;
+    }
+
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+
+    public int getWho(){
+        return who;
+    }
+
+    public void setWho(int who){
+        this.who = who;
     }
 
     public String getContent() {
@@ -32,6 +56,13 @@ public class PersonDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getSurname(){
+        return surname;
+    }
+    public void setSurname(String surname){
+        this.surname = surname;
     }
 
     public String getName() {

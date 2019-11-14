@@ -9,8 +9,8 @@
 
 </head>
 <body>
-<button action="#" th:href="@{froms/login_form}" ></button>
+<div th:replace="header"></div>
 Main page index.html
-<div th:insert="~{footer::copy}">&copy; 2011 The Static Templates</div>
+<div th:replace="footer" th:insert="~{footer::copy}">&copy; 2011 The Static Templates</div>
 </body>
 </html>

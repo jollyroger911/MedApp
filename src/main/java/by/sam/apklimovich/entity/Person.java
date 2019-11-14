@@ -62,6 +62,10 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.who = who;
+        Logger logger = LoggerFactory.getLogger(Person.class);
+        logger.info(firstName);
+        logger.info(lastName);
+        logger.info("person entity created");
     }
     public Person(){
         Logger logger = LoggerFactory.getLogger(Person.class);

@@ -1,6 +1,6 @@
 package by.sam.apklimovich.controllers;
 
-import by.sam.apklimovich.model.ChatMessage;
+import by.sam.apklimovich.model.ChatMessageDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +32,11 @@ public class WebSocketEventListener {
         if(username != null) {
             logger.info("User Disconnected : " + username);
 
-            ChatMessage chatMessage = new ChatMessage();
-            chatMessage.setType(ChatMessage.MessageType.LEAVE);
-            chatMessage.setSender(username);
+            ChatMessageDto chatMessageDto = new ChatMessageDto();
+            chatMessageDto.setType(ChatMessageDto.MessageType.LEAVE);
+            chatMessageDto.setSender(username);
 
-            messagingTemplate.convertAndSend("/topic/public", chatMessage);
+            messagingTemplate.convertAndSend("/topic/public", chatMessageDto);
         }
     }
 }

@@ -14,7 +14,7 @@ public class MessageService {
     @Autowired
     MessageRepository messageRepository;
 
-    public void createChat() {
+    public void createMessage() {
         Logger logger = LoggerFactory.getLogger(MessageService.class);
         logger.info("Message Service object created ");
         messageRepository.findAll();
