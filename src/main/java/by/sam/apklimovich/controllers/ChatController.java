@@ -1,7 +1,9 @@
 package by.sam.apklimovich.controllers;
 
 import by.sam.apklimovich.entity.Chat;
-import by.sam.apklimovich.model.ChatMessageDto;
+import by.sam.apklimovich.entity.Message;
+import by.sam.apklimovich.model.ChatDto;
+import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.MessageService;
 import org.slf4j.Logger;
@@ -30,34 +32,37 @@ public class ChatController {
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat(Model model) {
-        model.addAttribute("chatMeas", new ChatMessageDto());
+        Chat chat = new Chat();
+        model.addAttribute("chatMeas", new MessageDto());
 
         return "chat_two";
     }
 
     @RequestMapping(value = "/chat", method = RequestMethod.POST)
-    public String helloSubmit(@ModelAttribute @Valid ChatMessageDto message, Model model) {
+    public String chatSubmit(@ModelAttribute @Valid ChatDto chat, MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
         Logger logger = LoggerFactory.getLogger(ChatController.class);
+        Message m = new Message();
         chatService.createChat();
-        logger.info(message.getContent());
+        chatService.addMessageToChat(message, chat);
+        logger.info(chat.getContent());
         return "chat_two";
     }
 
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
-    public ChatMessageDto sendMessage(@Payload ChatMessageDto chatMessageDto) {
-        return chatMessageDto;
+    public ChatDto sendMessage(@Payload ChatDto chatDto) {
+        return chatDto;
     }
 
     @MessageMapping("/chat.addUser")
     @SendTo("/topic/public")
-    public ChatMessageDto addUser(@Payload ChatMessageDto chatMessageDto,
-                                  SimpMessageHeaderAccessor headerAccessor) {
+    public ChatDto addUser(@Payload ChatDto chatDto,
+                           SimpMessageHeaderAccessor headerAccessor) {
         // Add username in web socket session
-        headerAccessor.getSessionAttributes().put("username", chatMessageDto.getSender());
-        return chatMessageDto;
+        headerAccessor.getSessionAttributes().put("username", chatDto.getSender());
+        return chatDto;
     }
 
 }

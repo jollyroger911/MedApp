@@ -7,12 +7,24 @@
 <body>
 <h1 th:text="#{str.chat}"></h1>
 <div class="chat_field">
+    <div id="next-user-profile" >
+    </div>
     <div class="messageForm">
-        <textarea class="text_field" id="text-area-chat" th:placeholder="#{chat.default}" rows="10" cols="45"
-                  th:object="${message}">
+        <form action="#" data-th-action="@{/chat}" data-th-object="${message}" method="post">
+        <ul id="messageArea">
+            <li class="event-message">
+                <p  th:text="#{chat.liOne}" ></p>
+            </li>
+        </ul>
+        <div class="input-group">
+            <input type="text" id="message" th:placeholder="#{chat.default}" th:value="${content}" data-th-name="content"/>
+        </div>
+<!--        <textarea class="text_field" id="text-area-chat" th:placeholder="#{chat.default}" rows="10" cols="45"-->
+<!--                  th:object="${message}">-->
 
-        </textarea>
-        <button th:text="#{chat.send}"></button>
+<!--        </textarea>-->
+        <p><input type="submit" value="Send" data-th-value="#{chat.send}" /></p>
+        </form>
     </div>
 </div>
 </body>

@@ -1,6 +1,9 @@
 package by.sam.apklimovich.entity;
 
+import by.sam.apklimovich.service.ChatService;
 import org.hibernate.annotations.GenericGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 
@@ -61,5 +64,11 @@ public class Message {
         this.message = message;
         this.chatId = chatId;
         this.whoSend = whoSend;
+    }
+
+    public Message(String message) {
+        this.message = message;
+        Logger logger = LoggerFactory.getLogger(Message.class);
+        logger.info(message);
     }
 }
