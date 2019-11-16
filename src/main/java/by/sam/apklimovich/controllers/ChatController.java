@@ -31,10 +31,10 @@ public class ChatController {
     public ChatService chatService;
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
-    public String chat(Model model) {
-        Chat chat = new Chat();
+    public String chat(Model model, ChatDto chat) {
+        //Chat chat = new Chat();
         model.addAttribute("chatMeas", new MessageDto());
-
+        chatService.createChat(chat);
         return "chat_two";
     }
 
@@ -42,8 +42,6 @@ public class ChatController {
     public String chatSubmit(@ModelAttribute @Valid ChatDto chat, MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
         Logger logger = LoggerFactory.getLogger(ChatController.class);
-        Message m = new Message();
-        chatService.createChat();
         chatService.addMessageToChat(message, chat);
         logger.info(chat.getContent());
         return "chat_two";
@@ -61,7 +59,7 @@ public class ChatController {
     public ChatDto addUser(@Payload ChatDto chatDto,
                            SimpMessageHeaderAccessor headerAccessor) {
         // Add username in web socket session
-        headerAccessor.getSessionAttributes().put("username", chatDto.getSender());
+        //headerAccessor.getSessionAttributes().put("username", chatDto.getSender());
         return chatDto;
     }
 

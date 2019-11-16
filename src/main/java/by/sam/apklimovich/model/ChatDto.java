@@ -7,11 +7,14 @@ public class ChatDto {
     private MessageType type;
     @Size(min = 1)
     private String content;
-    private String sender;
+    private long senderId;
+    private long recieverId;
+    private long chatId;
     private String topic;
     private ArrayList<MessageDto> currentMessages;
     public ChatDto(){
         currentMessages = new ArrayList<>();
+        this.chatId = 0;
     }
     public ChatDto(String topic){
         this.topic = topic;
@@ -23,6 +26,16 @@ public class ChatDto {
         CHAT,
         JOIN,
         LEAVE
+    }
+    public void setChatId(long chatId){
+        this.chatId = chatId;
+    }
+
+    public void incrementChatId(){
+        this.chatId++;
+    }
+    public long getChatId(){
+        return chatId;
     }
 
     public void addToMessages(MessageDto messageDto){
@@ -45,11 +58,19 @@ public class ChatDto {
         this.content = content;
     }
 
-    public String getSender() {
-        return sender;
+    public long getSenderId() {
+        return senderId;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setSenderId(long senderId) {
+        this.senderId = senderId;
+    }
+
+    public long getRecieverId() {
+        return senderId;
+    }
+
+    public void setRecieverId(long senderId) {
+        this.senderId = senderId;
     }
 }

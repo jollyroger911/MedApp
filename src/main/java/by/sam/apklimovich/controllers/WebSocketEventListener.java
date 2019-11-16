@@ -34,7 +34,7 @@ public class WebSocketEventListener {
 
             ChatDto chatDto = new ChatDto();
             chatDto.setType(ChatDto.MessageType.LEAVE);
-            chatDto.setSender(username);
+           // chatDto.setSender(username);
 
             messagingTemplate.convertAndSend("/topic/public", chatDto);
         }

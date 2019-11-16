@@ -28,20 +28,26 @@ public class ChatService {
         chatRepository.save(new Chat());
         chatRepository.flush();
     }
+
     public void createChat(ChatDto chat) {
         Logger logger = LoggerFactory.getLogger(ChatService.class);
         logger.info("Chat Service object created ");
         chatRepository.findAll();
         chatRepository.save(new Chat());
         chatRepository.flush();
+        chat.incrementChatId();
+        long size = chatRepository.findAll().size();
+        chat.setChatId(size);
     }
+
     public void addMessageToChat(MessageDto message, ChatDto chat){
         Logger logger = LoggerFactory.getLogger(ChatService.class);
         logger.info("Chat Service object created ");
         messageRepository.findAll();
-        messageRepository.save(new Message(message.getContent()));
+        messageRepository.save(new Message(message.getContent(), chat.getChatId(), chat.getSenderId(), chat.getRecieverId()));
         messageRepository.flush();
         chat.addToMessages(message);
         logger.info(message.getContent());
     }
+
 }

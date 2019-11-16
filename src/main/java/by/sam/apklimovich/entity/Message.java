@@ -16,21 +16,32 @@ public class Message {
     @Column(name = "id", length = 6, nullable = false)
     private long id;
 
-    @Column(name = "chat")
+    @Column(name = "chatId")
     private long chatId;
 
-    @Column(name = "sender")
-    private int whoSend;
+    @Column(name = "senderId")
+    private long senderId;
+
+    @Column(name = "recieverId")
+    private long recieverId;
 
     @Column(name = "message")
     private String message;
 
-    public int getWhoSend() {
-        return whoSend;
+    public long getSenderId() {
+        return senderId;
     }
 
-    public void setWhoSend(int who) {
-        whoSend = who;
+    public void setSenderId(long senderId) {
+        this.senderId = senderId;
+    }
+
+    public long getRecieverId() {
+        return recieverId;
+    }
+
+    public void setRecieverId(long recieverId) {
+        this.recieverId = recieverId;
     }
 
     public long getId() {
@@ -60,10 +71,11 @@ public class Message {
     public Message() {
     }
 
-    public Message(String message, long chatId, int whoSend) {
+    public Message(String message, long chatId, long senderId, long recieverId) {
         this.message = message;
         this.chatId = chatId;
-        this.whoSend = whoSend;
+        this.senderId = senderId;
+        this.recieverId = recieverId;
     }
 
     public Message(String message) {

@@ -2,8 +2,8 @@ package by.sam.apklimovich.model;
 
 public class MessageDto {
     private String content;
-    private String sender;
-    private String reciever;
+    private long sender;
+    private long reciever;
 
     public MessageDto() {
     }
@@ -12,12 +12,12 @@ public class MessageDto {
         this.content = content;
     }
 
-    public MessageDto(String content, String sender) {
+    public MessageDto(String content, long sender) {
         this.content = content;
         this.sender = sender;
     }
 
-    public MessageDto(String content, String sender, String reciever) {
+    public MessageDto(String content, long sender, long reciever) {
         this.content = content;
         this.sender = sender;
         this.reciever = reciever;
@@ -31,19 +31,19 @@ public class MessageDto {
         this.content = content;
     }
 
-    public void setSender(String sender) {
+    public void setSender(long sender) {
         this.sender = sender;
     }
 
-    public String getSender() {
+    public long getSender() {
         return sender;
     }
 
-    public String getReciever() {
+    public long getReciever() {
         return reciever;
     }
 
-    public void setReciever(String reciever) {
+    public void setReciever(long reciever) {
         this.reciever = reciever;
     }
 
