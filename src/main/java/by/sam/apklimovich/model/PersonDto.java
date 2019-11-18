@@ -1,7 +1,5 @@
 package by.sam.apklimovich.model;
 
-import org.springframework.context.annotation.Bean;
-
 import javax.validation.constraints.Size;
 
 
@@ -11,11 +9,17 @@ public class PersonDto {
     @Size(min = 1)
     private String name;
 
+    @Size(min = 3)
+    private String login;
+
+    @Size(min = 3)
+    private String password;
+
     private int who;
 
     private String status;
 
-    @Size(min=1)
+    @Size(min = 1)
     private String surname;
 
     private int id;
@@ -34,19 +38,19 @@ public class PersonDto {
         this.visitData = data;
     }
 
-    public String getStatus(){
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status){
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public int getWho(){
+    public int getWho() {
         return who;
     }
 
-    public void setWho(int who){
+    public void setWho(int who) {
         this.who = who;
     }
 
@@ -58,10 +62,11 @@ public class PersonDto {
         this.content = content;
     }
 
-    public String getSurname(){
+    public String getSurname() {
         return surname;
     }
-    public void setSurname(String surname){
+
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 

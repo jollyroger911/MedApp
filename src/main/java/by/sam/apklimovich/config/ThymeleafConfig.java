@@ -70,9 +70,6 @@ public class ThymeleafConfig implements ApplicationContextAware {
     }
 
 
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");
-        registry.addResourceHandler("/js/**").addResourceLocations("/static/js/");
-    }
+
 
 }

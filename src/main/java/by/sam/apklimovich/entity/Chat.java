@@ -43,6 +43,9 @@ public class Chat {
     }
 
     public Chat(){}
+    public Chat(long chatId){
+        this.id = chatId;
+    }
     public Chat(String firstUser, String secondUser){
         this.firstUser = firstUser;
         this.secondUser = secondUser;

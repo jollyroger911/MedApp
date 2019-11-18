@@ -1,6 +1,5 @@
 package by.sam.apklimovich.entity;
 
-import by.sam.apklimovich.controllers.MainController;
 import org.hibernate.annotations.GenericGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +19,12 @@ public class Person {
     @Column(name = "who")
     private int who;
 
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -32,6 +37,22 @@ public class Person {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -50,15 +71,15 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public void setWho(int who){
+    public void setWho(int who) {
         this.who = who;
     }
 
-    public int getWho(){
+    public int getWho() {
         return who;
     }
 
-    public Person(String firstName, String lastName, int who){
+    public Person(String firstName, String lastName, int who) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.who = who;
@@ -67,7 +88,8 @@ public class Person {
         logger.info(lastName);
         logger.info("person entity created");
     }
-    public Person(){
+
+    public Person() {
         Logger logger = LoggerFactory.getLogger(Person.class);
         logger.info("person entity created");
     }

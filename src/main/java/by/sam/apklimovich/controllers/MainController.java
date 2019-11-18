@@ -73,11 +73,27 @@ public class MainController {
 //        }
 //    }
 
-    @GetMapping(value = "/login")
-    public String logInAction() {
-        return "forms/login_form.html";
-    }
+//    @GetMapping(value = "/login")
+//    public String logInAction() {
+//        return "forms/login_form.html";
+//    }
 
-
+//    @RequestMapping(value = "/login", method = RequestMethod.GET)
+//    public String login(Model model) {
+//        // model.addAttribute("")
+//        return "forms/login_form";
+//    }
+//
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String loginSubmit(@ModelAttribute @Valid PersonDto person, Model model) {
+//        model.addAttribute("person1", person);
+//        Logger logger = LoggerFactory.getLogger(LoginController.class);
+//        //Person p = new Person();
+//        //p.setFirstName(person.getName());
+//        //person.setStatus(personService.geussWho(person.getWho()));
+//        //personService.createPerson(person.getName(), person.getSurname(), person.getWho());
+//        logger.info(person.getName());
+//        return "forms/login_form";
+//    }
 }
 
