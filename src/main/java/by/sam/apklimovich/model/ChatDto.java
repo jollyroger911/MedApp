@@ -12,11 +12,13 @@ public class ChatDto {
     private long chatId;
     private String topic;
     private ArrayList<MessageDto> currentMessages;
-    public ChatDto(){
+
+    public ChatDto() {
         currentMessages = new ArrayList<>();
         this.chatId = 0;
     }
-    public ChatDto(String topic){
+
+    public ChatDto(String topic) {
         this.topic = topic;
         currentMessages = new ArrayList<>();
     }
@@ -27,18 +29,20 @@ public class ChatDto {
         JOIN,
         LEAVE
     }
-    public void setChatId(long chatId){
+
+    public void setChatId(long chatId) {
         this.chatId = chatId;
     }
 
-    public void incrementChatId(){
+    public void incrementChatId() {
         this.chatId++;
     }
-    public long getChatId(){
+
+    public long getChatId() {
         return chatId;
     }
 
-    public void addToMessages(MessageDto messageDto){
+    public void addToMessages(MessageDto messageDto) {
         currentMessages.add(messageDto);
     }
 

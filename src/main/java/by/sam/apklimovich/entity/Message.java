@@ -1,6 +1,5 @@
 package by.sam.apklimovich.entity;
 
-import by.sam.apklimovich.service.ChatService;
 import org.hibernate.annotations.GenericGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

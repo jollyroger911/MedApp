@@ -61,7 +61,6 @@ public class ThymeleafConfig implements ApplicationContextAware {
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
-        // NOTE 'order' and 'viewNames' are optional
         viewResolver.setOrder(1);
         viewResolver.setCharacterEncoding("UTF-8");
         viewResolver.setViewNames(new String[]{"*"});

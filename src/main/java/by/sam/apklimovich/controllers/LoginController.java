@@ -18,13 +18,13 @@ public class LoginController {
     @Autowired
     public PersonService personService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login_form", method = RequestMethod.GET)
     public String login(Model model) {
          model.addAttribute("");
         return "forms/login_form";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login_form", method = RequestMethod.POST)
     public String loginSubmit(@ModelAttribute @Valid PersonDto person, Model model) {
         model.addAttribute("person1", person);
         Logger logger = LoggerFactory.getLogger(LoginController.class);
