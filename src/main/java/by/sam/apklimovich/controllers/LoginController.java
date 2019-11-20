@@ -1,6 +1,7 @@
 package by.sam.apklimovich.controllers;
 
 import by.sam.apklimovich.model.PersonDto;
+import by.sam.apklimovich.service.LoginService;
 import by.sam.apklimovich.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +19,13 @@ public class LoginController {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private LoginService loginService;
+
     @RequestMapping(value = "/login_form", method = RequestMethod.GET)
     public String login(Model model) {
-         model.addAttribute("");
+        loginService.isFirstStart();
+
         return "forms/login_form";
     }
 
