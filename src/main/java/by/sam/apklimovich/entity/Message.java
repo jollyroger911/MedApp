@@ -21,8 +21,8 @@ public class Message {
     @Column(name = "senderId")
     private long senderId;
 
-    @Column(name = "recieverId")
-    private long recieverId;
+    @Column(name = "receiverId")
+    private long receiverId;
 
     @Column(name = "message")
     private String message;
@@ -35,12 +35,12 @@ public class Message {
         this.senderId = senderId;
     }
 
-    public long getRecieverId() {
-        return recieverId;
+    public long getReceiverId() {
+        return receiverId;
     }
 
-    public void setRecieverId(long recieverId) {
-        this.recieverId = recieverId;
+    public void setReceiverId(long receiverId) {
+        this.receiverId = receiverId;
     }
 
     public long getId() {
@@ -70,11 +70,11 @@ public class Message {
     public Message() {
     }
 
-    public Message(String message, long chatId, long senderId, long recieverId) {
+    public Message(String message, long chatId, long senderId, long receiverId) {
         this.message = message;
         this.chatId = chatId;
         this.senderId = senderId;
-        this.recieverId = recieverId;
+        this.receiverId = receiverId;
     }
 
     public Message(String message) {

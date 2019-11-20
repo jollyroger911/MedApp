@@ -44,7 +44,6 @@ public class PersistenceConfig {
         dataSource.setUrl((env.getProperty("jdbc.url")));
         dataSource.setUsername((env.getProperty("jdbc.user")));
         dataSource.setPassword((env.getProperty("jdbc.pass")));
-
         return dataSource;
     }
 
@@ -55,7 +54,6 @@ public class PersistenceConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(new String[] { "by.sam.apklimovich" });
         sessionFactory.setHibernateProperties(hibernateProperties());
-
         return sessionFactory;
     }
 
@@ -64,11 +62,9 @@ public class PersistenceConfig {
         final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource());
         emf.setPackagesToScan(new String[] { "by.sam.apklimovich" });
-
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(vendorAdapter);
         emf.setJpaProperties(hibernateProperties());
-
         return emf;
     }
 
@@ -92,14 +88,11 @@ public class PersistenceConfig {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         // hibernateProperties.setProperty("hibernate.format_sql", "true");
         // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
-
         // Envers properties
         hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix", env.getProperty("envers.audit_table_suffix"));
-
         return hibernateProperties;
     }
 

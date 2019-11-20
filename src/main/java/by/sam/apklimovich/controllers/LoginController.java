@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
     @Autowired
-    public PersonService personService;
+    private PersonService personService;
 
     @RequestMapping(value = "/login_form", method = RequestMethod.GET)
     public String login(Model model) {

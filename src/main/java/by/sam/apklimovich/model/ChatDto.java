@@ -8,7 +8,7 @@ public class ChatDto {
     @Size(min = 1)
     private String content;
     private long senderId;
-    private long recieverId;
+    private long receiverId;
     private long chatId;
     private String topic;
     private ArrayList<MessageDto> currentMessages;

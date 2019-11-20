@@ -3,7 +3,7 @@ package by.sam.apklimovich.model;
 public class MessageDto {
     private String content;
     private long sender;
-    private long reciever;
+    private long receiver;
 
     public MessageDto() {
     }
@@ -17,10 +17,10 @@ public class MessageDto {
         this.sender = sender;
     }
 
-    public MessageDto(String content, long sender, long reciever) {
+    public MessageDto(String content, long sender, long receiver) {
         this.content = content;
         this.sender = sender;
-        this.reciever = reciever;
+        this.receiver = receiver;
     }
 
     public String getContent() {
@@ -39,12 +39,12 @@ public class MessageDto {
         return sender;
     }
 
-    public long getReciever() {
-        return reciever;
+    public long getReceiver() {
+        return receiver;
     }
 
-    public void setReciever(long reciever) {
-        this.reciever = reciever;
+    public void setReceiver(long receiver) {
+        this.receiver = receiver;
     }
 
 }
