@@ -17,6 +17,11 @@ public class LoginService {
             Person pa = new Person(2, "admin", "admin");
             Person p1 = new Person(0, "user", "user");
             Person p2 = new Person(1, "doctor", "doctor");
+            personRepository.findAll();
+            personRepository.save(pa);
+            personRepository.save(p1);
+            personRepository.save(p2);
+            personRepository.flush();
         }
     }
 

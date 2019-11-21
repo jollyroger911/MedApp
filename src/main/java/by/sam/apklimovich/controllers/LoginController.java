@@ -41,4 +41,9 @@ public class LoginController {
         return "forms/login_form";
     }
 
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String error403(){
+        return "error/403";
+    }
+
 }
