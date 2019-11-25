@@ -1,10 +1,15 @@
 package by.sam.apklimovich.service;
 
 import by.sam.apklimovich.entity.Person;
+import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.repository.PersonRepository;
+import org.hibernate.tool.schema.extract.spi.ExtractionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,6 +27,22 @@ public class LoginService {
             personRepository.save(p1);
             personRepository.save(p2);
             personRepository.flush();
+        }
+    }
+
+    public Person findByLogin(String username){
+
+        return personRepository.findByLogin(username);
+    }
+
+    public boolean checkCredentials(String username, String password){
+
+        Person pList = findByLogin(username);
+        if ( pList.getPassword().equals(password) ){
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
