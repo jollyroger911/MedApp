@@ -1,6 +1,7 @@
 package by.sam.apklimovich.service;
 
 import by.sam.apklimovich.entity.Person;
+import by.sam.apklimovich.model.NewPersonDto;
 import by.sam.apklimovich.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,22 +14,22 @@ import org.springframework.transaction.annotation.Transactional;
 public class PersonService {
 
     @Autowired
-    PersonRepository pr;
+    PersonRepository personRepository;
 
     public void createPerson(Person p) {
         Logger logger = LoggerFactory.getLogger(PersonService.class);
         logger.info("personService object created ");
-        pr.findAll();
-        pr.save(p);
-        pr.flush();
+        personRepository.findAll();
+        personRepository.save(p);
+        personRepository.flush();
     }
 
     public void createPerson(String name, String surname, int who) {
         Logger logger = LoggerFactory.getLogger(PersonService.class);
         logger.info("personService object created ");
-        pr.findAll();
-        pr.save(new Person(name, surname, who));
-        pr.flush();
+        personRepository.findAll();
+        personRepository.save(new Person(name, surname, who));
+        personRepository.flush();
     }
 
     public String geussWho(int who){
@@ -40,4 +41,10 @@ public class PersonService {
         }
     }
 
+    public void addUser(NewPersonDto newPersonDto) {
+        personRepository.findAll();
+        personRepository.save(new Person(newPersonDto.getNewWho(), newPersonDto.getNewLogin(),
+                newPersonDto.getNewPassword(), newPersonDto.getName(), newPersonDto.getSurname()));
+        personRepository.flush();
+    }
 }

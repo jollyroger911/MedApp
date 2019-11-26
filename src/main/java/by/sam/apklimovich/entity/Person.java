@@ -99,4 +99,12 @@ public class Person {
         this.who = who;
     }
 
+    public Person (int who, String username, String password, String name, String surname){
+        this.login = username;
+        this.who = who;
+        this.password = password;
+        this.firstName = name;
+        this.lastName = surname;
+    }
+
 }

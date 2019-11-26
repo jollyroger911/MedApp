@@ -1,5 +1,6 @@
 package by.sam.apklimovich.security;
 
+import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.LoginService;
 import by.sam.apklimovich.service.MessageService;
@@ -22,6 +23,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    public PersonDto personDto;
 
     @Override
     public Authentication authenticate(Authentication authentication)
@@ -33,11 +36,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String password = authentication.getCredentials().toString();
         loginService.isFirstStart();
 
-        if (loginService.checkCredentials(name, password)) {
+        if (loginService.checkCredentials(name, password, personDto)) {
             return new UsernamePasswordAuthenticationToken(
                     name, password, new ArrayList<>());
         } else {
-            return authenticate(authentication);
+            return authentication;
         }
     }
 

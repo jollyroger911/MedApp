@@ -1,8 +1,10 @@
 package by.sam.apklimovich.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.validation.constraints.Size;
 
-
+@Component
 public class PersonDto {
 
 
@@ -25,6 +27,10 @@ public class PersonDto {
     private int id;
 
     private String visitData;
+
+    private String newLogin;
+    private String newPassword;
+    private int newWho;
 
     public String content;
 
@@ -92,5 +98,29 @@ public class PersonDto {
 
     public void setVisitData(String newVisitData) {
         this.visitData = newVisitData;
+    }
+
+    public String getNewLogin() {
+        return newLogin;
+    }
+
+    public void setNewLogin(String newLogin) {
+        this.newLogin = newLogin;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public int getNewWho() {
+        return newWho;
+    }
+
+    public void setNewWho(int newWho) {
+        this.newWho = newWho;
     }
 }

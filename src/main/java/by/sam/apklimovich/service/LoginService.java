@@ -31,14 +31,13 @@ public class LoginService {
     }
 
     public Person findByLogin(String username){
-
         return personRepository.findByLogin(username);
     }
 
-    public boolean checkCredentials(String username, String password){
-
+    public boolean checkCredentials(String username, String password, PersonDto pDto){
         Person pList = findByLogin(username);
         if ( pList.getPassword().equals(password) ){
+            pDto.setWho(pList.getWho());
             return true;
         }
         else {
@@ -46,10 +45,9 @@ public class LoginService {
         }
     }
 
-    public void addUser(int who, String username, String password) {
-        Person p = new Person(who, username, password);
+    public void addUser(int who, String username, String password, String name, String surname) {
         personRepository.findAll();
-        personRepository.save(p);
+        personRepository.save(new Person(who, username, password, name, surname));
         personRepository.flush();
     }
 

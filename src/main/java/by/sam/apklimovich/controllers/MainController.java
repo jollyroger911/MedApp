@@ -19,6 +19,9 @@ import javax.validation.Valid;
 public class MainController {
 
     @Autowired
+    public PersonDto personDto;
+
+    @Autowired
     public WebMvcConfig wmvc;
 
     @Autowired
@@ -26,6 +29,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String main() {
+
         return "index";
     }
 
@@ -47,7 +51,7 @@ public class MainController {
         person.setStatus(personService.geussWho(person.getWho()));
         personService.createPerson(person.getName(), person.getSurname(), person.getWho());
         logger.info(person.getName());
-        return "forms/name";
+        return "index";
     }
 
 }

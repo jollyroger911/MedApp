@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin page</title>
+</head>
+<body>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/add_user_page?lang=en}">Admin (English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/add_user_page?lang=nl}">Admin (Dutch)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/add_user_page?lang=ru}">Админ (Rus)</a>
+</div>
+
+<h1 class="first" th:text="#{str.admin.one}"></h1>
+<form action="#" data-th-action="@{/adminPage}" data-th-object="${personAdd}" method="get">
+    <fieldset>
+        <strong th:text="#{str.admin.two}"> </strong>
+        <input type="text" th:value="${newLogin}" data-th-name="newLogin"/> </p>
+        <strong th:text="#{str.admin.three}"> </strong>
+        <input type="text" th:value="${newPassword}" data-th-name="newPassword"/> </p>
+        <strong th:text="#{str.admin.who}"> </strong>
+        <input type="text" th:value="${newWho}" data-th-name="who"/> </p>
+        <strong th:text="#{str.name}"> </strong>
+        <input type="text" th:value="${name}" data-th-name="name"/> </p>
+        <strong th:text="#{str.surname}"> </strong>
+        <input type="text" th:value="${surname}" data-th-name="surname"/> </p>
+        <p><input type="submit" value="Add user" data-th-value="#{add.user}"/></p>
+    </fieldset>
+</form>
+</body>
+</html>

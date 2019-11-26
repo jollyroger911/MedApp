@@ -20,13 +20,13 @@
 <!--    <option value="en" th:text="#{lang.en}"></option>-->
 <!--    <option value="ru" th:text="#{lang.ru}"></option>-->
 <!--</select>-->
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/hello?lang=en}">Name (English)</a>
-    &nbsp;|&nbsp;
-    <a th:href="@{/hello?lang=nl}">Naam (Dutch)</a>
-    &nbsp;|&nbsp;
-    <a th:href="@{/hello?lang=ru}">Имя (Rus)</a>
-</div>
+    <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+        <a th:href="@{/hello?lang=en}">Name (English)</a>
+        &nbsp;|&nbsp;
+        <a th:href="@{/hello?lang=nl}">Naam (Dutch)</a>
+        &nbsp;|&nbsp;
+        <a th:href="@{/hello?lang=ru}">Имя (Rus)</a>
+    </div>
 <h1 class="first" th:text="#{str.first}"></h1>
 
 <form action="#" data-th-action="@{/hello}" data-th-object="${person}" method="post">
