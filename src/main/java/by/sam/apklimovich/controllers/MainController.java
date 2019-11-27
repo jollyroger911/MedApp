@@ -51,7 +51,7 @@ public class MainController {
         person.setStatus(personService.geussWho(person.getWho()));
         personService.createPerson(person.getName(), person.getSurname(), person.getWho());
         logger.info(person.getName());
-        return "index";
+        return "forms/name";
     }
 
 }

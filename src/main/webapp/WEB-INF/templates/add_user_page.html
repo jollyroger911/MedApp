@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin page</title>
+    <link rel="stylesheet" th:href="@{/css/addUser.css}"/>
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
@@ -14,21 +15,21 @@
     &nbsp;|&nbsp;
     <a th:href="@{/add_user_page?lang=ru}">Админ (Rus)</a>
 </div>
-
+<div class="main-menu" th:replace="fragments/header"></div>
 <h1 class="first" th:text="#{str.admin.one}"></h1>
-<form action="#" data-th-action="@{/adminPage}" data-th-object="${personAdd}" method="get">
+<form class="input-form-admin"  action="#" data-th-action="@{/}" th:object="${personAdd}" method="post">
     <fieldset>
-        <strong th:text="#{str.admin.two}"> </strong>
+        <strong class="text-form" th:text="#{str.admin.two}"> </strong>
         <input type="text" th:value="${newLogin}" data-th-name="newLogin"/> </p>
-        <strong th:text="#{str.admin.three}"> </strong>
+        <strong class="text-form" th:text="#{str.admin.three}"> </strong>
         <input type="text" th:value="${newPassword}" data-th-name="newPassword"/> </p>
-        <strong th:text="#{str.admin.who}"> </strong>
+        <strong class="text-form" th:text="#{str.admin.who}"> </strong>
         <input type="text" th:value="${newWho}" data-th-name="who"/> </p>
-        <strong th:text="#{str.name}"> </strong>
+        <strong class="text-form" th:text="#{str.name}"> </strong>
         <input type="text" th:value="${name}" data-th-name="name"/> </p>
-        <strong th:text="#{str.surname}"> </strong>
+        <strong class="text-form" th:text="#{str.surname}"> </strong>
         <input type="text" th:value="${surname}" data-th-name="surname"/> </p>
-        <p><input type="submit" value="Add user" data-th-value="#{add.user}"/></p>
+        <p><input class="text-form-button" type="submit" value="Add user" data-th-value="#{add.user}"/></p>
     </fieldset>
 </form>
 </body>

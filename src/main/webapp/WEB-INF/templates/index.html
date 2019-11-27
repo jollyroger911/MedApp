@@ -6,17 +6,18 @@
     <div th:class="logIn">
 
     </div>
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
 
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/index?lang=en}">Name (English)</a>
+    <a th:href="@{/?lang=en}">Name (English)</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/index?lang=nl}">Naam (Dutch)</a>
+    <a th:href="@{/?lang=nl}">Naam (Dutch)</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/index?lang=ru}">Имя (Rus)</a>
+    <a th:href="@{/?lang=ru}">Имя (Rus)</a>
 </div>
-<div th:replace="fragments/header"></div>
+<div class="main-menu" th:replace="fragments/header"></div>
 <p th:text="#{index.main.text}"></p>
 <div th:replace="fragments/footer" th:insert="~{fragments/footer::copy}">&copy; 2011 The Static Templates</div>
 </body>

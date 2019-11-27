@@ -1,0 +1,21 @@
+.first{
+    color:#70b55c;
+}
+
+.text-form{
+    color:#70b55c;
+}
+
+.text-form-button{
+    color:#70b55c;
+    background-color: #cccccc;
+    border-radius: 10px;
+    height: 30px;
+    box-shadow: none;
+}
+
+.input-form-admin{
+    background-color: #e8e8e8;
+    border-color: white;
+
+}

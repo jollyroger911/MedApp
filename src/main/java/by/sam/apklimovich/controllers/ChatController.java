@@ -30,9 +30,10 @@ public class ChatController {
     @Autowired
     public ChatService chatService;
 
+    public Logger logger = LoggerFactory.getLogger(ChatController.class);
+
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat(Model model, ChatDto chat) {
-        //Chat chat = new Chat();
         model.addAttribute("chatMeas", new MessageDto());
         chatService.createChat(chat);
         return "chat_two";
@@ -41,7 +42,7 @@ public class ChatController {
     @RequestMapping(value = "/chat", method = RequestMethod.POST)
     public String chatSubmit(@ModelAttribute @Valid ChatDto chat, MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
-        Logger logger = LoggerFactory.getLogger(ChatController.class);
+
         chatService.addMessageToChat(message, chat);
         logger.info(chat.getContent());
         return "chat_two";

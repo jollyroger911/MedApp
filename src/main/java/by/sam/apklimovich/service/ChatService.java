@@ -66,7 +66,7 @@ public class ChatService {
         Logger logger = LoggerFactory.getLogger(ChatService.class);
         logger.info("Chat Service object created ");
         messageRepository.findAll();
-        messageRepository.save(new Message(message.getContent(), chat.getChatId(), chat.getSenderId(), chat.getRecieverId()));
+        messageRepository.save(new Message(message.getContent(), chat.getChatId(), message.getSenderLogin()));
         messageRepository.flush();
         chat.addToMessages(message);
         logger.info(message.getContent());

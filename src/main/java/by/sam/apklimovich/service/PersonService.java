@@ -32,19 +32,25 @@ public class PersonService {
         personRepository.flush();
     }
 
-    public String geussWho(int who){
-        if(who == 1){
+    public String geussWho(int who) {
+        if (who == 1) {
             return "Doctor";
-        }
-        else{
+        } else {
             return "Patient";
         }
     }
 
-    public void addUser(NewPersonDto newPersonDto) {
+    public boolean addUser(NewPersonDto newPersonDto) {
         personRepository.findAll();
-        personRepository.save(new Person(newPersonDto.getNewWho(), newPersonDto.getNewLogin(),
-                newPersonDto.getNewPassword(), newPersonDto.getName(), newPersonDto.getSurname()));
-        personRepository.flush();
+        if (personRepository.findByLogin(newPersonDto.getNewLogin()) == null && newPersonDto.getNewLogin() != null && newPersonDto.getNewPassword().length() > 3){
+            personRepository.save(new Person(newPersonDto.getNewWho(), newPersonDto.getNewLogin(),
+                    newPersonDto.getNewPassword(), newPersonDto.getName(), newPersonDto.getSurname()));
+            personRepository.flush();
+            return true;
+        }
+        else {
+            personRepository.flush();
+            return false;
+        }
     }
 }

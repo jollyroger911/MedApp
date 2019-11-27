@@ -5,6 +5,16 @@ public class MessageDto {
     private long sender;
     private long receiver;
 
+    private String senderLogin;
+
+    public String getSenderLogin() {
+        return senderLogin;
+    }
+
+    public void setSenderLogin(String senderLogin) {
+        this.senderLogin = senderLogin;
+    }
+
     public MessageDto() {
     }
 

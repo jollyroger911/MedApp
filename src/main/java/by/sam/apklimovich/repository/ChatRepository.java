@@ -11,4 +11,5 @@ import java.util.ArrayList;
 public interface ChatRepository extends JpaRepository<Chat, Long> {
     //@Query("SELECT m FROM message m WHERE LOWER(m.chatId) = LOWER(:chatId)")
    // public ArrayList<Message> find(@Param("chatId") long chatId);
+    public Chat findByLogins(String sender, String receiver);
 }
