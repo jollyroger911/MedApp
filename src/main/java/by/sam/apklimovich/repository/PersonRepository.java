@@ -9,4 +9,6 @@ import java.util.List;
 public interface PersonRepository extends JpaRepository<Person, Long> {
    // @Query(value = "SELECT Person pr FROM medicineapp.persons p WHERE p.login = username", nativeQuery = true)
     Person findByLogin(String username);
+
+    List<Person> findByWho(int who);
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
+
+<link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/css/usersList.css}"/>
+<link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/js/usersList.js}"/>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/list_of_users?lang=en}">Name (English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/list_of_users?lang=nl}">Naam (Dutch)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/list_of_users?lang=ru}">Имя (Rus)</a>
+</div>
+<tr th:each="person : ${persons}">
+  <div class="person-item">  
+    <td th:text="${person.firstName}"> firstName </td>
+    <td th:text="${person.lastName}"> lastName</td>
+    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>
+    <td><input type="submit" value="Start chat!" data-th-value="#{str.startChat}" th:href="@{chat_two}"/></td>
+</div>
+
+</tr>
+</body>
+</html>

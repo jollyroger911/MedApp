@@ -13,10 +13,10 @@ public class Chat {
     private long id;
 
     @Column(name = "first_user")
-    private String firstUser;
+    private long firstUser;
 
     @Column(name = "second_user")
-    private String secondUser;
+    private long secondUser;
 
     public long getId() {
         return id;
@@ -26,19 +26,19 @@ public class Chat {
         this.id = id;
     }
 
-    public String getFirstUser() {
+    public long getFirstUser() {
         return firstUser;
     }
 
-    public void setFirstUser(String firstUser) {
+    public void setFirstUser(long firstUser) {
         this.firstUser = firstUser;
     }
 
-    public String getSecondUser() {
+    public long getSecondUser() {
         return secondUser;
     }
 
-    public void setSecondUser(String secondUser) {
+    public void setSecondUser(long secondUser) {
         this.secondUser = secondUser;
     }
 
@@ -46,7 +46,7 @@ public class Chat {
     public Chat(long chatId){
         this.id = chatId;
     }
-    public Chat(String firstUser, String secondUser){
+    public Chat(long firstUser, long secondUser){
         this.firstUser = firstUser;
         this.secondUser = secondUser;
     }

@@ -22,6 +22,12 @@ public class LoginService {
             Person pa = new Person(2, "admin", "admin");
             Person p1 = new Person(0, "user", "user");
             Person p2 = new Person(1, "doctor", "doctor");
+            pa.setFirstName("admin");
+            pa.setLastName("admin");
+            p1.setFirstName("Anton");
+            p1.setLastName("Klimovich");
+            p2.setFirstName("Dima");
+            p2.setLastName("Chubrik");
             personRepository.findAll();
             personRepository.save(pa);
             personRepository.save(p1);
@@ -38,6 +44,10 @@ public class LoginService {
         Person pList = findByLogin(username);
         if ( pList.getPassword().equals(password) ){
             pDto.setWho(pList.getWho());
+            pDto.setId(pList.getId());
+            pDto.setName(pList.getFirstName());
+            pDto.setSurname(pList.getLastName());
+            pDto.setLogin(pList.getLogin());
             return true;
         }
         else {

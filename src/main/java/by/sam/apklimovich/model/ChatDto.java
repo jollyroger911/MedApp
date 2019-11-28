@@ -1,5 +1,7 @@
 package by.sam.apklimovich.model;
 
+import by.sam.apklimovich.entity.Message;
+
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 
@@ -11,10 +13,18 @@ public class ChatDto {
     private long receiverId;
     private long chatId;
     private String topic;
-    private ArrayList<MessageDto> currentMessages;
+    public ArrayList<Message> currentMessages;
+
+    public ArrayList<Message> getCurrentMessages() {
+        return currentMessages;
+    }
+
+    public void setCurrentMessages(ArrayList<Message> currentMessages) {
+        this.currentMessages = currentMessages;
+    }
 
     public ChatDto() {
-        currentMessages = new ArrayList<>();
+        //currentMessages = new ArrayList<>();
         this.chatId = 0;
     }
 
@@ -42,7 +52,7 @@ public class ChatDto {
         return chatId;
     }
 
-    public void addToMessages(MessageDto messageDto) {
+    public void addToMessages(Message messageDto) {
         currentMessages.add(messageDto);
     }
 

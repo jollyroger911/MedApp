@@ -11,6 +11,22 @@ public class PersonDto {
     @Size(min = 1)
     private String name;
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Size(min = 3)
     private String login;
 
@@ -24,7 +40,17 @@ public class PersonDto {
     @Size(min = 1)
     private String surname;
 
-    private int id;
+    private long id;
+
+    private long secondUserIs;
+
+    public long getSecondUserIs() {
+        return secondUserIs;
+    }
+
+    public void setSecondUserIs(long secondUserIs) {
+        this.secondUserIs = secondUserIs;
+    }
 
     private String visitData;
 
@@ -84,11 +110,11 @@ public class PersonDto {
         this.name = newName;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int newId) {
+    public void setId(long newId) {
         this.id = newId;
     }
 

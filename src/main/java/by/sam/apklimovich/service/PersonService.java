@@ -2,12 +2,15 @@ package by.sam.apklimovich.service;
 
 import by.sam.apklimovich.entity.Person;
 import by.sam.apklimovich.model.NewPersonDto;
+import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -52,5 +55,12 @@ public class PersonService {
             personRepository.flush();
             return false;
         }
+    }
+
+    public List<Person> findAllPersonsByWho(int who){
+        return personRepository.findByWho(who);
+    }
+    public List<Person> findAllPersons(){
+        return personRepository.findAll();
     }
 }

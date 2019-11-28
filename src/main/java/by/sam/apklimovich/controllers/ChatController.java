@@ -4,6 +4,7 @@ import by.sam.apklimovich.entity.Chat;
 import by.sam.apklimovich.entity.Message;
 import by.sam.apklimovich.model.ChatDto;
 import by.sam.apklimovich.model.MessageDto;
+import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.MessageService;
 import org.slf4j.Logger;
@@ -30,19 +31,23 @@ public class ChatController {
     @Autowired
     public ChatService chatService;
 
+    @Autowired
+    PersonDto personDto;
+
+
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat(Model model, ChatDto chat) {
         model.addAttribute("chatMeas", new MessageDto());
-        chatService.createChat(chat);
+        chatService.createChat(chat, personDto);
         return "chat_two";
     }
 
     @RequestMapping(value = "/chat", method = RequestMethod.POST)
     public String chatSubmit(@ModelAttribute @Valid ChatDto chat, MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
-
+       // message.setSender(personDto.getId());
         chatService.addMessageToChat(message, chat);
         logger.info(chat.getContent());
         return "chat_two";
