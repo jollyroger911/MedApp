@@ -9,21 +9,23 @@
     <title>Title</title>
 </head>
 <body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;" >
     <a th:href="@{/list_of_users?lang=en}">Name (English)</a>
     &nbsp;|&nbsp;
     <a th:href="@{/list_of_users?lang=nl}">Naam (Dutch)</a>
     &nbsp;|&nbsp;
     <a th:href="@{/list_of_users?lang=ru}">Имя (Rus)</a>
 </div>
+<form action="#" data-th-action="@{/list_of_users}" data-th-object="${chatDto}" method="post">
 <tr th:each="person : ${persons}">
   <div class="person-item">  
     <td th:text="${person.firstName}"> firstName </td>
     <td th:text="${person.lastName}"> lastName</td>
-    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>
-    <td><input type="submit" value="Start chat!" data-th-value="#{str.startChat}" th:href="@{chat_two}"/></td>
+<!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
+    <td><input type="submit" value="Start chat!" th:name = "personsId" th:value="#{str.startChat}" th:href="@{'/list_of_users' + ${person.id}}"/></td>
 </div>
 
 </tr>
+</form>
 </body>
 </html>

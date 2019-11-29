@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -40,6 +41,7 @@ public class ChatController {
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat(Model model, ChatDto chat) {
         model.addAttribute("chatMeas", new MessageDto());
+        model.addAttribute("chatDto", chat);
         chatService.createChat(chat, personDto);
         return "chat_two";
     }
@@ -48,6 +50,7 @@ public class ChatController {
     public String chatSubmit(@ModelAttribute @Valid ChatDto chat, MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
        // message.setSender(personDto.getId());
+        //long receiverId = request.get
         chatService.addMessageToChat(message, chat);
         logger.info(chat.getContent());
         return "chat_two";
