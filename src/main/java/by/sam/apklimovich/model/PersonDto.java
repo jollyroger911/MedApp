@@ -42,6 +42,16 @@ public class PersonDto {
 
     private long id;
 
+    public long getDestId() {
+        return destId;
+    }
+
+    public void setDestId(long destId) {
+        this.destId = destId;
+    }
+
+    private long destId;
+
     private long secondUserIs;
 
     public long getSecondUserIs() {

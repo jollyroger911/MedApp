@@ -15,6 +15,12 @@
             <li class="event-message">
                 <p  th:text="#{chat.liOne}" ></p>
             </li>
+            <tr th:each="message : ${messagesList}">
+              <div class="person-item">  
+            <td th:text="${message.content}"> firstName </td>
+            <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
+            </div>
+            </tr>
         </ul>
         <div class="input-group">
             <input type="text" id="message" th:placeholder="#{chat.default}" th:value="${content}" data-th-name="content"/>

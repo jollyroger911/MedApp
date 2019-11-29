@@ -62,14 +62,14 @@ public class ChatService {
     public void createChat(ChatDto chat, PersonDto personDto) {
         Logger logger = LoggerFactory.getLogger(ChatService.class);
         logger.info("Chat Service object created ");
-        if(findByFIrstUserAndSecondUser(chat.getSenderId(), chat.getRecieverId()) == null) {
+        if(findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()) == null) {
             //  long size = chatRepository.findAll().size();
             chatRepository.findAll();
-            chatRepository.save(new Chat(chat.getSenderId(), chat.getRecieverId()));
+            chatRepository.save(new Chat(personDto.getId(), personDto.getDestId()));
             chatRepository.flush();
         }
         else{
-            chat.setChatId(findByFIrstUserAndSecondUser(chat.getSenderId(), chat.getRecieverId()).getId());
+            chat.setChatId(findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()).getId());
             chat.setCurrentMessages(messageRepository.findByChatId(chat.getChatId()));
         }
         //chat.incrementChatId();

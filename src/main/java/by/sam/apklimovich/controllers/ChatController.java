@@ -35,14 +35,21 @@ public class ChatController {
     @Autowired
     PersonDto personDto;
 
+    @Autowired
+    ChatDto chat;
+
 
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
-    public String chat(Model model, ChatDto chat) {
+    public String chat(Model model) {
         model.addAttribute("chatMeas", new MessageDto());
         model.addAttribute("chatDto", chat);
+        this.chat.setSenderId(personDto.getId());
+        this.chat.setRecieverId(personDto.getDestId());
         chatService.createChat(chat, personDto);
+        model.addAttribute("messagesList", chat.getCurrentMessages());
+
         return "chat_two";
     }
 
@@ -50,8 +57,7 @@ public class ChatController {
     public String chatSubmit(@ModelAttribute @Valid ChatDto chat, MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
        // message.setSender(personDto.getId());
-        //long receiverId = request.get
-        chatService.addMessageToChat(message, chat);
+        chatService.addMessageToChat(message, this.chat);
         logger.info(chat.getContent());
         return "chat_two";
     }

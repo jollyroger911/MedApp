@@ -1,10 +1,12 @@
 package by.sam.apklimovich.model;
 
 import by.sam.apklimovich.entity.Message;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 
+@Component
 public class ChatDto {
     private MessageType type;
     @Size(min = 1)
