@@ -3,9 +3,7 @@ package by.sam.apklimovich.controllers;
 import by.sam.apklimovich.model.ChatDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
@@ -36,7 +34,7 @@ public class WebSocketEventListener {
             chatDto.setType(ChatDto.MessageType.LEAVE);
             // chatDto.setSender(username);
 
-           // messagingTemplate.convertAndSend("/topic/public", chatDto);
+            // messagingTemplate.convertAndSend("/topic/public", chatDto);
         }
     }
 }

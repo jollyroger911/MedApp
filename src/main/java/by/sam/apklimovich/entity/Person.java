@@ -93,13 +93,14 @@ public class Person {
         Logger logger = LoggerFactory.getLogger(Person.class);
         logger.info("person entity created");
     }
-    public Person(int who, String username, String password){
+
+    public Person(int who, String username, String password) {
         this.login = username;
         this.password = password;
         this.who = who;
     }
 
-    public Person (int who, String username, String password, String name, String surname){
+    public Person(int who, String username, String password, String name, String surname) {
         this.login = username;
         this.who = who;
         this.password = password;

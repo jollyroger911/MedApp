@@ -33,16 +33,12 @@ public class LoginController {
     public String loginSubmit(@ModelAttribute @Valid PersonDto person, Model model) {
         model.addAttribute("person1", person);
         Logger logger = LoggerFactory.getLogger(LoginController.class);
-        //Person p = new Person();
-        //p.setFirstName(person.getName());
-        //person.setStatus(personService.geussWho(person.getWho()));
-        //personService.createPerson(person.getName(), person.getSurname(), person.getWho());
         logger.info(person.getName());
         return "forms/login_form";
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String error403(){
+    public String error403() {
         return "error/403";
     }
 
