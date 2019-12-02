@@ -36,7 +36,7 @@ public class ChatController {
     PersonDto personDto;
 
     @Autowired
-    ChatDto chat;
+    private ChatDto chat;
 
 
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
@@ -49,12 +49,11 @@ public class ChatController {
         this.chat.setRecieverId(personDto.getDestId());
         chatService.createChat(chat, personDto);
         model.addAttribute("messagesList", chat.getCurrentMessages());
-
         return "chat_two";
     }
 
     @RequestMapping(value = "/chat", method = RequestMethod.POST)
-    public String chatSubmit(@ModelAttribute @Valid ChatDto chat, MessageDto message, Model model) {
+    public String chatSubmit(MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
        // message.setSender(personDto.getId());
         chatService.addMessageToChat(message, this.chat);

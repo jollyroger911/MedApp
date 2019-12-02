@@ -27,7 +27,7 @@ public class ChatDto {
 
     public ChatDto() {
         //currentMessages = new ArrayList<>();
-        this.chatId = 0;
+
     }
 
     public ChatDto(String topic) {
@@ -86,7 +86,7 @@ public class ChatDto {
         return senderId;
     }
 
-    public void setRecieverId(long senderId) {
-        this.senderId = senderId;
+    public void setRecieverId(long receiverId) {
+        this.receiverId = receiverId;
     }
 }
