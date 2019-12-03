@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://localhost:8080/MedicineApp/js/chatScript.js"></script>
 </head>
 <body>
 <h1 th:text="#{str.chat}"></h1>
@@ -39,14 +40,16 @@
     <div class="messageForm">
         <form id="sampleFrom" action="#" data-th-action="@{/chat}" data-th-object="${message}" method="post">
         <ul id="messageArea">
+
             <li class="event-message">
                 <p  th:text="#{chat.liOne}" ></p>
             </li>
-            <tr th:each="message : ${messagesList}">
-              <div class="person-item">  
-            <td th:text="${message.message}"> firstName </td>
-            <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
-            </div>
+            <tr class="messages-list" th:value="${messagesList}">
+<!--            <tr class="messages-list" th:each="message : ${messagesList}">-->
+<!--              <div class="person-item">  -->
+<!--            <td th:text="${message.message}"> firstName </td>-->
+<!--            &lt;!&ndash;    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>&ndash;&gt;-->
+<!--            </div>-->
             </tr>
         </ul>
         <div class="input-group">
@@ -56,7 +59,7 @@
 <!--                  th:object="${message}">-->
 
 <!--        </textarea>-->
-        <p><input type="submit" value="Send" data-th-value="#{chat.send}" /></p>
+        <p><input type="submit" class="send-button" value="Send" data-th-value="#{chat.send}" /></p>
         </form>
     </div>
 </div>

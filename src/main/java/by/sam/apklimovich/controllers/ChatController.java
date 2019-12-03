@@ -52,6 +52,12 @@ public class ChatController {
         return "chat_two";
     }
 
+    @RequestMapping(value = "/chatMessages", method = RequestMethod.GET)
+    public String chatMessages(Model model) {
+        int last = chat.getCurrentMessages().size();
+        return chat.getCurrentMessages().get(last - 1).getMessage();
+    }
+
     @RequestMapping(value = "/chat", method = RequestMethod.POST)
     public String chatSubmit(MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
