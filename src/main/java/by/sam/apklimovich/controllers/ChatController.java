@@ -28,7 +28,7 @@ import javax.validation.Valid;
 @Controller
 public class ChatController {
 
-    @Autowired
+
     public MessageService messageService;
 
     @Autowired
@@ -43,6 +43,8 @@ public class ChatController {
 
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
 
+
+
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat(Model model) {
         model.addAttribute("chatMeas", new MessageDto());
@@ -54,13 +56,16 @@ public class ChatController {
         return "chat_two";
     }
 
-    @RequestMapping(value = "/chatMessages", method = RequestMethod.POST)
-    public @ResponseBody
-    String chatMessages(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-        int last = chat.getCurrentMessages().size();
-        return chat.getCurrentMessages().get(last - 1).getMessage();
-    }
+//    @RequestMapping(value = "/chat", method = RequestMethod.POST)
+//    public @ResponseBody
+//    String chatMessages(MessageDto message, Model model, HttpServletRequest request, HttpServletResponse response)
+//            throws Exception {
+//        model.addAttribute("chatMeas", message);
+//        chatService.addMessageToChat(message, this.chat);
+//        logger.info(chat.getContent());
+//        int last = messageService.findMessagesByChatId(this.chat.getChatId()).size();
+//        return messageService.findMessagesByChatId(this.chat.getChatId()).get(last-1).getMessage();
+//    }
 
     @RequestMapping(value = "/chat", method = RequestMethod.POST)
     public String chatSubmit(MessageDto message, Model model) {

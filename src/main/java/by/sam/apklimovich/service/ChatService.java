@@ -24,6 +24,9 @@ public class ChatService {
     @Autowired
     MessageRepository messageRepository;
 
+
+    MessageService messageService;
+
     public void createChat() {
         Logger logger = LoggerFactory.getLogger(ChatService.class);
         logger.info("Chat Service object created ");
@@ -62,6 +65,7 @@ public class ChatService {
         messageRepository.findAll();
         messageRepository.save(new Message(message.getContent(), chat.getChatId(), chat.getSenderId()));
         messageRepository.flush();
+//        chat.setCurrentMessages( messageService.findMessagesByChatId(chat.getChatId()));
         //chat.addToMessages(message);
         logger.info(message.getContent());
     }

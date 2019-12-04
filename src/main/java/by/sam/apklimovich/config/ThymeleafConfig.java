@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -19,6 +20,7 @@ public class ThymeleafConfig implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
+
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {

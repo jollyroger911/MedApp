@@ -8,14 +8,13 @@ $(document).ready(function(){
             success : function(response) {
                 $('#result').html("");
                 let obj = JSON.parse(response);
-
+                console.log(obj);
                 $('#result').html(obj.messages);
             },
             error : function() {
                 alert("opps error occured!");
             }
         });
-
     });
 });
 

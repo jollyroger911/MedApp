@@ -26,7 +26,7 @@ public class ChatDto {
     }
 
     public ChatDto() {
-        //currentMessages = new ArrayList<>();
+        currentMessages = new ArrayList<>();
 
     }
 
