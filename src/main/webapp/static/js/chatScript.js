@@ -1,6 +1,21 @@
 $(document).ready(function(){
     $(document.getElementsByClassName("send-button")).click(function(){
-        $.ajax({url: "http://localhost:8080/MedicineApp/js/demo_ajax_script.js", dataType: "script"});
+        $.ajax({ type: 'POST',
+            url: "http://localhost:8080/MedicineApp/chatMessages",
+            dataType: "html",
+            cache: false,
+            contentType: 'text/plain',
+            success : function(response) {
+                $('#result').html("");
+                let obj = JSON.parse(response);
+
+                $('#result').html(obj.messages);
+            },
+            error : function() {
+                alert("opps error occured!");
+            }
+        });
+
     });
 });
 

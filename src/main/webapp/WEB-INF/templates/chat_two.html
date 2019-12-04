@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://localhost:8080/MedicineApp/js/chatScript.js"></script>
+
 </head>
 <body>
 <h1 th:text="#{str.chat}"></h1>
@@ -43,6 +45,7 @@
 
             <li class="event-message">
                 <p  th:text="#{chat.liOne}" ></p>
+                <script src="http://localhost:8080/MedicineApp/js/chatScript.js"></script>
             </li>
             <tr class="messages-list" th:value="${messagesList}">
 <!--            <tr class="messages-list" th:each="message : ${messagesList}">-->
