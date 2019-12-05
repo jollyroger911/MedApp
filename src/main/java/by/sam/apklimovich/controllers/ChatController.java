@@ -10,6 +10,8 @@ import by.sam.apklimovich.service.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -57,14 +59,15 @@ public class ChatController {
     }
 
 //    @RequestMapping(value = "/chat", method = RequestMethod.POST)
-//    public @ResponseBody
-//    String chatMessages(MessageDto message, Model model, HttpServletRequest request, HttpServletResponse response)
-//            throws Exception {
-//        model.addAttribute("chatMeas", message);
-//        chatService.addMessageToChat(message, this.chat);
-//        logger.info(chat.getContent());
-//        int last = messageService.findMessagesByChatId(this.chat.getChatId()).size();
-//        return messageService.findMessagesByChatId(this.chat.getChatId()).get(last-1).getMessage();
+//    public ResponseEntity<String> demo1(MessageDto message, Model model) {
+//        try {
+//            model.addAttribute("chatMeas", message);
+//            chatService.addMessageToChat(message, this.chat);
+//            ResponseEntity<String> responseEntity = new ResponseEntity<String>(messageService.getLastMessageOfChat(chat), HttpStatus.OK);
+//            return responseEntity;
+//        } catch (Exception e) {
+//            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+//        }
 //    }
 
     @RequestMapping(value = "/chat", method = RequestMethod.POST)

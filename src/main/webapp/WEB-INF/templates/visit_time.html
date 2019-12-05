@@ -7,37 +7,20 @@
     <link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/js/visitTime.js}"/>
 </head>
 <body>
-<div class="MagicScroll" data-options="mode: carousel; height: 275px;">
-    <img src="../../images/example1.jpg"/>
-    <img src="../../images/example2.jpg"/>
-    <img src="../../images/example3.jpg"/>
-
-    <div class="mcs-wrapper" style="display: inline-block;">
-        <div class="mcs-items-container" style="white-space: nowrap; transform: translate3d(0px, 0px, 0px);">
-            <div class="mcs-item" data-item="0"
-                 style="width: 16.3265%; position: absolute; transform: translateX(730.5px) translateY(0px) translateZ(-643.544px) rotateX(0deg) rotateY(-239.993deg); z-index: 53; opacity: 0.349929;">
-                <a style="opacity: 1; visibility: visible;"><img
-                        srcset="../../images/example1.jpg?canvas.height=180&amp;canvas.width=280 2x"
-                        src="../../images/example1.jpg?scale.height=130&amp;canvas.height=90&amp;canvas.width=140"
-                        style="z-index: 100;"><span class="mcs-caption"
-                                                    style="opacity: 0; top: 90px;">All Star Plaid</span></a></div>
-            <div class="mcs-item" data-item="1"
-                 style="width: 16.3265%; position: absolute; transform: translateX(505.679px) translateY(0px) translateZ(-832.145px) rotateX(0deg) rotateY(-199.993deg); z-index: 38; opacity: 0.042187;">
-                <a style="opacity: 1; visibility: visible;"><img
-                        srcset="../../images/example2.jpg?canvas.height=180&amp;canvas.width=280 2x"
-                        src="../../images/example2.jpg?scale.height=130&amp;canvas.height=90&amp;canvas.width=140"
-                        style="z-index: 100;"><span class="mcs-caption"
-                                                    style="opacity: 0; top: 90px;">All Star Green</span></a></div>
-            <div class="mcs-item" data-item="2"
-                 style="width: 16.3265%; position: absolute; transform: translateX(212.226px) translateY(0px) translateZ(-832.111px) rotateX(0deg) rotateY(-159.993deg); z-index: 38; opacity: 0.0422433;">
-                <a style="opacity: 1; visibility: visible;"><img
-                        srcset="../../images/example3.jpg?canvas.height=180&amp;canvas.width=280 2x"
-                        src="../../images/example3.jpg?scale.height=130&amp;canvas.height=90&amp;canvas.width=140"
-                        style="z-index: 100;"><span class="mcs-caption"
-                                                    style="opacity: 0; top: 90px;">All Star Tartan</span></a></div>
-
-        </div>
-    </div>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/visit_time?lang=en}">Name (English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/visit_time?lang=nl}">Naam (Dutch)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/visit_time?lang=ru}">Имя (Rus)</a>
 </div>
+<select>
+    <option th:text=""></option>
+    <option th:text=""></option>
+    <option th:text=""></option>
+    <option th:text=""></option>
+    <option th:text=""></option>
+
+</select>
 </body>
 </html>

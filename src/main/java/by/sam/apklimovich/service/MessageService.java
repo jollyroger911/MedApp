@@ -1,6 +1,7 @@
 package by.sam.apklimovich.service;
 
 import by.sam.apklimovich.entity.Message;
+import by.sam.apklimovich.model.ChatDto;
 import by.sam.apklimovich.repository.MessageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,11 @@ public class MessageService {
         messageRepository.findAll();
         messageRepository.save(new Message());
         messageRepository.flush();
+    }
+
+    public String getLastMessageOfChat(ChatDto chat){
+        ArrayList<Message> ar = findMessagesByChatId(chat.getChatId());
+        return ar.get(ar.size()-1).getMessage();
     }
 
     public ArrayList<Message> findMessagesByChatId(long chatId) {
