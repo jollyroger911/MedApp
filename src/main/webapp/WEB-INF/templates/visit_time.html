@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/css/visitTime.css}"/>
     <link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/js/visitTime.js}"/>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
@@ -14,13 +15,26 @@
     &nbsp;|&nbsp;
     <a th:href="@{/visit_time?lang=ru}">Имя (Rus)</a>
 </div>
-<select>
-    <option th:text=""></option>
-    <option th:text=""></option>
-    <option th:text=""></option>
-    <option th:text=""></option>
-    <option th:text=""></option>
+<tr class="messages-list" th:value="${doctorsList}">
+<tr class="messages-list" th:each="doctor : ${doctorsList}">
+      
+    <div class="person-item">  
+        <td th:text="${doctor.firstName}"> firstName</td>
+        <td th:text="${doctor.firstName}"> lastName</td>
 
-</select>
+        <select th:id="${doctor.id}">
+            <option th:text="#{time.one}">1</option>
+            <option th:text="#{time.two}">2</option>
+            <option th:text="#{time.three}">3</option>
+            <option th:text="#{time.four}">4</option>
+            <option th:text="#{time.five}">5</option>
+        </select>
+
+        <form th:action="@{|/visit_time/${doctor.id}|}" method="post">
+            <input type="submit" th:value="#{time.choose}"/>
+        </form>
+    </div>
+</tr>
+
 </body>
 </html>

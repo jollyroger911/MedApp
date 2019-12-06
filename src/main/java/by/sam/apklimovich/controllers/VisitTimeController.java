@@ -2,6 +2,7 @@ package by.sam.apklimovich.controllers;
 
 import by.sam.apklimovich.config.WebMvcConfig;
 import by.sam.apklimovich.model.PersonDto;
+import by.sam.apklimovich.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,15 @@ public class VisitTimeController {
     @Autowired
     public WebMvcConfig wmvc;
 
+    @Autowired
+    public PersonService personService;
+
     public Logger logger = LoggerFactory.getLogger(VisitTimeController.class);
 
     @RequestMapping(value = "/visit_time", method = RequestMethod.GET)
     public String visitTimeChoose(Model model) {
-        logger.info("get controller");
+
+
         //  model.addAttribute("time1", new PersonDto());
         return "visit_time";
     }

@@ -18,16 +18,21 @@ public class LoginService {
             Person pa = new Person(2, "admin", "admin");
             Person p1 = new Person(0, "user", "user");
             Person p2 = new Person(1, "doctor", "doctor");
+            Person p3 = new Person(1, "doctor1", "1");
             pa.setFirstName("admin");
             pa.setLastName("admin");
             p1.setFirstName("Anton");
             p1.setLastName("Klimovich");
             p2.setFirstName("Dima");
             p2.setLastName("Chubrik");
+            p3.setLastName("dssdgsdgv");
+            p3.setFirstName("xcdbxbd");
             personRepository.findAll();
             personRepository.save(pa);
             personRepository.save(p1);
             personRepository.save(p2);
+
+            personRepository.save(p3);
             personRepository.flush();
         }
     }

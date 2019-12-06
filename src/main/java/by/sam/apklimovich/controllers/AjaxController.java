@@ -4,6 +4,7 @@ import by.sam.apklimovich.model.ChatDto;
 import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.MessageService;
+import by.sam.apklimovich.service.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.ArrayList;
 
 
 @Controller
@@ -26,6 +29,9 @@ public class AjaxController {
     @Autowired
     private ChatDto chat;
 
+    @Autowired
+    private VisitService visitService;
+
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
     public ResponseEntity<String> demo1(MessageDto message, Model model) {
         try {
@@ -35,6 +41,19 @@ public class AjaxController {
             return responseEntity;
         } catch (Exception e) {
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+
+
+    }
+
+    @RequestMapping(value = "/demo2", method = RequestMethod.POST)
+    public ResponseEntity<ArrayList<String>> demo2(Model model, long id) {
+        try {
+
+            ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(id), HttpStatus.OK);
+            return responseEntity;
+        } catch (Exception e) {
+            return new ResponseEntity<ArrayList<String>>(HttpStatus.BAD_REQUEST);
         }
     }
 
