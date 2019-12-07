@@ -30,7 +30,7 @@ public class AjaxController {
     private ChatDto chat;
 
     @Autowired
-    private VisitService visitService;
+    public VisitService visitService;
 
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
     public ResponseEntity<String> demo1(MessageDto message, Model model) {
@@ -47,10 +47,10 @@ public class AjaxController {
     }
 
     @RequestMapping(value = "/demo2", method = RequestMethod.POST)
-    public ResponseEntity<ArrayList<String>> demo2(Model model, long id) {
+    public ResponseEntity<ArrayList<String>> demo2(String id) {
         try {
-
-            ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(id), HttpStatus.OK);
+            long idValue = Long.parseLong(id);
+            ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(idValue), HttpStatus.OK);
             return responseEntity;
         } catch (Exception e) {
             return new ResponseEntity<ArrayList<String>>(HttpStatus.BAD_REQUEST);

@@ -2,28 +2,35 @@ $(document).ready(function(event){
 
 
 
-/*    $(document).target.click(function(){
+   $("select").click(function(event){
+       let target = event.target;
+
+
         $.ajax({ type: 'POST',
             url: "http://localhost:8080/MedicineApp/ajax/demo2",
 
-            data: JSON.stringify({
-                'long': event.target.id
+           // data: target.id,
+            data:    JSON.stringify({
+             "id":  target.id
             }),
+           //  data: "{id:'" + target.id + "'}",
+            dataType: 'json',
             success : function(response) {
                 console.log(response);
-                for (let i = 0; i < response.length; i++) {
-                    document.getElementById('messageArea').innerHTML += '<li>' + response.get(i) + '</li>';
-                }
+                alert(response);
+             //   for (let i = 0; i < response.length; i++) {
+                   // document.getElementById('messageArea').innerHTML += '<li>' + response.get(i) + '</li>';
+              //  }
             },
             error : function() {
                 alert("opps error occured!");
             }
         });
-    });*/
+    });
 
-    alert(123);
-
-    alert($("select"));
+    // alert(123);
+    //
+    // alert($("select"));
 
 });
 

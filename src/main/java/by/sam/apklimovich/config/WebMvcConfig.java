@@ -58,7 +58,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     static class FaviconController {
         @RequestMapping("favicon.png")
         String favicon() {
-            return "forward:/resources/favicon.png";
+            return "forward:/resources/favicon.ico";
         }
     }
 
