@@ -1,32 +1,39 @@
-$(document).ready(function(event){
+
+$(document).ready(function(){
+    //
+    // $("option > select").click(function (e) {
+    //     e.stopPropagation();
+        $("select").click(function (event) {
+            let target = event.target;
 
 
 
-   $("select").click(function(event){
-       let target = event.target;
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost:8080/MedicineApp/ajax/demo2",
 
+                    // data: target.id,
 
-        $.ajax({ type: 'POST',
-            url: "http://localhost:8080/MedicineApp/ajax/demo2",
-
-           // data: target.id,
-            data:    JSON.stringify({
-             "id":  target.id
-            }),
-           //  data: "{id:'" + target.id + "'}",
-            dataType: 'json',
-            success : function(response) {
-                console.log(response);
-                alert(response);
-             //   for (let i = 0; i < response.length; i++) {
-                   // document.getElementById('messageArea').innerHTML += '<li>' + response.get(i) + '</li>';
-              //  }
-            },
-            error : function() {
-                alert("opps error occured!");
-            }
+                    data: {
+                        id: target.id
+                    },           //  data: "{id:'" + target.id + "'}",
+                    //  dataType: 'json',
+                    success: function (response) {
+                        //  alert(response);
+                        console.log(response.length);
+                        $("select").empty();
+                        //delete (content);
+                        for (let i = 0; i < response.length; i++) {
+                            document.getElementById(target.id).innerHTML += '<option>' + response[i] + '</option>';
+                        }
+                    },
+                    error: function (data) {
+                        alert("opps error occured! " + data);
+                    }
+                });
+            // });
         });
-    });
+
 
     // alert(123);
     //

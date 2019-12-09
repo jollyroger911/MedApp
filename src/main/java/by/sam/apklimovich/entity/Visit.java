@@ -75,5 +75,11 @@ public class Visit {
         this.visitTime = visitTime;
     }
 
+    public Visit(long doctorId, String visitTime, boolean status){
+        this.doctorId = doctorId;
+        this.visitTime = visitTime;
+        this.status = status;
+    }
+
 
 }

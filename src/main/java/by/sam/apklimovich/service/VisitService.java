@@ -13,6 +13,8 @@ public class VisitService {
     @Autowired
     public VisitRepository visitRepository;
 
+
+
     public ArrayList<String> getFreeVisitTimeByDocId(long docId){
         ArrayList<String> visitTime = new ArrayList<>();
         visitRepository.findByDoctorIdAndStatus(docId, true).forEach((item)->visitTime.add(item.getVisitTime()));

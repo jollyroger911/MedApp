@@ -17,17 +17,18 @@
 </div>
 <tr class="messages-list" th:value="${doctorsList}">
 <tr class="messages-list" th:each="doctor : ${doctorsList}">
-      
-    <div class="person-item">  
+      <input id="hidden-input" type="hidden" value="1">
+    <div class="person-item">
         <td th:text="${doctor.firstName}"> firstName</td>
         <td th:text="${doctor.firstName}"> lastName</td>
 
         <select th:id="${doctor.id}">
-            <option th:text="#{time.one}">1</option>
-            <option th:text="#{time.two}">2</option>
-            <option th:text="#{time.three}">3</option>
-            <option th:text="#{time.four}">4</option>
-            <option th:text="#{time.five}">5</option>
+<!--            <option value=""> </option>-->
+<!--            <option th:text="#{time.one}">1</option>-->
+<!--            <option th:text="#{time.two}">2</option>-->
+<!--            <option th:text="#{time.three}">3</option>-->
+<!--            <option th:text="#{time.four}">4</option>-->
+<!--            <option th:text="#{time.five}">5</option>-->
         </select>
 
         <form th:action="@{|/visit_time/${doctor.id}|}" method="post">
