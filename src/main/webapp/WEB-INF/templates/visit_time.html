@@ -22,16 +22,12 @@
         <td th:text="${doctor.firstName}"> firstName</td>
         <td th:text="${doctor.firstName}"> lastName</td>
 
-        <select th:id="${doctor.id}">
-<!--            <option value=""> </option>-->
-<!--            <option th:text="#{time.one}">1</option>-->
-<!--            <option th:text="#{time.two}">2</option>-->
-<!--            <option th:text="#{time.three}">3</option>-->
-<!--            <option th:text="#{time.four}">4</option>-->
-<!--            <option th:text="#{time.five}">5</option>-->
+        <select th:id="${doctor.id}" class="selectors">
+
         </select>
 
-        <form th:action="@{|/visit_time/${doctor.id}|}" method="post">
+<!--        <form th:action="@{|/visit_time/${doctor.id}|}" method="post">-->
+        <form th:action="@{/visit_time}" method="post">
             <input type="submit" th:value="#{time.choose}"/>
         </form>
     </div>

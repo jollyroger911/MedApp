@@ -22,6 +22,9 @@ public class VisitTimeController {
     @Autowired
     public PersonService personService;
 
+    @Autowired
+    PersonDto personDto;
+
     public Logger logger = LoggerFactory.getLogger(VisitTimeController.class);
 
     @RequestMapping(value = "/visit_time", method = RequestMethod.GET)
@@ -32,9 +35,10 @@ public class VisitTimeController {
         return "visit_time";
     }
 
-    @RequestMapping(value = "/visit_time", method = RequestMethod.POST)
+    @RequestMapping(value = "/visit", method = RequestMethod.POST)
     public String VisitTimeChosen(@ModelAttribute @Valid PersonDto person, Model model) {
         model.addAttribute("time1", person);
+        personDto.getVisitTime();
         logger.info(person.getName());
         return "visit_time";
     }

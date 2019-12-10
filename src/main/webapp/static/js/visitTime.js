@@ -1,44 +1,26 @@
-
-$(document).ready(function(){
-    //
-    // $("option > select").click(function (e) {
-    //     e.stopPropagation();
-        $("select").click(function (event) {
-            let target = event.target;
-
-
-
-                $.ajax({
-                    type: 'POST',
-                    url: "http://localhost:8080/MedicineApp/ajax/demo2",
-
-                    // data: target.id,
-
-                    data: {
-                        id: target.id
-                    },           //  data: "{id:'" + target.id + "'}",
-                    //  dataType: 'json',
-                    success: function (response) {
-                        //  alert(response);
-                        console.log(response.length);
-                        $("select").empty();
-                        //delete (content);
-                        for (let i = 0; i < response.length; i++) {
-                            document.getElementById(target.id).innerHTML += '<option>' + response[i] + '</option>';
-                        }
-                    },
-                    error: function (data) {
-                        alert("opps error occured! " + data);
+$(document).ready(function (e) {
+    $("select").click(function (event) {
+        let target = event.target;
+        $.ajax({
+            type: 'POST',
+            url: "/MedicineApp/ajax/demo2",
+            data: {
+                id: target.id,
+                selected: target.value
+            },
+            success: function (response) {
+                console.log(response.length);
+                if ($(event.target).children().length === 0) {
+                    for (let i = 0; i < response.length; i++) {
+                        document.getElementById(target.id).innerHTML += '<option id="childDiv">' + response[i] + '</option>';
                     }
-                });
-            // });
+                }
+            },
+            error: function (data) {
+                alert("opps error occured! " + data);
+            }
         });
-
-
-    // alert(123);
-    //
-    // alert($("select"));
-
+    });
 });
 
 

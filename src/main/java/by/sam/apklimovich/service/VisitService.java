@@ -21,4 +21,9 @@ public class VisitService {
         return visitTime;
     }
 
+    public void setVisitDetails(String time, long doctorId, long patientId){
+        visitRepository.findByDoctorIdAndAndVisitTime(doctorId, time).setPatientId(patientId);
+        visitRepository.findByDoctorIdAndAndVisitTime(doctorId, time).setStatus(false);
+    }
+
 }

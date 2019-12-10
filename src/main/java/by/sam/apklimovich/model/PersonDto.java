@@ -70,6 +70,9 @@ public class PersonDto {
 
     public String content;
 
+    private String visitTime;
+    private long visitDoctorId;
+
     public PersonDto() {
     }
 
@@ -78,6 +81,22 @@ public class PersonDto {
         this.surname = surname;
         this.id = id;
         this.visitData = data;
+    }
+
+    public String getVisitTime() {
+        return visitTime;
+    }
+
+    public void setVisitTime(String visitTime) {
+        this.visitTime = visitTime;
+    }
+
+    public long getVisitDoctorId() {
+        return visitDoctorId;
+    }
+
+    public void setVisitDoctorId(long visitDoctorId) {
+        this.visitDoctorId = visitDoctorId;
     }
 
     public String getStatus() {

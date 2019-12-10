@@ -5,6 +5,7 @@ import by.sam.apklimovich.model.ChatDto;
 import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.PersonService;
+import by.sam.apklimovich.service.VisitService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,28 +21,28 @@ public class VisitController {
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
 
     @Autowired
-    PersonDto personDto;
+    private PersonDto personDto;
+
+    @Autowired
+    private VisitService visitService;
 
     @Autowired
     private PersonService personService;
 
     @Autowired
     private ChatDto chat;
-
     static final int DOCTOR = 1;
 
     @RequestMapping(value = "/visit", method = RequestMethod.GET)
     public String doctorsList(Model model) {
-//        List<Person> persons;
-//        persons = personService.findAllPersonsByWho(DOCTOR);
         model.addAttribute("doctorsList", personService.findAllPersonsByWho(DOCTOR));
         return "visit_time";
     }
 
-    @RequestMapping(value = "/visit", method = RequestMethod.POST)
+    @RequestMapping(value = "/visit_time", method = RequestMethod.POST)
     public String doctorSubmit(MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
-        // message.setSender(personDto.getId());
+        visitService.setVisitDetails(personDto.getVisitTime(), personDto.getVisitDoctorId(), personDto.getId());
         logger.info(chat.getContent());
         return "visit_time";
     }
