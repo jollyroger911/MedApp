@@ -1,6 +1,5 @@
 package by.sam.apklimovich.controllers;
 
-import by.sam.apklimovich.entity.Person;
 import by.sam.apklimovich.model.ChatDto;
 import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.model.PersonDto;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
 
 @Controller
 public class VisitController {
@@ -41,9 +38,9 @@ public class VisitController {
 
     @RequestMapping(value = "/visit_time", method = RequestMethod.POST)
     public String doctorSubmit(MessageDto message, Model model) {
-        model.addAttribute("chatMeas", message);
+        // model.addAttribute("chatMeas", message);
         visitService.setVisitDetails(personDto.getVisitTime(), personDto.getVisitDoctorId(), personDto.getId());
-        logger.info(chat.getContent());
-        return "visit_time";
+        //   logger.info(chat.getContent());
+        return "redirect:/visit";
     }
 }

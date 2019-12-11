@@ -7,6 +7,7 @@ import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.MessageService;
+import by.sam.apklimovich.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ import javax.validation.Valid;
 @Controller
 public class ChatController {
 
+    public PersonService personService;
 
     public MessageService messageService;
 
@@ -54,6 +56,7 @@ public class ChatController {
         this.chat.setSenderId(personDto.getId());
         this.chat.setRecieverId(personDto.getDestId());
         chatService.createChat(chat, personDto);
+      //  model.addAttribute("receiverData", personService.getPersonsDataForChat(personDto.getDestId()));
         model.addAttribute("messagesList", chat.getCurrentMessages());
         return "chat_two";
     }
@@ -70,14 +73,14 @@ public class ChatController {
 //        }
 //    }
 
-    @RequestMapping(value = "/chat", method = RequestMethod.POST)
-    public String chatSubmit(MessageDto message, Model model) {
-        model.addAttribute("chatMeas", message);
-       // message.setSender(personDto.getId());
-        chatService.addMessageToChat(message, this.chat);
-        logger.info(chat.getContent());
-        return "chat_two";
-    }
+//    @RequestMapping(value = "/chat", method = RequestMethod.POST)
+//    public String chatSubmit(MessageDto message, Model model) {
+//        model.addAttribute("chatMeas", message);
+//       // message.setSender(personDto.getId());
+//        chatService.addMessageToChat(message, this.chat);
+//        logger.info(chat.getContent());
+//        return "redirect:/chat";
+//    }
 
 
     @MessageMapping("/chat.sendMessage")

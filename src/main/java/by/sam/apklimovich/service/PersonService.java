@@ -19,6 +19,9 @@ public class PersonService {
     @Autowired
     PersonRepository personRepository;
 
+    static int DOCTOR = 1;
+    static int PATIENT = 0;
+
     public void createPerson(Person p) {
         Logger logger = LoggerFactory.getLogger(PersonService.class);
         logger.info("personService object created ");
@@ -55,6 +58,21 @@ public class PersonService {
             personRepository.flush();
             return false;
         }
+    }
+
+    public String getPersonsDataForChat(long id){
+        Person p = personRepository.findById(id).get();
+        String result = p.getFirstName() + " " + p.getLastName();
+        if (p.getWho() == DOCTOR){
+            result += " (DOCTOR)";
+        }
+        else if(p.getWho() == PATIENT){
+            result += " (PATIENT)";
+        }
+        else {
+            result += " (ADMIN)";
+        }
+        return result;
     }
 
     public List<Person> findAllPersonsByWho(int who){

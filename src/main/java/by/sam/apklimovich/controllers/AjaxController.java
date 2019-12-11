@@ -1,5 +1,6 @@
 package by.sam.apklimovich.controllers;
 
+import by.sam.apklimovich.entity.Message;
 import by.sam.apklimovich.model.ChatDto;
 import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.model.PersonDto;
@@ -36,17 +37,16 @@ public class AjaxController {
     private PersonDto personDto;
 
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
-    public ResponseEntity<String> demo1(MessageDto message, Model model) {
+    public ResponseEntity<ArrayList<Message>> demo1(MessageDto message, Model model) {
         try {
             model.addAttribute("chatMeas", message);
             chatService.addMessageToChat(message, this.chat);
-            ResponseEntity<String> responseEntity = new ResponseEntity<String>(messageService.getLastMessageOfChat(chat), HttpStatus.OK);
+            ResponseEntity<ArrayList<Message>> responseEntity = new ResponseEntity<ArrayList<Message>>(chat.getCurrentMessages(), HttpStatus.OK);
             return responseEntity;
         } catch (Exception e) {
-            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ArrayList<Message>>(HttpStatus.BAD_REQUEST);
         }
     }
-
 
     @RequestMapping(value = "/demo2", method = RequestMethod.POST)
     public ResponseEntity<ArrayList<String>> demo2(String id, String selected) {
@@ -59,6 +59,16 @@ public class AjaxController {
             return responseEntity;
         } catch (Exception e) {
             return new ResponseEntity<ArrayList<String>>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/demo3", method = RequestMethod.POST)
+    public ResponseEntity<String> demo3() {
+        try {
+            ResponseEntity<String> responseEntity = new ResponseEntity<String>(personDto.getVisitTime(), HttpStatus.OK);
+            return responseEntity;
+        } catch (Exception e) {
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
     }
 

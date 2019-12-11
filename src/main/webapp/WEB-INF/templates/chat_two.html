@@ -3,67 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-<!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+    <link rel="stylesheet" th:href="@{/css/chat.css}"/>
+    <!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!--    <script type="text/javascript" th:src="@{/js/chatScript.js}"></script>-->
 
 </head>
 <body>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/chat?lang=en}">Name (English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/chat?lang=nl}">Naam (Dutch)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/chat?lang=ru}">Имя (Rus)</a>
+</div>
 <h1 th:text="#{str.chat}"></h1>
 <div class="chat_field">
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
-
-<!--    <script>-->
-<!--        $(document).ready(function () {-->
-
-<!--            //call function when page is loaded-->
-<!--            getContent();-->
-
-<!--            //set on change listener-->
-<!--            $('#selection').change(getContent);-->
-
-<!--            function getContent() {-->
-
-<!--                //create url to request fragment-->
-<!--                var url = /content/;-->
-<!--                if ($('#selection').val() === "Content 1") {-->
-<!--                    url = url + "content1";-->
-<!--                } else {-->
-<!--                    url = url + "content2";-->
-<!--                }-->
-
-<!--                //load fragment and replace content-->
-<!--                $('#replace_div').load(url);-->
-<!--            }-->
-<!--        })-->
-<!--    </script>-->
-    <div id="next-user-profile" >
+    <div id="next-user-profile">
     </div>
     <div class="messageForm">
-        <form id="sampleFrom" action="#" data-th-action="@{/chat}"  data-th-object="${message}" method="post">
-        <ul id="messageArea">
+        <form id="sampleFrom" action="#" data-th-action="@{/chat}" data-th-object="${message}" method="post">
+            <ul id="messageArea">
+                <p th:text="#{chat.liOne}"></p>
+<!--                <p th:text="${receiverData}"></p>-->
+                <div class="myBox">
 
-            <li class="event-message">
-                <p  th:text="#{chat.liOne}" ></p>
-
-
-            </li>
-            <tr class="messages-list" th:value="${messagesList}">
-            <tr class="messages-list" th:each="message : ${messagesList}">
-              <div class="person-item">  
-            <td th:text="${message.message}"> firstName </td>
-            <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
+                </div>
+<!--                                <tr class="messages-list" th:value="${messagesList}">-->
+<!--                                <tr class="messages-list" th:each="message : ${messagesList}">-->
+<!--                                      -->
+<!--                                    <div class="person-item">  -->
+<!--                                        <td th:text="${message.message}"> firstName</td>-->
+<!--                                        &lt;!&ndash;    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>&ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                </tr>-->
+            </ul>
+            <div class="input-group">
+                <input type="text" id="message" th:placeholder="#{chat.default}" th:value="${content}"
+                       data-th-name="content"/>
             </div>
-            </tr>
-        </ul>
-        <div class="input-group">
-            <input type="text" id="message" th:placeholder="#{chat.default}" th:value="${content}" data-th-name="content"/>
-        </div>
-<!--        <textarea class="text_field" id="text-area-chat" th:placeholder="#{chat.default}" rows="10" cols="45"-->
-<!--                  th:object="${message}">-->
+            <!--        <textarea class="text_field" id="text-area-chat" th:placeholder="#{chat.default}" rows="10" cols="45"-->
+            <!--                  th:object="${message}">-->
 
-<!--        </textarea>-->
-        <p><input type="submit" class="send-button" value="Send" data-th-value="#{chat.send}" /></p>
+            <!--        </textarea>-->
+            <p><input type="submit" class="send-button" value="Send" data-th-value="#{chat.send}"/></p>
         </form>
     </div>
 </div>

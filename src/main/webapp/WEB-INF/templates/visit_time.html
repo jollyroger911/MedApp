@@ -5,15 +5,16 @@
     <link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/css/visitTime.css}"/>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" th:src="@{/js/visitTime.js}"></script>
+    <script type="text/javascript" th:src="@{/js/alertOnVisit.js}"></script>
 
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/visit_time?lang=en}">Name (English)</a>
+    <a th:href="@{/visit?lang=en}">Name (English)</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/visit_time?lang=nl}">Naam (Dutch)</a>
+    <a th:href="@{/visit?lang=nl}">Naam (Dutch)</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/visit_time?lang=ru}">Имя (Rus)</a>
+    <a th:href="@{/visit?lang=ru}">Имя (Rus)</a>
 </div>
 <tr class="messages-list" th:value="${doctorsList}">
 <tr class="messages-list" th:each="doctor : ${doctorsList}">
@@ -28,7 +29,7 @@
 
 <!--        <form th:action="@{|/visit_time/${doctor.id}|}" method="post">-->
         <form th:action="@{/visit_time}" method="post">
-            <input type="submit" th:value="#{time.choose}"/>
+            <input type="submit" th:value="#{time.choose}" id="submit-visit"/>
         </form>
     </div>
 </tr>

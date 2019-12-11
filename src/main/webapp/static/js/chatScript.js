@@ -1,29 +1,17 @@
 $(document).ready(function(){
-
-    $(document.getElementsByClassName("send-button")).click(function(){
-        $.ajax({ type: 'POST',
-            url: "http://localhost:8080/MedicineApp/ajax/demo1",
-
-
-            // data : JSON.stringify("developerData"),
-            // dataType : 'json',
-            // dataType: "html",
-            // cache: false,
-            // contentType: 'text',
+    $(document.getElementsByClassName("send-button")[0]).click(function(){
+        $.ajax({ type: 'GET',
+            url: "/MedicineApp/ajax/demo1",
             success : function(response) {
                 console.log(response);
-              //  alert(response);
-                document.getElementById('messageArea').innerHTML += '<li>' + response + '</li>';
-               // $("#p").html(response);
-          //  }
+                for(let i = 0; i < response.length; i++) {
+                    document.getElementsByClassName("myBox")[0].innerHTML += '<li>' + response[i].message + '</li>';
+                }
             },
             error : function() {
                 alert("opps error occured!");
             }
         });
-        // $.get("http://localhost:8080/MedicineApp/chatMessages", function(data){
-        //     alert("Data: " + data);
-        // });
     });
 });
 
