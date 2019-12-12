@@ -73,14 +73,14 @@ public class ChatController {
 //        }
 //    }
 
-//    @RequestMapping(value = "/chat", method = RequestMethod.POST)
-//    public String chatSubmit(MessageDto message, Model model) {
-//        model.addAttribute("chatMeas", message);
-//       // message.setSender(personDto.getId());
-//        chatService.addMessageToChat(message, this.chat);
-//        logger.info(chat.getContent());
-//        return "redirect:/chat";
-//    }
+    @RequestMapping(value = "/chat", method = RequestMethod.POST)
+    public String chatSubmit(MessageDto message, Model model) {
+        model.addAttribute("chatMeas", message);
+       // message.setSender(personDto.getId());
+        chatService.addMessageToChat(message, this.chat);
+        logger.info(chat.getContent());
+        return "redirect:/chat";
+    }
 
 
     @MessageMapping("/chat.sendMessage")

@@ -71,5 +71,14 @@ public class AjaxController {
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
     }
+    @RequestMapping(value = "/demo4", method = RequestMethod.POST)
+    public ResponseEntity<Integer> demo4() {
+        try {
+            ResponseEntity<Integer> responseEntity = new ResponseEntity<Integer>(personDto.getWho(), HttpStatus.OK);
+            return responseEntity;
+        } catch (Exception e) {
+            return new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 }

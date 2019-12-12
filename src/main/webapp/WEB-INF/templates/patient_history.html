@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/history.css}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/history?lang=en}">Name (English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/histroy?lang=nl}">Naam (Dutch)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/history?lang=ru}">Имя (Rus)</a>
+</div>
+    <div id="history">
+        <tr class="messages-list" th:value="${patHistory}">-->
+        <tr class="messages-list" th:each="item : ${patHistory}">
+              
+            <div class="person-item">  
+                <td th:text="${item.time}"> firstName</td>
+                <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
+            </div>
+        </tr>
+    </div>
+</body>
+</html>

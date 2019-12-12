@@ -38,6 +38,7 @@ public class MainController {
         Logger logger = LoggerFactory.getLogger(MainController.class);
         logger.info("get controller");
         model.addAttribute("person1", new PersonDto());
+        model.addAttribute("role", personDto.getWho());
         return "forms/hello";
     }
 

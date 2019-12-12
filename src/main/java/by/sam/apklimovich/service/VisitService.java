@@ -1,5 +1,6 @@
 package by.sam.apklimovich.service;
 
+import by.sam.apklimovich.entity.Visit;
 import by.sam.apklimovich.repository.VisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,10 @@ public class VisitService {
     public void setVisitDetails(String time, long doctorId, long patientId){
         visitRepository.findByDoctorIdAndAndVisitTime(doctorId, time).setPatientId(patientId);
         visitRepository.findByDoctorIdAndAndVisitTime(doctorId, time).setStatus(false);
+    }
+
+    public ArrayList<Visit> getAllByPatientI(long id){
+        return visitRepository.findAllByPatientId(id);
     }
 
 }
