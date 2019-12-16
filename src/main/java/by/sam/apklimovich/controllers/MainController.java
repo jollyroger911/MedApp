@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
 @Controller
 public class MainController {
@@ -28,7 +29,10 @@ public class MainController {
     public PersonService personService;
 
     @RequestMapping("/")
-    public String main() {
+    public String main(Model model) {
+        model.addAttribute("currentUserRole", personDto.getWho());
+        LocalDate today = LocalDate.now();
+        model.addAttribute("currentDate", today);
         return "index";
     }
 

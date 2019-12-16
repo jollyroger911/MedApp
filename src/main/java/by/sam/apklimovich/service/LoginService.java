@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Service
 @Transactional
 public class LoginService {
@@ -34,16 +37,16 @@ public class LoginService {
             p1.setLastName("Klimovich");
             p2.setFirstName("Dima");
             p2.setLastName("Chubrik");
-            p3.setLastName("Vlados");
-            p3.setFirstName("Dekht");
+            p3.setFirstName("Vlados");
+            p3.setLastName("Dekht");
             p4.setFirstName("Egor");
             p4.setLastName("Cheptsov");
             p5.setFirstName("Alex");
             p5.setLastName("Fridrikh");
             p6.setFirstName("Nikita");
             p6.setLastName("Fridrikh");
-            p7.setFirstName("Vova");
-            p7.setLastName("Satrov");
+            p7.setFirstName("Gosha");
+            p7.setLastName("Kobyakov");
             personRepository.findAll();
             personRepository.save(pa);
             personRepository.save(p1);
@@ -54,6 +57,8 @@ public class LoginService {
             personRepository.save(p6);
             personRepository.save(p7);
             personRepository.flush();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDateTime now = LocalDateTime.now();
             Visit v1_1 = new Visit(p2.getId(), "10.00-11.00", true);
             Visit v1_2 = new Visit(p2.getId(), "11.00-12.00", true);
             Visit v1_3 = new Visit(p2.getId(), "12.00-13.00", true);
