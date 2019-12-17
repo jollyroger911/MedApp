@@ -1,12 +1,10 @@
 package by.sam.apklimovich.config;
 
-
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
@@ -52,15 +50,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");
         registry.addResourceHandler("/js/**").addResourceLocations("/static/js/");
-        registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
+        registry.addResourceHandler("/images/**").addResourceLocations("/images/");
     }
 
     @Controller
     static class FaviconController {
-        @RequestMapping("favicon.png")
+        @RequestMapping("images/favicon.png")
         String favicon() {
-            return "forward:/resources/favicon.ico";
+            return "forward:/images/favicon.png";
         }
     }
-
 }
