@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Controller
@@ -33,6 +34,7 @@ public class MainController {
         model.addAttribute("currentUserRole", personDto.getWho());
         LocalDate today = LocalDate.now();
         model.addAttribute("currentDate", today);
+        personDto.setCurrentDate(Date.valueOf(today));
         return "index";
     }
 

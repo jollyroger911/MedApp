@@ -30,6 +30,14 @@ public class PersonService {
         personRepository.flush();
     }
 
+    public String getPersonsNameById(long id){
+        Person p = personRepository.findById(id).get();
+        StringBuilder stringBuilder = new StringBuilder(p.getFirstName());
+        stringBuilder.append(" ");
+        stringBuilder.append(p.getLastName());
+        return String.valueOf(stringBuilder);
+    }
+
     public void createPerson(String name, String surname, int who) {
         Logger logger = LoggerFactory.getLogger(PersonService.class);
         logger.info("personService object created ");

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 
@@ -55,7 +56,7 @@ public class AjaxController {
             long idValue = Long.parseLong(id);
             personDto.setVisitTime(str);
             personDto.setVisitDoctorId(idValue);
-            ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(idValue), HttpStatus.OK);
+            ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(idValue, personDto.visitDate), HttpStatus.OK);
             return responseEntity;
         } catch (Exception e) {
             return new ResponseEntity<ArrayList<String>>(HttpStatus.BAD_REQUEST);
@@ -80,5 +81,18 @@ public class AjaxController {
             return new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
         }
     }
-
+    @RequestMapping(value = "/demo5", method = RequestMethod.POST)
+    public ResponseEntity<ArrayList<Date>> demo5(String id, Date selected) {
+        try {
+           //String str = selected;
+            long idValue = Long.parseLong(id);
+           // personDto.setVisitTime(str);
+            personDto.setVisitDate(selected);
+            personDto.setVisitDoctorId(idValue);
+            ResponseEntity<ArrayList<Date>> responseEntity = new ResponseEntity<ArrayList<Date>>(visitService.getFreeVisitDateByDocIdAndDate(idValue, selected), HttpStatus.OK);
+            return responseEntity;
+        } catch (Exception e) {
+            return new ResponseEntity<ArrayList<Date>>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }

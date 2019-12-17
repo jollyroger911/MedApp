@@ -1,8 +1,8 @@
-/** {box-sizing:border-box}*/
+* {box-sizing:border-box}
 
-/*!* Slideshow container *!*/
-/*.slideshow-container {*/
-/*    max-width: 1400px;*/
-/*    position: relative;*/
-/*    margin: auto;*/
-/*}*/
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1400px;
+    position: relative;
+    margin: auto;
+}

@@ -3,6 +3,7 @@ package by.sam.apklimovich.model;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Size;
+import java.sql.Date;
 
 @Component
 public class PersonDto {
@@ -37,6 +38,16 @@ public class PersonDto {
 
     private String status;
 
+    public Date visitDate;
+
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
+    }
+
     @Size(min = 1)
     private String surname;
 
@@ -67,6 +78,16 @@ public class PersonDto {
     private String newLogin;
     private String newPassword;
     private int newWho;
+
+    public Date currentDate;
+
+    public Date getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(Date currentDate) {
+        this.currentDate = currentDate;
+    }
 
     public String content;
 

@@ -14,15 +14,27 @@
     &nbsp;|&nbsp;
     <a th:href="@{/history?lang=ru}">Имя (Rus)</a>
 </div>
-    <div id="history">
-        <tr class="messages-list" th:value="${patHistory}">-->
-        <tr class="messages-list" th:each="item : ${patHistory}">
-              
-            <div class="person-item">  
-                <td th:text="${item.time}"> firstName</td>
-                <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
-            </div>
-        </tr>
-    </div>
+<div class="history">
+    <tr th:each="item : ${patHistory}">
+          
+        <div class="person-item">  
+            <td th:text="${item.doctorsName}"> Doctors Name</td>
+            <td th:text="${item.visitDate}"> Visit date</td>
+            <td th:text="${item.visitTime}"> visit time</td>
+            <td th:text="${item.doctorRecommendations}"> Docs reco</td>
+            <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
+        </div>
+
+    </tr>
+    <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
+    <!--        <tr class="messages-list" th:value="${patHistory}">&ndash;&gt;-->
+    <!--        <tr class="messages-list" th:each="item : ${patHistory}">-->
+    <!--              -->
+    <!--            <div class="person-item">  -->
+    <!--                <td th:text="${item.time}"> firstName</td>-->
+    <!--                &lt;!&ndash;    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>&ndash;&gt;-->
+    <!--            </div>-->
+    <!--        </tr>-->
+</div>
 </body>
 </html>

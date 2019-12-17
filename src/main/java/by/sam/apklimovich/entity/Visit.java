@@ -3,6 +3,7 @@ package by.sam.apklimovich.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "VISITS")
@@ -22,6 +23,9 @@ public class Visit {
     @Column(name = "time")
     private String visitTime;
 
+    @Column(name = "date")
+    private Date date;
+
     public boolean isStatus() {
         return status;
     }
@@ -32,6 +36,14 @@ public class Visit {
 
     @Column(name = "status")
     private boolean status;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public long getId() {
         return id;
@@ -66,17 +78,23 @@ public class Visit {
     }
 
 
+    public Visit() {
+    }
 
-    public Visit(){}
-
-    public Visit(long doctorId, long patientId, String visitTime){
+    public Visit(long doctorId, long patientId, String visitTime) {
         this.doctorId = doctorId;
         this.patientId = patientId;
         this.visitTime = visitTime;
     }
 
-    public Visit(long doctorId, String visitTime, boolean status){
+    public Visit(long doctorId, String visitTime, boolean status) {
         this.doctorId = doctorId;
+        this.visitTime = visitTime;
+        this.status = status;
+    }
+    public Visit(long doctorId, Date date ,String visitTime, boolean status) {
+        this.doctorId = doctorId;
+        this.date = date;
         this.visitTime = visitTime;
         this.status = status;
     }
