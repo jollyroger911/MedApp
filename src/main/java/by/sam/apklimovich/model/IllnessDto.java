@@ -57,9 +57,8 @@ public class IllnessDto {
     }
     public IllnessDto(){}
 
-    public IllnessDto(String doctorsName, Date visitDate, String visitTime, String doctorRecommendations){
+    public IllnessDto(String doctorsName, String visitTime, String doctorRecommendations){
         this.doctrosName = doctorsName;
-        this.visitDate = visitDate;
         this.visitTime = visitTime;
         this.doctorRecommendations = doctorRecommendations;
     }

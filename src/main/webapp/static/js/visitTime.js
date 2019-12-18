@@ -22,30 +22,7 @@ $(document).ready(function (e) {
         });
     });
 });
-$(document).ready(function (e) {
-    $("select").click(function (event) {
-        let target = event.target;
-        $.ajax({
-            type: 'POST',
-            url: "/MedicineApp/ajax/demo5",
-            data: {
-                id: target.id,
-                selected: target.value
-            },
-            success: function (response) {
-                console.log(response.length);
-                if ($(event.target).children().length === 0) {
-                    for (let i = 0; i < response.length; i++) {
-                        document.getElementById(target.id).innerHTML += '<option id="childDiv">' + response[i] + '</option>';
-                    }
-                }
-            },
-            error: function (data) {
-                alert("opps error occured! " + data);
-            }
-        });
-    });
-});
+
 
 
 

@@ -2,6 +2,7 @@ package by.sam.apklimovich.controllers;
 
 import by.sam.apklimovich.entity.Message;
 import by.sam.apklimovich.model.ChatDto;
+import by.sam.apklimovich.model.IllnessDto;
 import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
@@ -56,7 +57,7 @@ public class AjaxController {
             long idValue = Long.parseLong(id);
             personDto.setVisitTime(str);
             personDto.setVisitDoctorId(idValue);
-            ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(idValue, personDto.visitDate), HttpStatus.OK);
+            ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(idValue), HttpStatus.OK);
             return responseEntity;
         } catch (Exception e) {
             return new ResponseEntity<ArrayList<String>>(HttpStatus.BAD_REQUEST);
@@ -81,18 +82,18 @@ public class AjaxController {
             return new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
         }
     }
-    @RequestMapping(value = "/demo5", method = RequestMethod.POST)
-    public ResponseEntity<ArrayList<Date>> demo5(String id, Date selected) {
-        try {
-           //String str = selected;
-            long idValue = Long.parseLong(id);
-           // personDto.setVisitTime(str);
-            personDto.setVisitDate(selected);
-            personDto.setVisitDoctorId(idValue);
-            ResponseEntity<ArrayList<Date>> responseEntity = new ResponseEntity<ArrayList<Date>>(visitService.getFreeVisitDateByDocIdAndDate(idValue, selected), HttpStatus.OK);
-            return responseEntity;
-        } catch (Exception e) {
-            return new ResponseEntity<ArrayList<Date>>(HttpStatus.BAD_REQUEST);
-        }
-    }
+//    @RequestMapping(value = "/demo6", method = RequestMethod.POST)
+//    public ResponseEntity<ArrayList<Date>> demo5(String id, Date selected) {
+//        try {
+//           //String str = selected;
+//            long idValue = Long.parseLong(id);
+//           // personDto.setVisitTime(str);
+//            personDto.setVisitDate(selected);
+//            personDto.setVisitDoctorId(idValue);
+//            ResponseEntity<ArrayList<Date>> responseEntity = new ResponseEntity<ArrayList<Date>>(visitService.getFreeVisitDateByDocIdAndDate(idValue, selected), HttpStatus.OK);
+//            return responseEntity;
+//        } catch (Exception e) {
+//            return new ResponseEntity<ArrayList<Date>>(HttpStatus.BAD_REQUEST);
+//        }
+//    }
 }

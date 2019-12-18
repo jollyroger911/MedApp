@@ -19,17 +19,17 @@ public class VisitService {
     @Autowired
     private PersonService personService;
 
-    public ArrayList<String> getFreeVisitTimeByDocId(long docId, Date date){
+    public ArrayList<String> getFreeVisitTimeByDocId(long docId){
         ArrayList<String> visitTime = new ArrayList<>();
-        visitRepository.findByDoctorIdAndDateAndStatus(docId, date, true).forEach((item)->visitTime.add(item.getVisitTime()));
+        visitRepository.findByDoctorIdAndStatus(docId, true).forEach((item)->visitTime.add(item.getVisitTime()));
         return visitTime;
     }
 
-    public ArrayList<Date> getFreeVisitDateByDocIdAndDate(long docId, Date date){
-        ArrayList<Date> visitDate = new ArrayList<>();
-        visitRepository.findByDoctorIdAndDate(docId, date).forEach((item)->visitDate.add(item.getDate()));
-        return visitDate;
-    }
+//    public ArrayList<Date> getFreeVisitDateByDocIdAndDate(long docId, Date date){
+//        ArrayList<Date> visitDate = new ArrayList<>();
+//        visitRepository.findByDoctorIdAndDate(docId, date).forEach((item)->visitDate.add(item.getDate()));
+//        return visitDate;
+//    }
 
     public void setVisitDetails(String time, long doctorId, long patientId){
         visitRepository.findByDoctorIdAndVisitTime(doctorId, time).setPatientId(patientId);
@@ -37,12 +37,12 @@ public class VisitService {
     }
 
     public ArrayList<Visit> getAllByPatientId(long id){
-        return visitRepository.findAllByPatientId(id);
+        return visitRepository.findAllByPatientIdAndStatus(id, false);
     }
 
     public ArrayList<IllnessDto> getHistoryByPatId(long id){
         ArrayList<IllnessDto> arrayList = new ArrayList<>();
-        getAllByPatientId(id).forEach((item)->arrayList.add(new IllnessDto(personService.getPersonsNameById(item.getDoctorId()), item.getDate(), item.getVisitTime(), "")));
+        getAllByPatientId(id).forEach((item)->arrayList.add(new IllnessDto(personService.getPersonsNameById(item.getDoctorId()), item.getVisitTime(), "")));
         return arrayList;
     }
 

@@ -8,8 +8,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public interface VisitRepository extends JpaRepository<Visit, Long> {
-    ArrayList<Visit>findByDoctorIdAndDateAndStatus (long doctorId, Date date, boolean status);
+    ArrayList<Visit>findByDoctorIdAndStatus (long doctorId, boolean status);
     Visit findByDoctorIdAndVisitTime(long doctorId, String visitTime);
-    ArrayList<Visit> findAllByPatientId(long patientId);
+    ArrayList<Visit> findAllByPatientIdAndStatus(long patientId, boolean status);
     ArrayList<Visit> findByDoctorIdAndDate(long doctorId, Date date);
 }

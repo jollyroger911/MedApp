@@ -5,6 +5,10 @@
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/history.css}"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
@@ -17,9 +21,8 @@
 <div class="history">
     <tr th:each="item : ${patHistory}">
           
-        <div class="person-item">  
+        <div class="person-item">
             <td th:text="${item.doctorsName}"> Doctors Name</td>
-            <td th:text="${item.visitDate}"> Visit date</td>
             <td th:text="${item.visitTime}"> visit time</td>
             <td th:text="${item.doctorRecommendations}"> Docs reco</td>
             <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
