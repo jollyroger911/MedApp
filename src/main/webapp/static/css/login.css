@@ -1,12 +1,60 @@
+.form-container{
+    border: 0px solid #fff; padding: 50px 60px; margin-top: 20vh;
+    -webkit-box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+    -moz-box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+    box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+}
+label{
+    color: #411669;
+    font-size: 20px;
+    font-family: Helvetica;
+}
 
-.login-page {
-    width: 360px;
-    padding: 8% 0 0;
-    margin: auto;
+.footer{
+    margin-left: 40px;
 }
-.form {
-    border-bottom-color: #4CAF50;
+legend{
+
+    color: #411669;
+    font-size: 20px;
+    font-family: Helvetica;
 }
+.form-container{
+    border-radius: 10px;
+}
+
+
+body{
+    background: url("http://localhost:8080/MedicineApp/images/cover.png") no-repeat;
+    background-size: cover;
+    /*background-size: cover;*/
+}
+header{
+    background-color: #411669;
+    width:100%;
+    -webkit-box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+    -moz-box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+    box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+}
+
+.footer-nav {
+    position: absolute;
+    z-index: 99999;
+    bottom: 0;
+    /*display: none;*/
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+.show, .footer-nav:hover {
+    display: block;
+}
+
 /*}*/
 /*.form {*/
 /*    position: relative;*/
