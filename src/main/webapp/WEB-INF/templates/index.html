@@ -1,53 +1,63 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"  th:with="lang=${#locale.language}" th:lang="${lang}">
 <head>
-    <link rel="icon" th:href="@{/images/favicon.png}" type="image/gif" sizes="16x16">
+    <link rel="icon" th:href="@{/images/favicon.png}" type="image/png" sizes="16x16">
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/index.css}"/>
     <meta name="viewport" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" th:href="@{/js/indexSlide.js}"/>
 </head>
 <body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/?lang=en}">Name (English)</a>
+<!--<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">-->
+<div class="language-menu">
+    <a th:href="@{/?lang=en}" class="lang-menu-item">Name (English)</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/?lang=nl}">Naam (Dutch)</a>
+    <a th:href="@{/?lang=nl}" class="lang-menu-item">Naam (Dutch)</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/?lang=ru}">Имя (Rus)</a>
+    <a th:href="@{/?lang=ru}" class="lang-menu-item">Имя (Rus)</a>
     |&nbsp;
-    <a th:href="@{/logout}">Logout</a>
+    <a th:href="@{/logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
 </div>
 <div class="main-menu" th:replace="fragments/header"></div>
 <p th:text="#{index.main.text}"></p>
 <div class="slideshow-container">
 
-    <!-- Full-width images with number and caption text -->
-    <div class="mySlides fade">
-        <div class="numbertext" style="padding: 0px;">1 / 3</div>
-        <img th:src="@{/images/pic4.jpg}" >
-        <div class="text">Caption Text</div>
-    </div>
+<!--    &lt;!&ndash; Full-width images with number and caption text &ndash;&gt;-->
+<!--    <div class="mySlides fade">-->
+<!--        <div class="numbertext" style="padding: 0px;">1 / 3</div>-->
+<!--        <img th:src="@{/images/pic4.jpg}" >-->
+<!--        <div class="text">Caption Text</div>-->
+<!--    </div>-->
 
-    <div class="mySlides fade">
-        <div class="numbertext" style="padding: 0px;">2 / 3</div>
-        <img th:src="@{/images/pic5.jpg}" style="width:100%">
-        <div class="text">Caption Two</div>
-    </div>
+<!--    <div class="mySlides fade">-->
+<!--        <div class="numbertext" style="padding: 0px;">2 / 3</div>-->
+<!--        <img th:src="@{/images/pic5.jpg}" style="width:100%">-->
+<!--        <div class="text">Caption Two</div>-->
+<!--    </div>-->
 
-    <div class="mySlides fade">
-        <div class="numbertext" style="padding: 0px;">3 / 3</div>
-        <img th:src="@{/images/pic7.jpg}" style="width:100%">
-        <div class="text">Caption Three</div>
-    </div>
+<!--    <div class="mySlides fade">-->
+<!--        <div class="numbertext" style="padding: 0px;">3 / 3</div>-->
+<!--        <img th:src="@{/images/pic7.jpg}" style="width:100%">-->
+<!--        <div class="text">Caption Three</div>-->
+<!--    </div>-->
 
     <!-- Next and previous buttons -->
 <!--    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>-->
 <!--    <a class="next" onclick="plusSlides(1)">&#10095;</a>-->
 </div>
-<div th:replace="fragments/footer" th:insert="~{fragments/footer::copy}">&copy; 2011 The Static Templates</div>
+<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="col-md-4 col-sm-4 col-xs-12"></div>
+    <div class="navbar-text ">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="container footer"><p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p></div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12"></div>
+</div>
 </body>
 </html>

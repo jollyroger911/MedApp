@@ -11,49 +11,75 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript" th:src="@{/js/chatScript.js}"></script>
+    <script type="text/javascript" th:src="@{/js/chatScript.js}"></script>
 
 </head>
 <body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/chat?lang=en}">Name (English)</a>
-    &nbsp;|&nbsp;
-    <a th:href="@{/chat?lang=nl}">Naam (Dutch)</a>
-    &nbsp;|&nbsp;
-    <a th:href="@{/chat?lang=ru}">Имя (Rus)</a>
-</div>
-<h1 th:text="#{str.chat}"></h1>
-<div class="chat_field">
-    <div id="next-user-profile">
+<header class="language-menu">
+    <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+        <a th:href="@{/chat?lang=en}">Name (English)</a>
+        &nbsp;|&nbsp;
+        <a th:href="@{/chat?lang=nl}">Naam (Dutch)</a>
+        &nbsp;|&nbsp;
+        <a th:href="@{/chat?lang=ru}">Имя (Rus)</a>
     </div>
-    <div class="messageForm">
-        <form id="sampleFrom" action="#" data-th-action="@{/chat}" data-th-object="${message}" method="post">
-            <ul id="messageArea">
-                <p th:text="#{chat.liOne}"></p>
-                <!--<p th:text="${receiverData}"></p>-->
-                <div class="myBox">
-                    <tr class="messages-list" th:value="${messagesList}">
-                    <tr class="messages-list" th:each="message : ${messagesList}">
-                          
-                        <div class="person-item">  
-                            <td id="message-item" th:text="${message.message}"> </td>
-                            <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
-                        </div>
-                    </tr>
-                </div>
-            </ul>
-            <div class="input-group">
-                <input type="text" id="message" th:placeholder="#{chat.default}" th:value="${content}"
-                       data-th-name="content"/>
-            </div>
-            <!--        <textarea class="text_field" id="text-area-chat" th:placeholder="#{chat.default}" rows="10" cols="45"-->
-            <!--                  th:object="${message}">-->
+</header>
+<div class="container-fluid bg">
 
-            <!--        </textarea>-->
-            <p><input type="submit" class="send-button" value="Send" data-th-value="#{chat.send}"/></p>
-            <!--            <button id="send-message-button">Send</button>-->
-        </form>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <h1 th:text="#{str.chat}"></h1>
+            <h1 th:text="${destName}"></h1>
+            <div class="chat_field">
+                <div id="next-user-profile">
+                </div>
+                <div class="messageForm">
+                    <form id="sampleFrom" action="#" data-th-action="@{/chat}" data-th-object="${message}"
+                          method="post">
+                        <ul id="messageArea">
+                            <p th:text="#{chat.liOne}"></p>
+                            <!--<p th:text="${receiverData}"></p>-->
+                            <div class="myBox">
+                                <tr class="messages-list" th:value="${messagesList}">
+                                <tr class="messages-list" th:each="message : ${messagesList}">
+                                      
+                                    <div class="person-item">  
+                                        <td id="message-item" th:text="${message.message}"></td>
+                                        <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
+                                    </div>
+                                </tr>
+                            </div>
+                        </ul>
+                        <div class="input-group">
+                            <input type="text" id="message" th:placeholder="#{chat.default}" th:value="${content}"
+                                   data-th-name="content"/>
+                        </div>
+                        <!--        <textarea class="text_field" id="text-area-chat" th:placeholder="#{chat.default}" rows="10" cols="45"-->
+                        <!--                  th:object="${message}">-->
+
+                        <!--        </textarea>-->
+                        <p><input type="submit" class="send-button" value="Send" data-th-value="#{chat.send}"/></p>
+                        <!--            <button id="send-message-button">Send</button>-->
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="navbar-text ">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="container footer"><p th:replace="fragments/footer"
+                                                 th:insert="~{fragments/footer::copy}"></p></div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
     </div>
 </div>
+
 </body>
 </html>
