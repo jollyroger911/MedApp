@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!--    <a class="navbar-brand" href="#">Navbar</a>-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div th:switch="${currentUserRole}">
+            <div th:case="2">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav pull-center">
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/}" th:text="#{str.homePage}"></a>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/chat}" th:text="#{str.chat}"></a>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/visit}" th:text="#{str.visit}"></a>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/hello}" th:text="#{str.name}"></a>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/add_user_page}"
+                                                       th:text="#{str.adminAdduser}"></a></li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/list_of_users}"
+                                                       th:text="#{str.listOf}"></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="nav-item active"><a class="nav-link"  th:text="${currUserStatusAndName}"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div th:case="0">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav pull-left">
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/}" th:text="#{str.homePage}"></a>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/visit}" th:text="#{str.visit}"></a>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/list_of_users}"
+                                                       th:text="#{str.listOf}"></a></li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/history}"
+                                                       th:text="#{str.history}"></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="nav-item active"><a class="nav-link"  th:text="${currUserStatusAndName}"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div th:case="1">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav pull-center">
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/}" th:text="#{str.homePage}"></a>
+                        </li>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/chat}" th:text="#{str.chat}"></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="nav-item active"><a class="nav-link"  th:text="${currUserStatusAndName}"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+</body>
+</html>

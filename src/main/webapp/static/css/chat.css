@@ -17,6 +17,10 @@
     height: 600px;
     overflow-y: scroll;
 }
+.text-center {
+    text-align: center;
+    color: #dddfed;
+}
 body{
     background: url("http://localhost:8080/MedicineApp/images/cover1.jpg") no-repeat;
     background-size: cover;

@@ -20,6 +20,15 @@ h4 { font-size: 1em; font-weight:normal; color:#555; }
 p.pad { margin-top: 1.5em; }
 a { outline: none;}
 
+body{
+    background: url("http://localhost:8080/MedicineApp/images/cover1.jpg") no-repeat;
+    background-size: cover;
+    /*background-size: cover;*/
+}
+.text-center {
+    text-align: center;
+    color: #dddfed;
+}
 
 .cfg-btn {
     background-color: rgb(55, 181, 114);

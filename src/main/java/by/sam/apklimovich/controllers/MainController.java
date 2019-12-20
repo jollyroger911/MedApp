@@ -32,6 +32,17 @@ public class MainController {
     @RequestMapping("/")
     public String main(Model model) {
         model.addAttribute("currentUserRole", personDto.getWho());
+        String str = "";
+        if(personDto.getWho() == 1) {
+            str = "Doctor";
+        }
+        else if(personDto.getWho() == 0){
+            str = "Patient";
+        }
+        else{
+            str = "Admin";
+        }
+        model.addAttribute("currUserStatusAndName", str + ": " + personDto.getName() + " " + personDto.getSurname());
         LocalDate today = LocalDate.now();
         model.addAttribute("currentDate", today);
         personDto.setCurrentDate(Date.valueOf(today));

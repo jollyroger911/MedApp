@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin page</title>
     <link rel="stylesheet" th:href="@{/css/addUser.css}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
@@ -15,22 +20,50 @@
     &nbsp;|&nbsp;
     <a th:href="@{/add_user_page?lang=ru}">Админ (Rus)</a>
 </div>
-<div class="main-menu" th:replace="fragments/header"></div>
-<h1 class="first" th:text="#{str.admin.one}"></h1>
-<form class="input-form-admin"  action="#" data-th-action="@{/}" th:object="${personAdd}" method="post">
-    <fieldset>
-        <strong class="text-form" th:text="#{str.admin.two}"> </strong>
-        <input type="text" th:value="${newLogin}" data-th-name="newLogin"/> </p>
-        <strong class="text-form" th:text="#{str.admin.three}"> </strong>
-        <input type="text" th:value="${newPassword}" data-th-name="newPassword"/> </p>
-        <strong class="text-form" th:text="#{str.admin.who}"> </strong>
-        <input type="text" th:value="${newWho}" data-th-name="who"/> </p>
-        <strong class="text-form" th:text="#{str.name}"> </strong>
-        <input type="text" th:value="${name}" data-th-name="name"/> </p>
-        <strong class="text-form" th:text="#{str.surname}"> </strong>
-        <input type="text" th:value="${surname}" data-th-name="surname"/> </p>
-        <p><input class="text-form-button" type="submit" value="Add user" data-th-value="#{add.user}"/></p>
-    </fieldset>
-</form>
+<!--<div class="container-fluid bg">-->
+    <div class="main-menu" th:replace="fragments/header"></div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <h1 class="first" th:text="#{str.admin.one}"></h1>
+            <form class="input-form-admin" action="#" data-th-action="@{/}" th:object="${personAdd}" method="post">
+                <fieldset>
+                    <div>
+                        <strong class="text-form" th:text="#{str.admin.two}"> </strong>
+                        <input class="input-add-user" type="text" th:value="${newLogin}" data-th-name="newLogin"/> </p>
+                    </div>
+                    <div>
+                        <strong class="text-form" th:text="#{str.admin.three}"> </strong>
+                        <input class="input-add-user" type="text" th:value="${newPassword}"
+                               data-th-name="newPassword"/> </p>
+                    </div>
+                    <div>
+                        <strong class="text-form" th:text="#{str.admin.who}"> </strong>
+                        <input class="input-add-user" type="text" th:value="${newWho}" data-th-name="who"/> </p>
+                    </div>
+                    <div>
+                        <strong class="text-form" th:text="#{str.name}"> </strong>
+                        <input class="input-add-user" type="text" th:value="${name}" data-th-name="name"/> </p>
+                    </div>
+                    <div>
+                        <strong class="text-form" th:text="#{str.surname}"> </strong>
+                        <input class="input-add-user" type="text" th:value="${surname}" data-th-name="surname"/> </p>
+                    </div>
+                    <p><input class="text-form-button" type="submit" value="Add user" data-th-value="#{add.user}"/></p>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+    </div>
+<!--</div>-->
+<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container text-center">
+        <div class="navbar-text-center ">
+            <p></p>
+            <p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p>
+        </div>
+    </div>
+</div>
 </body>
 </html>

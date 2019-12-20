@@ -21,10 +21,10 @@
     &nbsp;|&nbsp;
     <a th:href="@{/?lang=ru}" class="lang-menu-item">Имя (Rus)</a>
     |&nbsp;
-    <a th:href="@{/logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
+    <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
 </div>
-<div class="main-menu" th:replace="fragments/header"></div>
-<p th:text="#{index.main.text}"></p>
+<div class="main-menu" th:replace="fragments/header2"></div>
+
 <div class="slideshow-container">
 
 <!--    &lt;!&ndash; Full-width images with number and caption text &ndash;&gt;-->
@@ -50,14 +50,22 @@
 <!--    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>-->
 <!--    <a class="next" onclick="plusSlides(1)">&#10095;</a>-->
 </div>
+<!--<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">-->
+<!--    <div class="col-md-4 col-sm-4 col-xs-12"></div>-->
+<!--    <div class="container text-center">-->
+<!--        <div class="col-md-4 col-sm-4 col-xs-12">-->
+<!--            <div class="container footer"><p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-4 col-sm-4 col-xs-12"></div>-->
+<!--</div>-->
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-    <div class="col-md-4 col-sm-4 col-xs-12"></div>
-    <div class="navbar-text ">
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="container footer"><p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p></div>
+    <div class="container text-center">
+        <div class="navbar-text-center ">
+            <p></p>
+            <p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p>
         </div>
     </div>
-    <div class="col-md-4 col-sm-4 col-xs-12"></div>
 </div>
 </body>
 </html>

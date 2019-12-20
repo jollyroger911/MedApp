@@ -10,13 +10,13 @@
 </head>
 <body>
 <header class="language-menu">
-<!--    <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">-->
+    <!--    <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">-->
     <div>
         <a th:href="@{/login?lang=en}" class="lang-menu-item">Login (English)</a>
         &nbsp;|&nbsp;
         <a th:href="@{/login?lang=nl}" class="lang-menu-item">Login (Dutch)</a>
         &nbsp;|&nbsp;
-        <a th:href="@{/lofin?lang=ru}" class="lang-menu-item">Вход (Rus)</a>
+        <a th:href="@{/login?lang=ru}" class="lang-menu-item">Вход (Rus)</a>
     </div>
 </header>
 <div class="container-fluid bg">
@@ -35,7 +35,7 @@
                     <label for="exampleInputPassword1" th:text="#{text.password}"></label>
                     <input type="password" class="form-control" id="exampleInputPassword1" name="password"/>
                 </div>
-                <legend class="legend"th:text="#{text.pleaseLogin}"></legend>
+                <legend class="legend" th:text="#{text.pleaseLogin}"></legend>
                 <div th:if="${param.error}" class="alert alert-error" th:text="#{text.invalidLogin}">
                 </div>
                 <div th:if="${param.logout}" class="alert alert-success" th:text="#{text.beenLoggedOut}">
@@ -47,15 +47,16 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12"></div>
     </div>
-    <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-        <div class="col-md-4 col-sm-4 col-xs-12"></div>
-            <div class="navbar-text ">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="container footer"><p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p></div>
-            </div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container text-center">
+        <div class="navbar-text-center ">
+            <p></p>
+            <p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12"></div>
     </div>
 </div>
+
 </body>
 </html>

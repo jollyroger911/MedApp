@@ -29,6 +29,14 @@
         </form>
     </div>
 </tr>
-<div th:replace="fragments/footer" th:insert="~{fragments/footer::copy}">&copy; 2011 The Static Templates</div>
+<!--<div th:replace="fragments/footer" th:insert="~{fragments/footer::copy}">&copy; 2011 The Static Templates</div>-->
+<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container text-center">
+        <div class="navbar-text-center ">
+            <p></p>
+            <p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p>
+        </div>
+    </div>
+</div>
 </body>
 </html>

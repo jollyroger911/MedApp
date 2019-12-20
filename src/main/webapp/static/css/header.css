@@ -9,3 +9,8 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+.nav-link{
+    font-family: Helvetica;
+    font-size: 22px;
+    color: #411669;
+}

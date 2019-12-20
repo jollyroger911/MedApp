@@ -34,14 +34,17 @@ header{
     width:100%;
     text-align: right;padding:5px;margin:5px 0px;
     color: #fff;
-    /*-webkit-box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);*/
-    /*-moz-box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);*/
-    /*box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);*/
-}
 
-.footer-text{
-    position: absolute;
+}
+.text-center {
     text-align: center;
+    color: #dddfed;
+}
+.footer-text{
+    text-align: center;
+    color: white;
+    position:relative;
+    margin-bottom: 10px;
 }
 
 .language-menu{
@@ -63,11 +66,11 @@ header{
     bottom: 0;
     /*display: none;*/
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     font-size: 12px;
     font-family: Arial, sans-serif;
     font-weight: normal;
-    color: #fff;
+    color: white;
     text-align: center;
     cursor: pointer;
 }
