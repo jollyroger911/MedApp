@@ -1,16 +1,38 @@
+.navbar-custom{
+    background-color: #411669;
+    margin-top:-6px;
+}
+
+
 .main-menu{
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     text-align: right;padding:5px;margin:5px 0px;
     color: #fff;
     display: -moz-inline-box;
 }
 .menu-item{
     /*background-color: #6aa5cc;*/
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .nav-link{
     font-family: Helvetica;
     font-size: 22px;
-    color: #411669;
+    color: #edede6;
+}
+
+.nav-item {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.active{
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.nav-item:hover {
+    /*background-color: rgba(0, 0, 0, 0.6);*/
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
 }

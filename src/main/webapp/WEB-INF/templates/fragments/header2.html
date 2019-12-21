@@ -11,9 +11,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar">
 <!--    <a class="navbar-brand" href="#">Navbar</a>-->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse navbar-custom" id="navbarSupportedContent" >
         <div th:switch="${currentUserRole}">
             <div th:case="2">
                 <div class="collapse navbar-collapse">
@@ -24,8 +24,8 @@
                         </li>
                         <li class="nav-item active"><a class="nav-link" th:href="@{/visit}" th:text="#{str.visit}"></a>
                         </li>
-                        <li class="nav-item active"><a class="nav-link" th:href="@{/hello}" th:text="#{str.name}"></a>
-                        </li>
+<!--                        <li class="nav-item active"><a class="nav-link" th:href="@{/hello}" th:text="#{str.name}"></a>-->
+<!--                        </li>-->
                         <li class="nav-item active"><a class="nav-link" th:href="@{/add_user_page}"
                                                        th:text="#{str.adminAdduser}"></a></li>
                         <li class="nav-item active"><a class="nav-link" th:href="@{/list_of_users}"

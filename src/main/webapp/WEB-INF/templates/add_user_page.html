@@ -13,15 +13,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/add_user_page?lang=en}">Admin (English)</a>
+<div class="language-menu">
+    <a th:href="@{/add_user_page?lang=en}" class="lang-menu-item">English</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/add_user_page?lang=nl}">Admin (Dutch)</a>
+    <a th:href="@{/add_user_page?lang=nl}" class="lang-menu-item">Dutch</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/add_user_page?lang=ru}">Админ (Rus)</a>
+    <a th:href="@{/add_user_page?lang=ru}" class="lang-menu-item">Русский</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
 </div>
 <!--<div class="container-fluid bg">-->
-    <div class="main-menu" th:replace="fragments/header"></div>
+<div class="main-menu" th:replace="fragments/header2"></div>
 
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12"></div>

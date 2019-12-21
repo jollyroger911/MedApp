@@ -15,15 +15,17 @@
 
 </head>
 <body>
-<header class="language-menu">
-    <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-        <a th:href="@{/chat?lang=en}">Name (English)</a>
+<!--<header class="language-menu">-->
+    <div class="language-menu">
+        <a th:href="@{/chat?lang=en}" class="lang-menu-item">English</a>
         &nbsp;|&nbsp;
-        <a th:href="@{/chat?lang=nl}">Naam (Dutch)</a>
+        <a th:href="@{/chat?lang=nl}" class="lang-menu-item">Dutch</a>
         &nbsp;|&nbsp;
-        <a th:href="@{/chat?lang=ru}">Имя (Rus)</a>
+        <a th:href="@{/chat?lang=ru}" class="lang-menu-item">Русский</a>
+        &nbsp;|&nbsp;
+        <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
     </div>
-</header>
+<!--</header>-->
 <div class="container-fluid bg">
 
 
@@ -44,8 +46,7 @@
                             <div class="myBox">
                                 <tr class="messages-list" th:value="${messagesList}">
                                 <tr class="messages-list" th:each="message : ${messagesList}">
-                                      
-                                    <div class="person-item">  
+                                    <div class="person-item">
                                         <td id="message-item" th:text="${message.message}"></td>
                                         <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
                                     </div>
@@ -65,7 +66,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12"></div>
     </div>

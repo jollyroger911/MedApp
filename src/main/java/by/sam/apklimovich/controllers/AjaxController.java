@@ -8,6 +8,7 @@ import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.MessageService;
 import by.sam.apklimovich.service.VisitService;
+import jdk.internal.net.http.websocket.MessageEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,9 +40,10 @@ public class AjaxController {
     private PersonDto personDto;
 
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
-    public ResponseEntity<ArrayList<Message>> demo1(MessageDto message, Model model) {
+    public ResponseEntity<ArrayList<Message>> demo1(String selected ,MessageDto message, Model model) {
         try {
-            model.addAttribute("chatMeas", message);
+//            model.addAttribute("chatMeas", message);
+            message.setContent(selected);
             chatService.addMessageToChat(message, this.chat);
             ResponseEntity<ArrayList<Message>> responseEntity = new ResponseEntity<ArrayList<Message>>(chat.getCurrentMessages(), HttpStatus.OK);
             return responseEntity;

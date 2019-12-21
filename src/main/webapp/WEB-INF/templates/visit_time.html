@@ -13,13 +13,16 @@
 
 </head>
 <body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/visit?lang=en}">Name (English)</a>
+<div class="language-menu">
+    <a th:href="@{/visit?lang=en}" class="lang-menu-item">English</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/visit?lang=nl}">Naam (Dutch)</a>
+    <a th:href="@{/visit?lang=nl}" class="lang-menu-item">Dutch</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/visit?lang=ru}">Имя (Rus)</a>
+    <a th:href="@{/visit?lang=ru}" class="lang-menu-item">Русский</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
 </div>
+<div class="main-menu" th:replace="fragments/header2"></div>
 <tr class="messages-list" th:value="${doctorsList}">
 <tr class="messages-list" th:each="doctor : ${doctorsList}">
       <input id="hidden-input" type="hidden" value="1">

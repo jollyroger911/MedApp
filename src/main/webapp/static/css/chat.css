@@ -9,6 +9,18 @@
 /*}*/
 
 /* Box styles */
+.language-menu{
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: right;padding:5px;margin:5px 0px;
+    color: #fff;
+    margin-top: -3px;
+    height: 40px;
+    font-size: 20px;
+    font-family: Helvetica;
+}
+.lang-menu-item{
+    color: #fff;
+}
 .myBox {
     border: 1px solid yellowgreen;
     padding: 5px;

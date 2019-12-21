@@ -12,12 +12,14 @@
     <title>Title</title>
 </head>
 <body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/list_of_users?lang=en}">Name (English)</a>
+<div class="language-menu">
+    <a th:href="@{/list_of_users?lang=en}" class="lang-menu-item">English</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/list_of_users?lang=nl}">Naam (Dutch)</a>
+    <a th:href="@{/list_of_users?lang=nl}" class="lang-menu-item">Dutch</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/list_of_users?lang=ru}">Имя (Rus)</a>
+    <a th:href="@{/list_of_users?lang=ru}" class="lang-menu-item">Русский</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
 </div>
 <div class="main-menu" th:replace="fragments/header"></div>
 <tr th:each="person : ${persons}">

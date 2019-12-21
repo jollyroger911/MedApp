@@ -61,7 +61,7 @@ public class ChatController {
         chatService.createChat(chat, personDto);
       //  model.addAttribute("receiverData", personService.getPersonsDataForChat(personDto.getDestId()));
         model.addAttribute("messagesList", chat.getCurrentMessages());
-        return "chat_two";
+        return "chat_three";
     }
 
 //    @RequestMapping(value = "/chat", method = RequestMethod.POST)
