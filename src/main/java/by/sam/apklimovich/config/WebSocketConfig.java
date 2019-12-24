@@ -1,13 +1,26 @@
 package by.sam.apklimovich.config;
 
+//import by.sam.apklimovich.websocket.WebSocketHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.socket.config.annotation.*;
 
 @Configuration
-@EnableWebSocketMessageBroker
+@EnableWebSocket
+@EnableWebMvc
+@EnableScheduling
+
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
+
+//    @Override
+//    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+//        registry.addHandler(new WebSocketHandler(), "/myHandler")
+//                .setAllowedOrigins("*");
+//    }
+//
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws").withSockJS();

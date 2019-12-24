@@ -6,6 +6,7 @@ import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.MessageService;
 import by.sam.apklimovich.service.PersonService;
+//import by.sam.apklimovich.websocket.WebSocketHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,11 @@ public class ChatController {
     private ChatDto chat;
 
 
+
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
 
 
-    @RequestMapping(value = "/chat", method = RequestMethod.GET)
+    @RequestMapping(value = "/chatt", method = RequestMethod.GET)
     public String chat(Model model) {
         model.addAttribute("chatMeas", new MessageDto());
         model.addAttribute("chatDto", chat);
@@ -50,7 +52,8 @@ public class ChatController {
         chatService.createChat(chat, personDto);
         //  model.addAttribute("receiverData", personService.getPersonsDataForChat(personDto.getDestId()));
         model.addAttribute("messagesList", chat.getCurrentMessages());
-        return "chat_three";
+
+        return "chat5";
     }
 
 //    @RequestMapping(value = "/chat", method = RequestMethod.POST)
@@ -64,30 +67,30 @@ public class ChatController {
 //            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 //        }
 //    }
-
-    @RequestMapping(value = "/chat", method = RequestMethod.POST)
-    public String chatSubmit(MessageDto message, Model model) {
-        model.addAttribute("chatMeas", message);
-        // message.setSender(personDto.getId());
-        chatService.addMessageToChat(message, this.chat);
-        logger.info(chat.getContent());
-        return "redirect:/chat";
-    }
-
-
-    @MessageMapping("/chat.sendMessage")
-    @SendTo("/topic/public")
-    public ChatDto sendMessage(@Payload ChatDto chatDto) {
-        return chatDto;
-    }
-
-    @MessageMapping("/chat.addUser")
-    @SendTo("/topic/public")
-    public ChatDto addUser(@Payload ChatDto chatDto,
-                           SimpMessageHeaderAccessor headerAccessor) {
-        // Add username in web socket session
-        //headerAccessor.getSessionAttributes().put("username", chatDto.getSender());
-        return chatDto;
-    }
+//
+//    @RequestMapping(value = "/chat", method = RequestMethod.POST)
+//    public String chatSubmit(MessageDto message, Model model) {
+//        model.addAttribute("chatMeas", message);
+//        // message.setSender(personDto.getId());
+//        chatService.addMessageToChat(message, this.chat);
+//        logger.info(chat.getContent());
+//        return "redirect:/chat";
+//    }
+//
+//
+//    @MessageMapping("/chat.sendMessage")
+//    @SendTo("/topic/public")
+//    public ChatDto sendMessage(@Payload ChatDto chatDto) {
+//        return chatDto;
+//    }
+//
+//    @MessageMapping("/chat.addUser")
+//    @SendTo("/topic/public")
+//    public ChatDto addUser(@Payload ChatDto chatDto,
+//                           SimpMessageHeaderAccessor headerAccessor) {
+//        // Add username in web socket session
+//        //headerAccessor.getSessionAttributes().put("username", chatDto.getSender());
+//        return chatDto;
+//    }
 
 }

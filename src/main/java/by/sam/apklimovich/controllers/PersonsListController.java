@@ -54,7 +54,7 @@ public class PersonsListController {
         this.personDto.setDestId(person.getDestId());
         // logger.info(id.toString() + " THIS IS ID");
 
-        return "redirect:/chat";
+        return "redirect:/chatt";
     }
 
 }
