@@ -31,7 +31,6 @@ import javax.validation.Valid;
 @Controller
 public class ChatController {
 
-    @Autowired
     public PersonService personService;
 
     public MessageService messageService;
@@ -54,14 +53,12 @@ public class ChatController {
     public String chat(Model model) {
         model.addAttribute("chatMeas", new MessageDto());
         model.addAttribute("chatDto", chat);
-        String str = personService.getPersonsNameById(personDto.getDestId());
-        model.addAttribute("destName", str);
         this.chat.setSenderId(personDto.getId());
         this.chat.setRecieverId(personDto.getDestId());
         chatService.createChat(chat, personDto);
       //  model.addAttribute("receiverData", personService.getPersonsDataForChat(personDto.getDestId()));
         model.addAttribute("messagesList", chat.getCurrentMessages());
-        return "chat_three";
+        return "chat_two";
     }
 
 //    @RequestMapping(value = "/chat", method = RequestMethod.POST)
