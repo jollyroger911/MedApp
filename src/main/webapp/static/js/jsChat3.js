@@ -32,11 +32,12 @@ $(document).ready(function (e) {
            success: function (response) {
                // document.getElementsByClassName("messages-list")[0].load(
                let res = '<div class="card message-card m-1">'
-                   + '<div class="card-body p-2">' + ' <span class="mx-2">' + message + '</span>'+ '<span class="float-right mx-1"><small><i class="fas fa-eye fa-fw"\n' +
+                   + '<div class="card-body p-2">' + ' <span class="mx-2">' + response + '</span>'+ '<span class="float-right mx-1"><small><i class="fas fa-eye fa-fw"\n' +
                    '                                                                              style="color:#e64980"></i></small></span>'
                    + '</div>' + '</div>';
-               $('row').html(res).load();
-
+               // alert(response);
+               $(".message-scroll").append(res);
+               $('#myInput').val("");
            },
            error: function (data) {
                alert("opps error occured! " + data);

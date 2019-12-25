@@ -14,6 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" th:src="@{/js/chatScript.js}"></script>
     <script type="text/javascript" th:src="@{/js/jsChat3.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jsChat3_2.js}"></script>
 
 </head>
 <body>
@@ -55,7 +56,7 @@
             <div class="card-body bg-lightgrey d-flex flex-column p-0" style="flex: 9 1">
 
                 <div class="container-fluid message-scroll" style="flex: 1 1">
-<!--                    <tr class="messages-list" th:each="message : ${messagesList}">-->
+                    <tr class="messages-list" th:each="message : ${messagesList}">
                     <div class="row" th:each="message : ${messagesList}">
                         <div class="card message-card m-1">
                             <div class="card-body p-2">
@@ -65,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-<!--                    </tr>-->
+                    </tr>
 <!--                    <div class="row justify-content-end">-->
 <!--                        <div class="card message-card bg-lightblue m-1">-->
 <!--                            <div class="card-body p-2">-->
@@ -108,7 +109,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control border-0" placeholder="Input message..." id="myInput">
                     <span class="input-group-addon">
-                            <button class="btn border-0 bg-white text-primary hover-color-darkblue" type="button">
+                            <button class="btn border-0 bg-white text-primary hover-color-darkblue" type="button" th:text="#{button.send}">
                                 <i class="fab fa-telegram-plane fa-2x"></i>
                             </button>
                         </span>

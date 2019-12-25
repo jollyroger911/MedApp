@@ -40,15 +40,15 @@ public class AjaxController {
     private PersonDto personDto;
 
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
-    public ResponseEntity<ArrayList<Message>> demo1(String selected ,MessageDto message, Model model) {
+    public ResponseEntity<String> demo1(String selected ,MessageDto message, Model model) {
         try {
 //            model.addAttribute("chatMeas", message);
             message.setContent(selected);
             chatService.addMessageToChat(message, this.chat);
-            ResponseEntity<ArrayList<Message>> responseEntity = new ResponseEntity<ArrayList<Message>>(chat.getCurrentMessages(), HttpStatus.OK);
+            ResponseEntity<String> responseEntity = new ResponseEntity<String>(selected, HttpStatus.OK);
             return responseEntity;
         } catch (Exception e) {
-            return new ResponseEntity<ArrayList<Message>>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
     }
 
