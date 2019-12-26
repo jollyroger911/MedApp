@@ -44,7 +44,7 @@ public class AjaxController {
         try {
 //            model.addAttribute("chatMeas", message);
             message.setContent(selected);
-            chatService.addMessageToChat(message, this.chat);
+            chatService.addMessageToChat(message.getContent(), this.chat);
             ResponseEntity<String> responseEntity = new ResponseEntity<String>(selected, HttpStatus.OK);
             return responseEntity;
         } catch (Exception e) {
@@ -82,6 +82,16 @@ public class AjaxController {
             return responseEntity;
         } catch (Exception e) {
             return new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/demo5", method = RequestMethod.POST)
+    public ResponseEntity<String> demo5() {
+        try {
+            ResponseEntity<String> responseEntity = new ResponseEntity<String>(personDto.getName() + " " + personDto.getSurname(), HttpStatus.OK);
+            return responseEntity;
+        } catch (Exception e) {
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
     }
 //    @RequestMapping(value = "/demo6", method = RequestMethod.POST)

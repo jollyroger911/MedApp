@@ -29,8 +29,6 @@ public class VisitTimeController {
 
     @RequestMapping(value = "/visit_time", method = RequestMethod.GET)
     public String visitTimeChoose(Model model) {
-
-
         //  model.addAttribute("time1", new PersonDto());
         return "visit_time";
     }

@@ -20,7 +20,7 @@
                     <ul class="nav navbar-nav pull-center">
                         <li class="nav-item active"><a class="nav-link" th:href="@{/}" th:text="#{str.homePage}"></a>
                         </li>
-                        <li class="nav-item active"><a class="nav-link" th:href="@{/chat}" th:text="#{str.chat}"></a>
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/chatt}" th:text="#{str.chat}"></a>
                         </li>
                         <li class="nav-item active"><a class="nav-link" th:href="@{/visit}" th:text="#{str.visit}"></a>
                         </li>
@@ -60,8 +60,10 @@
                     <ul class="nav navbar-nav pull-center">
                         <li class="nav-item active"><a class="nav-link" th:href="@{/}" th:text="#{str.homePage}"></a>
                         </li>
-                        <li class="nav-item active"><a class="nav-link" th:href="@{/chat}" th:text="#{str.chat}"></a>
-                        </li>
+<!--                        <li class="nav-item active"><a class="nav-link" th:href="@{/chatt}" th:text="#{str.chat}"></a>-->
+<!--                        </li>-->
+                        <li class="nav-item active"><a class="nav-link" th:href="@{/list_of_users}"
+                                                       th:text="#{str.listOf}"></a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
                         <li class="nav-item active"><a class="nav-link"  th:text="${currUserStatusAndName}"></a>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/css/visitTime.css}"/>
+    <link rel="stylesheet" th:href="@{/css/visitTime.css}"/>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" th:src="@{/js/visitTime.js}"></script>
     <script type="text/javascript" th:src="@{/js/alertOnVisit.js}"></script>
+    <link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/css/visitTime.css}"/>
 
 </head>
 <body>
@@ -22,6 +23,7 @@
     &nbsp;|&nbsp;
     <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
 </div>
+
 <div class="main-menu" th:replace="fragments/header2"></div>
 <tr class="messages-list" th:value="${doctorsList}">
 <tr class="messages-list" th:each="doctor : ${doctorsList}">

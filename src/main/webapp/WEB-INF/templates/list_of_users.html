@@ -21,7 +21,9 @@
     &nbsp;|&nbsp;
     <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
 </div>
-<div class="main-menu" th:replace="fragments/header"></div>
+
+<div class="main-menu" th:replace="fragments/header2"></div>
+<div >
 <tr th:each="person : ${persons}">
     <div class="person-item">  
         <td th:text="${person.firstName}"> firstName</td>
@@ -31,6 +33,7 @@
         </form>
     </div>
 </tr>
+</div>
 <!--<div th:replace="fragments/footer" th:insert="~{fragments/footer::copy}">&copy; 2011 The Static Templates</div>-->
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container text-center">

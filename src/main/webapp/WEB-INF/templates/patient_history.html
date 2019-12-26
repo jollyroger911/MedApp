@@ -11,21 +11,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a th:href="@{/history?lang=en}">Name (English)</a>
+<div class="language-menu">
+    <a th:href="@{/?lang=en}" class="lang-menu-item">English</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/histroy?lang=nl}">Naam (Dutch)</a>
+    <a th:href="@{/?lang=nl}" class="lang-menu-item">Dutch</a>
     &nbsp;|&nbsp;
-    <a th:href="@{/history?lang=ru}">Имя (Rus)</a>
+    <a th:href="@{/?lang=ru}" class="lang-menu-item">Русский</a>
+    |&nbsp;
+    <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
 </div>
 <div class="main-menu" th:replace="fragments/header2"></div>
 <div class="history">
     <tr th:each="item : ${patHistory}">
           
         <div class="person-item">
-            <td th:text="${item.doctorsName}"> Doctors Name</td>
-            <td th:text="${item.visitTime}"> visit time</td>
-            <td th:text="${item.doctorRecommendations}"> Docs reco</td>
+            <p th:text="${item.doctorsName}"> Doctors Name</p>
+            <p th:text="${item.visitTime}"> visit time</p>
+            <p th:text="${item.doctorRecommendations}"> Docs reco</p>
             <!--    <input id="id" name="personsId" th:field="*{person.id}" type="hidden"/>-->
         </div>
 
