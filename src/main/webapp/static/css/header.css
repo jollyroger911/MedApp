@@ -21,6 +21,12 @@
     color: #edede6;
 }
 
+.loginPlease{
+    font-family: Helvetica;
+    font-size: 18px;
+    color: #edede6;
+}
+
 .nav-item {
     padding-left: 20px;
     padding-right: 20px;
