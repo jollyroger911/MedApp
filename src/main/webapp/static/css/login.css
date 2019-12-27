@@ -26,7 +26,7 @@ label{
 }
 
 body{
-    background: url("/images/cover1.jpg") no-repeat;
+    background: url("../images/cover1.jpg") no-repeat;
     background-size: cover;
     /*background-size: cover;*/
 }
