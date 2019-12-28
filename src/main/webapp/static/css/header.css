@@ -1,4 +1,4 @@
-.navbar-custom{
+.navbar{
     background-color: #411669;
     margin-top:-6px;
 }
@@ -30,6 +30,9 @@
 .nav-item {
     padding-left: 20px;
     padding-right: 20px;
+    font-family: Helvetica;
+    font-size: 18px;
+    color: #edede6;
 }
 
 .active{

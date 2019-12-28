@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Please Login</title>
+    <link rel="shortcut icon" class="favicon" type="image/x-icon" th:href="@{/images/favicon2.ico}"/>
+    <title th:text="#{str.unauthorizedUser}"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
 <!--    <link rel="stylesheet" th:href="@{/css/login.css}"/>-->
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" th:href="@{/css/login.css}"/>
@@ -55,7 +57,6 @@
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container text-center">
         <div class="navbar-text-center ">
-            <p></p>
             <p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p>
         </div>
     </div>

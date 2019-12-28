@@ -57,11 +57,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
-    @Controller
-    static class FaviconController {
-        @RequestMapping("images/favicon.png")
-        String favicon() {
-            return "forward:/images/favicon.png";
-        }
-    }
+//    @Controller
+//    static class FaviconController {
+//        @RequestMapping("images/favicon.png")
+//        String favicon() {
+//            return "forward:/images/favicon.png";
+//        }
+//    }
 }
