@@ -29,6 +29,7 @@ public class VisitTimeController {
 
     @RequestMapping(value = "/visit_time", method = RequestMethod.GET)
     public String visitTimeChoose(Model model) {
+        model.addAttribute("currentUserRole", personDto.getWho());
         //  model.addAttribute("time1", new PersonDto());
         return "visit_time";
     }
@@ -36,6 +37,7 @@ public class VisitTimeController {
     @RequestMapping(value = "/visit", method = RequestMethod.POST)
     public String VisitTimeChosen(@ModelAttribute @Valid PersonDto person, Model model) {
         model.addAttribute("time1", person);
+
         personDto.getVisitTime();
         logger.info(person.getName());
         return "visit_time";

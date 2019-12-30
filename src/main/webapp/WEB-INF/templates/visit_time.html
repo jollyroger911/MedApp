@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <meta charset="UTF-8">
     <link rel="shortcut icon" class="favicon" type="image/x-icon" th:href="@{/images/favicon2.ico}"/>
-    <title>Title</title>
+    <title th:text="#{str.visit}"></title>
     <link rel="stylesheet" th:href="@{/css/visitTime.css}"/>
 <!--    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/visitTime.js}"></script>
     <script type="text/javascript" th:src="@{/js/alertOnVisit.js}"></script>
-    <link rel="stylesheet" th:href="@{http://localhost:8080/MedicineApp/css/visitTime.css}"/>
+    <link rel="stylesheet" th:href="@{/css/visitTime.css}"/>
 
 </head>
 <body>
@@ -53,7 +53,6 @@
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container text-center">
         <div class="navbar-text-center ">
-            <p></p>
             <p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p>
         </div>
     </div>

@@ -23,14 +23,14 @@
             <div th:case="2">
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav pull-center">
-                        <li th:src="@{/images/snake.jpg}">
+                        <li ><img class="snake-image" th:src="@{/images/snake.png}" th:width="50px">
                         </li>
                         <li class="nav-item active"><a class="nav-link" th:href="@{/}"
                                                        th:text="#{str.homePage}"></a>
                         </li>
-                        <li class="nav-item active"><a class="nav-link" th:href="@{/chatt}"
-                                                       th:text="#{str.chat}"></a>
-                        </li>
+<!--                        <li class="nav-item active"><a class="nav-link" th:href="@{/chat}"-->
+<!--                                                       th:text="#{str.chat}"></a>-->
+<!--                        </li>-->
                         <li class="nav-item active"><a class="nav-link" th:href="@{/visit}"
                                                        th:text="#{str.visit}"></a>
                         </li>
@@ -41,7 +41,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav pull-right">
-                        <li class="nav-item active"><a class="nav-link"
+                        <li class="nav-item active"><a class="nav-link status"
                                                        th:text="${currUserStatusAndName}"></a>
                         </li>
                     </ul>
@@ -52,7 +52,7 @@
             <div th:case="0">
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav pull-left">
-                        <li th:src="@{/images/snake.jpg}">
+                        <li ><img class="snake-image" th:src="@{/images/snake.png}" th:width="50px">
                         </li>
                         <li class="nav-item active"><a class="nav-link" th:href="@{/}"
                                                        th:text="#{str.homePage}"></a>
@@ -77,7 +77,7 @@
             <div th:case="1">
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav pull-center">
-                        <li th:src="@{/images/snake.jpg}">
+                        <li ><img class="snake-image" th:src="@{/images/snake.png}" th:width="50px">
                         </li>
                         <li class="nav-item active"><a class="nav-link" th:href="@{/}"
                                                        th:text="#{str.homePage}"></a>
@@ -96,6 +96,8 @@
             <div th:case="-1">
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav pull-center">
+                        <li ><img class="snake-image" th:src="@{/images/snake.png}" th:width="50px">
+                        </li>
                         <li class="nav-item active"><a class="nav-link" th:href="@{/}"
                                                        th:text="#{str.homePage}"></a>
                         </li>

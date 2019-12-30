@@ -33,6 +33,8 @@ public class VisitController {
     @RequestMapping(value = "/visit", method = RequestMethod.GET)
     public String doctorsList(Model model) {
         model.addAttribute("doctorsList", personService.findAllPersonsByWho(DOCTOR));
+        model.addAttribute("currentUserRole", personDto.getWho());
+        model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         return "visit_time";
     }
 

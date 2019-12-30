@@ -50,6 +50,7 @@ public class MainController {
             str = username.getString("str.unauthorizedUser");
         }
         model.addAttribute("stateOfUser", state);
+        personDto.setAuthorizedValue(str);
         model.addAttribute("currUserStatusAndName", str);
         LocalDate today = LocalDate.now();
         model.addAttribute("currentDate", today);

@@ -41,7 +41,7 @@ public class ChatController {
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
 
 
-    @RequestMapping(value = "/chatt", method = RequestMethod.GET)
+    @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat(Model model) {
         model.addAttribute("chatMeas", new MessageDto());
         model.addAttribute("chatDto", chat);

@@ -12,6 +12,16 @@ public class PersonDto {
     @Size(min = 1)
     private String name;
 
+    public String authorizedValue;
+
+    public String getAuthorizedValue() {
+        return authorizedValue;
+    }
+
+    public void setAuthorizedValue(String authorizedValue) {
+        this.authorizedValue = authorizedValue;
+    }
+
     public String getLogin() {
         return login;
     }
