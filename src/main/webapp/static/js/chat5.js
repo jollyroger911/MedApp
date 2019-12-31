@@ -7,7 +7,6 @@ var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
-//var socket;
 var stompClient = null;
 var username = null;
 
@@ -19,12 +18,21 @@ var colors = [
 function connect(event) {
     username = document.querySelector('#name').value.trim();
 
+    // $.ajax({
+    //     type: 'GET',
+    //     url: "/MedicineApp/ajax/demo5",
+    //     success : function(response) {
+    //         username = response;
+    //     },
+    //     error : function() {
+    //         alert("Error");
+    //     }
+    // });
     if(username) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
         var socket = new SockJS('/MedicineApp/ws');
-        //var socket = new WebSocket("ws://localhost:8080/myHandler");
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError());
@@ -54,7 +62,7 @@ function onError(error) {
 }
 
 
-function sendMessage(event) {
+function sendMessage() {
     var messageContent = messageInput.value.trim();
     if(messageContent && stompClient) {
         var chatMessage = {
@@ -64,7 +72,7 @@ function sendMessage(event) {
         };
         stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
         messageInput.value = '';
-    }
+   }
     event.preventDefault();
 }
 
@@ -115,6 +123,6 @@ function getAvatarColor(messageSender) {
     var index = Math.abs(hash % colors.length);
     return colors[index];
 }
-
+//connect();
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)

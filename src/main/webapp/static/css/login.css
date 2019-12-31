@@ -13,22 +13,24 @@ label{
 .footer{
     margin-right: 80px;
 }
+
 .legend{
 
     color: #411669;
     font-size: 20px;
     font-family: Helvetica;
 }
+
 .form-container{
     border-radius: 10px;
 }
 
-
 body{
-    background: url("http://localhost:8080/MedicineApp/images/cover1.jpg") no-repeat;
+    background: url("../images/cover1.jpg") no-repeat;
     background-size: cover;
     /*background-size: cover;*/
 }
+
 header{
     background-color: rgba(0, 0, 0, 0.6);
     width:100%;
@@ -36,10 +38,12 @@ header{
     color: #fff;
 
 }
+
 .text-center {
     text-align: center;
     color: #dddfed;
 }
+
 .footer-text{
     text-align: center;
     color: white;
@@ -56,6 +60,7 @@ header{
     font-size: 20px;
     font-family: Helvetica;
 }
+
 .lang-menu-item{
     color: #fff;
 }
@@ -74,6 +79,7 @@ header{
     text-align: center;
     cursor: pointer;
 }
+
 .show, .footer-nav:hover {
     display: block;
 }

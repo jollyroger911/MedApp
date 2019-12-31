@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Spring Boot WebSocket Chat Application</title>
+    <title th:text="#{str.webSocketChat}"></title>
     <link rel="stylesheet" th:href="@{/css/chat5.css}" />
 </head>
 <body>
@@ -27,7 +27,7 @@
 <div id="chat-page" class="hidden">
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Spring WebSocket Chat Demo</h2>
+            <h2 th:text="#{str.chatTitle} + ${destName}"></h2>
         </div>
         <div class="connecting">
             Connecting...
@@ -38,7 +38,7 @@
         <form id="messageForm" name="messageForm">
             <div class="form-group">
                 <div class="input-group clearfix">
-                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                    <input type="text" id="message" placeholder="Type a message..." autocomplete="on" class="form-control"/>
                     <button type="submit" class="primary">Send</button>
                 </div>
             </div>

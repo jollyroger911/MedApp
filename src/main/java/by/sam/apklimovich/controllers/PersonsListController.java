@@ -43,6 +43,8 @@ public class PersonsListController {
         }
 
         model.addAttribute("persons", persons);
+        model.addAttribute("currentUserRole", personDto.getWho());
+        model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         model.addAttribute("person", personDto);
         model.addAttribute("chatDto", chatDto);
         return "list_of_users";
@@ -54,7 +56,7 @@ public class PersonsListController {
         this.personDto.setDestId(person.getDestId());
         // logger.info(id.toString() + " THIS IS ID");
 
-        return "redirect:/chatt";
+        return "redirect:/chat";
     }
 
 }

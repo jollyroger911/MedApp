@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 @Controller
 public class MainController {
@@ -31,7 +32,6 @@ public class MainController {
 
     @RequestMapping("/")
     public String main(Model model) {
-        model.addAttribute("currentUserRole", personDto.getWho());
         String str = "";
         if(personDto.getWho() == 1) {
             str = "Doctor";
@@ -42,9 +42,19 @@ public class MainController {
         else{
             str = "Admin";
         }
-        model.addAttribute("currUserStatusAndName", str + ": " + personDto.getName() + " " + personDto.getSurname());
+        Integer state = 1;
+        str = str + ": " + personDto.getName() + " " + personDto.getSurname();
+        if(str.equals("Patient: null null")){
+            personDto.setWho(-1);
+            ResourceBundle username = ResourceBundle.getBundle("i18n.messages");
+            str = username.getString("str.unauthorizedUser");
+        }
+        model.addAttribute("stateOfUser", state);
+        personDto.setAuthorizedValue(str);
+        model.addAttribute("currUserStatusAndName", str);
         LocalDate today = LocalDate.now();
         model.addAttribute("currentDate", today);
+        model.addAttribute("currentUserRole", personDto.getWho());
         personDto.setCurrentDate(Date.valueOf(today));
         return "index";
     }

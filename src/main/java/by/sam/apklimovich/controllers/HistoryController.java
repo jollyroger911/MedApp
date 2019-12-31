@@ -23,6 +23,8 @@ public class HistoryController {
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)
     public String chat(Model model) {
+        model.addAttribute("currentUserRole", personDto.getWho());
+        model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         model.addAttribute("patHistory", visitService.getHistoryByPatId(personDto.getId()));
         return "patient_history";
     }

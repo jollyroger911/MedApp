@@ -59,15 +59,15 @@ public class ChatService {
         }
     }
 
-    public void addMessageToChat(MessageDto message, ChatDto chat) {
+    public void addMessageToChat(String message, ChatDto chat) {
         Logger logger = LoggerFactory.getLogger(ChatService.class);
         logger.info("Chat Service object created ");
         messageRepository.findAll();
-        messageRepository.save(new Message(message.getContent(), chat.getChatId(), chat.getSenderId()));
+        messageRepository.save(new Message(message, chat.getChatId(), chat.getSenderId()));
         messageRepository.flush();
 //        chat.setCurrentMessages( messageService.findMessagesByChatId(chat.getChatId()));
         //chat.addToMessages(message);
-        logger.info(message.getContent());
+        logger.info(message);
     }
 
 }

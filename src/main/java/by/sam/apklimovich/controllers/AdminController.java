@@ -28,6 +28,8 @@ public class AdminController {
 
     @RequestMapping(value = "/add_user_page", method = RequestMethod.GET)
     public String adminPage(Model model) {
+        model.addAttribute("currentUserRole", personDto.getWho());
+        model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         logger.info("get controller at add user page works");
         if (personDto.getWho() == 2) {
             model.addAttribute("personAdd", new NewPersonDto());
