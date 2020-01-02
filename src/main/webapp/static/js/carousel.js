@@ -1,5 +1,8 @@
-$('#carousel').carousel();
+// $('#carousel').carousel();
 
+$(document).ready(function(){
+    $("#myCarousel").carousel();
+});
 // // handles the carousel thumbnails
 // $('[id^=carousel-selector-]').click( function(){
 //     var id_selector = $(this).attr("id");

@@ -43,8 +43,9 @@ public class AdminController {
     public String adminAddUser(@ModelAttribute NewPersonDto newPersonDto, Model model) {
         model.addAttribute("personAdd", newPersonDto);
         logger.info("admin add user post method");
+        model.addAttribute("role", personDto.getWho());
         if (personService.addUser(newPersonDto)) {
-            return "/index.html";
+            return "redirect:/";
         } else {
             return "forms/error";
         }

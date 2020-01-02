@@ -80,7 +80,7 @@ public class ChatController {
     public String chatSubmit(MessageDto message, Model model) {
         model.addAttribute("chatMeas", message);
        // message.setSender(personDto.getId());
-        chatService.addMessageToChat(message, this.chat);
+        chatService.addMessageToChat(message.getContent(), this.chat);
         logger.info(chat.getContent());
         return "redirect:/chat";
     }
