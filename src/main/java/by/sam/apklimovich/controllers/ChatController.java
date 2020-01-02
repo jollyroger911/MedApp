@@ -1,23 +1,32 @@
 package by.sam.apklimovich.controllers;
 
+import by.sam.apklimovich.entity.Chat;
+import by.sam.apklimovich.entity.Message;
 import by.sam.apklimovich.model.ChatDto;
 import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.MessageService;
 import by.sam.apklimovich.service.PersonService;
-//import by.sam.apklimovich.websocket.WebSocketHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @Controller
 public class ChatController {
@@ -37,8 +46,8 @@ public class ChatController {
     private ChatDto chat;
 
 
-
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
+
 
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
@@ -50,10 +59,9 @@ public class ChatController {
         this.chat.setSenderId(personDto.getId());
         this.chat.setRecieverId(personDto.getDestId());
         chatService.createChat(chat, personDto);
-        //  model.addAttribute("receiverData", personService.getPersonsDataForChat(personDto.getDestId()));
+      //  model.addAttribute("receiverData", personService.getPersonsDataForChat(personDto.getDestId()));
         model.addAttribute("messagesList", chat.getCurrentMessages());
-
-        return "chat5";
+        return "chat_three";
     }
 
 //    @RequestMapping(value = "/chat", method = RequestMethod.POST)
@@ -67,17 +75,17 @@ public class ChatController {
 //            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 //        }
 //    }
-//
-//    @RequestMapping(value = "/chat", method = RequestMethod.POST)
-//    public String chatSubmit(MessageDto message, Model model) {
-//        model.addAttribute("chatMeas", message);
-//        // message.setSender(personDto.getId());
-//        chatService.addMessageToChat(message, this.chat);
-//        logger.info(chat.getContent());
-//        return "redirect:/chat";
-//    }
-//
-//
+
+    @RequestMapping(value = "/chat", method = RequestMethod.POST)
+    public String chatSubmit(MessageDto message, Model model) {
+        model.addAttribute("chatMeas", message);
+       // message.setSender(personDto.getId());
+        chatService.addMessageToChat(message, this.chat);
+        logger.info(chat.getContent());
+        return "redirect:/chat";
+    }
+
+
 //    @MessageMapping("/chat.sendMessage")
 //    @SendTo("/topic/public")
 //    public ChatDto sendMessage(@Payload ChatDto chatDto) {
