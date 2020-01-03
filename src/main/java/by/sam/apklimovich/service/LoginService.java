@@ -194,15 +194,14 @@ public class LoginService {
         return personRepository.findByLogin(username);
     }
 
-    public boolean checkCredentials(String username, String password, PersonDto pDto) {
+    public boolean  checkCredentials(String username, String password) {
         Person pList = findByLogin(username);
-        if (pList.getPassword().equals(password)) {
-            pDto.setWho(pList.getWho());
-
-            pDto.setId(pList.getId());
-            pDto.setName(pList.getFirstName());
-            pDto.setSurname(pList.getLastName());
-            pDto.setLogin(pList.getLogin());
+        if (pList.getPassword().equals(password) && pList != null) {
+//            pDto.setWho(pList.getWho());
+//            pDto.setId(pList.getId());
+//            pDto.setName(pList.getFirstName());
+//            pDto.setSurname(pList.getLastName());
+//            pDto.setLogin(pList.getLogin());
             return true;
         } else {
             return false;

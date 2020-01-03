@@ -22,7 +22,7 @@ public class VisitTimeController {
     @Autowired
     public PersonService personService;
 
-    @Autowired
+
     PersonDto personDto;
 
     public Logger logger = LoggerFactory.getLogger(VisitTimeController.class);

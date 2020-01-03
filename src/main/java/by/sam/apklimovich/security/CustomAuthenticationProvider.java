@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private LoginService loginService;
 
-    @Autowired
+
     public PersonDto personDto;
 
     @Override
@@ -31,11 +32,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
         loginService.isFirstStart();
-
-        if (loginService.checkCredentials(name, password, personDto)) {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        //String currentPrincipalName = authentication.getName();
+        if (loginService.checkCredentials(name, password)) {
+            //authentication.setAuthenticated(true);
             return new UsernamePasswordAuthenticationToken(
-                    name, password, new ArrayList<>());
+                   name, password, new ArrayList<>());
+
         } else {
+
             return authentication;
         }
     }

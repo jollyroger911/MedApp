@@ -7,6 +7,8 @@ import by.sam.apklimovich.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +23,7 @@ import java.util.ResourceBundle;
 @Controller
 public class MainController {
 
-    @Autowired
+
     public PersonDto personDto;
 
     @Autowired
@@ -32,6 +34,12 @@ public class MainController {
 
     @RequestMapping("/")
     public String main(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        PersonDto personDto = new PersonDto();
+        if(!authentication.getPrincipal().equals("anonymousUser")) {
+            personDto = personService.getUserInfoByUsername(personDto, currentUserName);
+        }
         String str = "";
         if(personDto.getWho() == 1) {
             str = "Doctor";
@@ -39,8 +47,11 @@ public class MainController {
         else if(personDto.getWho() == 0){
             str = "Patient";
         }
-        else{
+        else if(personDto.getWho() == 2){
             str = "Admin";
+        }
+        else{
+            str = "Guest";
         }
         Integer state = 1;
         str = str + ": " + personDto.getName() + " " + personDto.getSurname();
@@ -60,26 +71,26 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello(Model model) {
-        Logger logger = LoggerFactory.getLogger(MainController.class);
-        logger.info("get controller");
-        model.addAttribute("person1", new PersonDto());
-        model.addAttribute("role", personDto.getWho());
-        return "forms/hello";
-    }
+//    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+//    public String hello(Model model) {
+//        Logger logger = LoggerFactory.getLogger(MainController.class);
+//        logger.info("get controller");
+//        model.addAttribute("person1", new PersonDto());
+//        model.addAttribute("role", personDto.getWho());
+//        return "forms/hello";
+//    }
 
-    @RequestMapping(value = "/hello", method = RequestMethod.POST)
-    public String helloSubmit(@ModelAttribute @Valid PersonDto person, Model model) {
-        model.addAttribute("person1", person);
-        Logger logger = LoggerFactory.getLogger(MainController.class);
-        Person p = new Person();
-        p.setFirstName(person.getName());
-        person.setStatus(personService.geussWho(person.getWho()));
-        personService.createPerson(person.getName(), person.getSurname(), person.getWho());
-        logger.info(person.getName());
-        return "forms/name";
-    }
+//    @RequestMapping(value = "/hello", method = RequestMethod.POST)
+//    public String helloSubmit(@ModelAttribute @Valid PersonDto person, Model model) {
+//        model.addAttribute("person1", person);
+//        Logger logger = LoggerFactory.getLogger(MainController.class);
+//        Person p = new Person();
+//        p.setFirstName(person.getName());
+//        person.setStatus(personService.geussWho(person.getWho()));
+//        personService.createPerson(person.getName(), person.getSurname(), person.getWho());
+//        logger.info(person.getName());
+//        return "forms/name";
+//    }
 
 }
 

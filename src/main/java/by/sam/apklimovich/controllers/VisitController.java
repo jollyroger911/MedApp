@@ -8,6 +8,8 @@ import by.sam.apklimovich.service.VisitService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class VisitController {
     public Logger logger = LoggerFactory.getLogger(ChatController.class);
 
-    @Autowired
+
     private PersonDto personDto;
 
     @Autowired
@@ -26,12 +28,18 @@ public class VisitController {
     @Autowired
     private PersonService personService;
 
-    @Autowired
+
     private ChatDto chat;
     static final int DOCTOR = 1;
 
     @RequestMapping(value = "/visit", method = RequestMethod.GET)
     public String doctorsList(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        PersonDto personDto = new PersonDto();
+        if(!authentication.getPrincipal().equals("anonymousUser")) {
+            personDto = personService.getUserInfoByUsername(personDto, currentUserName);
+        }
         model.addAttribute("doctorsList", personService.findAllPersonsByWho(DOCTOR));
         model.addAttribute("currentUserRole", personDto.getWho());
         model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
@@ -41,6 +49,12 @@ public class VisitController {
     @RequestMapping(value = "/visit_time", method = RequestMethod.POST)
     public String doctorSubmit(MessageDto message, Model model) {
         // model.addAttribute("chatMeas", message);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        PersonDto personDto = new PersonDto();
+        if(!authentication.getPrincipal().equals("anonymousUser")) {
+            personDto = personService.getUserInfoByUsername(personDto, currentUserName);
+        }
         visitService.setVisitDetails(personDto.getVisitTime(), personDto.getVisitDoctorId(), personDto.getId());
         //   logger.info(chat.getContent());
         return "redirect:/visit";

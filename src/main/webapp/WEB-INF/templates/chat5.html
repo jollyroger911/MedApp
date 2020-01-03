@@ -27,6 +27,7 @@
 <div id="chat-page" class="hidden">
     <div class="chat-container">
         <div class="chat-header">
+            <button th:text="#{str.leaveChat}" class="leave-chat" th:href="@{/list_of_users}"></button>
             <h2 th:text="#{str.chatTitle} + ${destName}"></h2>
         </div>
         <div class="connecting">

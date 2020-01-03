@@ -16,13 +16,13 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class WebSocketController {
-    @Autowired
+
     PersonDto personDto;
 
     @Autowired
     public ChatService chatService;
 
-    @Autowired
+
     private ChatDto chat;
 
     @Autowired

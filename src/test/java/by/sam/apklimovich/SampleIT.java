@@ -9,8 +9,8 @@ public class SampleIT {
 
     @Test
     public void greetingTest() throws Exception {
-        PersonDto persons1 = new PersonDto();
-        persons1.setName("Anton");
+        //PersonDto persons1 = new PersonDto();
+      //  persons1.setName("Anton");
 //        Logger logger = LoggerFactory.getLogger(SampleIT.class);
 //        logger.info("Integration test");
 //        logger.debug("greetingTest method created ");

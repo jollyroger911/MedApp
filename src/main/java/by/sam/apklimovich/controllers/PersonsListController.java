@@ -7,6 +7,8 @@ import by.sam.apklimovich.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +23,7 @@ public class PersonsListController {
     @Autowired
     private PersonService personService;
 
-    @Autowired
+
     private PersonDto personDto;
 
 
@@ -32,6 +34,12 @@ public class PersonsListController {
 
     @RequestMapping(value = "/list_of_users", method = RequestMethod.GET)
     public String list(Model model, ChatDto chatDto) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        PersonDto personDto = new PersonDto();
+        if(!authentication.getPrincipal().equals("anonymousUser")) {
+            personDto = personService.getUserInfoByUsername(personDto, currentUserName);
+        }
         logger.info("get controller");
         List<Person> persons;
         if (personDto.getWho() == DOCTOR) {
@@ -44,7 +52,7 @@ public class PersonsListController {
 
         model.addAttribute("persons", persons);
         model.addAttribute("currentUserRole", personDto.getWho());
-        model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
+      //  model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         model.addAttribute("person", personDto);
         model.addAttribute("chatDto", chatDto);
         return "list_of_users";
@@ -53,7 +61,7 @@ public class PersonsListController {
     @RequestMapping(value = "/list_of_users/{destId}", method = RequestMethod.POST)
     public String userSubmit(@ModelAttribute @Valid PersonDto person, Model model) {
         model.addAttribute("persons", person);
-        this.personDto.setDestId(person.getDestId());
+        //personDto.setDestId(person.getDestId());
         // logger.info(id.toString() + " THIS IS ID");
 
         return "redirect:/chat";

@@ -17,6 +17,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,10 +41,10 @@ public class ChatController {
     @Autowired
     public ChatService chatService;
 
-    @Autowired
+
     PersonDto personDto;
 
-    @Autowired
+
     private ChatDto chat;
 
 
@@ -52,16 +54,25 @@ public class ChatController {
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        PersonDto personDto = new PersonDto();
+   //     model.addAttribute("persons", person);
+        model.getAttribute("persons");
+       // personDto.setDestId(person.getDestId());
+        if(!authentication.getPrincipal().equals("anonymousUser")) {
+            personDto = personService.getUserInfoByUsername(personDto, currentUserName);
+        }
         model.addAttribute("chatMeas", new MessageDto());
         model.addAttribute("chatDto", chat);
         String str = personService.getPersonsNameById(personDto.getDestId());
         model.addAttribute("destName", str);
         this.chat.setSenderId(personDto.getId());
-        this.chat.setRecieverId(personDto.getDestId());
+      //  this.chat.setRecieverId(personDto.getDestId());
         chatService.createChat(chat, personDto);
       //  model.addAttribute("receiverData", personService.getPersonsDataForChat(personDto.getDestId()));
         model.addAttribute("messagesList", chat.getCurrentMessages());
-        return "chat_three";
+        return "chat5";
     }
 
 //    @RequestMapping(value = "/chat", method = RequestMethod.POST)

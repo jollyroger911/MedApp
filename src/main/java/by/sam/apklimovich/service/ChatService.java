@@ -46,7 +46,7 @@ public class ChatService {
     public void createChat(ChatDto chat, PersonDto personDto) {
         Logger logger = LoggerFactory.getLogger(ChatService.class);
         logger.info("Chat Service object created ");
-        if (findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()) == null ) {
+        if (findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()) == null) {
             chatRepository.findAll();
             chatRepository.save(new Chat(personDto.getId(), personDto.getDestId()));
             chatRepository.flush();

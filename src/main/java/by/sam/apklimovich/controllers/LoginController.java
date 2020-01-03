@@ -25,7 +25,6 @@ public class LoginController {
     @RequestMapping(value = "/login_form", method = RequestMethod.GET)
     public String login(Model model) {
         loginService.isFirstStart();
-
         return "forms/login_form";
     }
 

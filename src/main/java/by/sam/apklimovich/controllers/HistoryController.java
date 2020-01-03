@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HistoryController {
 
-    @Autowired
     PersonDto personDto;
 
     @Autowired

@@ -22,6 +22,14 @@ public class PersonService {
     static int DOCTOR = 1;
     static int PATIENT = 0;
 
+    public PersonDto getUserInfoByUsername(PersonDto personDto, String name){
+        Person p = personRepository.findByLogin(name);
+        personDto.setWho(p.getWho());
+        personDto.setName(p.getFirstName());
+        personDto.setSurname(p.getLastName());
+        return personDto;
+    }
+
     public void createPerson(Person p) {
         Logger logger = LoggerFactory.getLogger(PersonService.class);
         logger.info("personService object created ");

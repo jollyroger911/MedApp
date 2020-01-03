@@ -36,8 +36,16 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .clearAuthentication(true)
+                .logoutUrl("/login?logout")
 
                 .permitAll()
+
+               // .failureUrl("/login?error")
                 .and().httpBasic();
     }
 //    @Override

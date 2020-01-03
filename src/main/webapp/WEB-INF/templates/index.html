@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  th:with="lang=${#locale.language}" th:lang="${lang}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" th:with="lang=${#locale.language}"
+      th:lang="${lang}">
 <head>
     <link rel="shortcut icon" class="favicon" type="image/x-icon" th:href="@{/images/favicon2.ico}"/>
     <link rel="shortcut icon" type="image/png" th:href="@{http://localhost:8080/favicon.png}"/>
@@ -22,7 +23,7 @@
 </head>
 
 <body>
-
+<div sec:authorize="isAuthenticated()">
 <!--<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">-->
 <div class="language-menu">
     <a th:href="@{/?lang=en}" class="lang-menu-item">English</a>

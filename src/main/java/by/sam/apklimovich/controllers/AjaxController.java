@@ -30,13 +30,13 @@ public class AjaxController {
     @Autowired
     private ChatService chatService;
 
-    @Autowired
+
     private ChatDto chat;
 
     @Autowired
     public VisitService visitService;
 
-    @Autowired
+
     private PersonDto personDto;
 
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
