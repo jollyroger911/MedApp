@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/js/main.js}"/>
+
+
+</head>
+
+<body>
+    <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+        <a th:href="@{/hello?lang=en}">Name (English)</a>
+        &nbsp;|&nbsp;
+        <a th:href="@{/hello?lang=nl}">Naam (Dutch)</a>
+        &nbsp;|&nbsp;
+        <a th:href="@{/hello?lang=ru}">Имя (Rus)</a>
+    </div>
+<h1 class="first" th:text="#{str.first}"></h1>
+
+<form action="#" data-th-action="@{/hello}" data-th-object="${person}" method="post">
+    <fieldset>
+        <strong th:text="#{str.name}"> </strong>
+        <input type="text" th:value="${name}" data-th-name="name"/> </p>
+        <strong th:text="#{str.surname}"> </strong>
+        <input type="text" th:value="${surname}" data-th-name="surname"/> </p>
+        <strong th:text="#{str.who}"> </strong>
+        <input type="text" th:value="${who}" data-th-name="who"/> </p>
+        <p><input type="submit" value="Validate!" data-th-value="#{label.validate}"/></p>
+    </fieldset>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+.navbar{
+    background-color: #411669;
+    margin-top:-6px;
+}
+
+
+.main-menu{
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: right;padding:5px;margin:5px 0px;
+    color: #fff;
+    display: -moz-inline-box;
+}
+.menu-item{
+    /*background-color: #6aa5cc;*/
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.snake-img{
+    size: 50px;
+}
+
+.nav-link{
+    font-family: Helvetica;
+    font-size: 22px;
+    color: #edede6;
+}
+
+.loginPlease{
+    font-family: Helvetica;
+    font-size: 18px;
+    color: #edede6;
+}
+
+.snake-image{
+    background-color: #edede6;
+}
+
+.nav-item {
+    padding-left: 27px;
+    padding-right: 20px;
+    font-family: Helvetica;
+    font-size: 18px;
+
+    color: #edede6;
+}
+
+.active{
+    background-color: rgba(0, 0, 0, 0.0);
+}
+.snake-img{
+    -webkit-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    transform: scale(1.0);
+}
+.nav-item:hover {
+    /*background-color: rgba(0, 0, 0, 0.6);*/
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    color: #411669;
+}
+
+.nav-link:hover{
+    color: #411669;
+}

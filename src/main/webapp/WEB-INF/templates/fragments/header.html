@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--    <script type="text/javascript" th:src="@{/js/header.js}"></script>-->
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+<!--            <div class="main-menu">-->
+                <!--    <script>-->
+                <!--        var up = document.getElementById('GFG_UP');-->
+                <!--        var down = document.getElementById('GFG_DOWN');-->
+                <!--        var inputEl = document.createElement('input');-->
+                <!--        let menuItems = $('menu-item').getElementsByClassName("menu-item");-->
+
+                <!--        menuItems[0].parentNode.removeChild(menuItems[0]);-->
+                <!--        // inputEl.type = 'button';-->
+                <!--        // inputEl.value = "Click here";-->
+                <!--        // inputEl.addEventListener('click', function() {-->
+                <!--        //     GFG_Fun('Parameter');-->
+                <!--        // });-->
+                <!--        // document.body.insertBefore(inputEl, down);-->
+                <!--        // up.innerHTML =-->
+                <!--        //     'Click on button to pass the '+-->
+                <!--        //     'string parameter to the function';-->
+                <!--        //-->
+                <!--        // function GFG_Fun(parameter) {-->
+                <!--        //     down.innerHTML = "String '" +-->
+                <!--        //         parameter + "' Received";-->
+                <!--        // }-->
+                <!--    </script>-->
+
+                <div th:switch="${currentUserRole}">
+                    <div th:case="2">
+                        <li class="menu-item"><a th:href="@{/}" th:text="#{str.homePage}"></a></li>
+                        <li class="menu-item"><a th:href="@{/chat}" th:text="#{str.chat}"></a></li>
+                        <li class="menu-item"><a th:href="@{/visit}" th:text="#{str.visit}"></a></li>
+<!--                        <li class="menu-item"><a th:href="@{/hello}" th:text="#{str.name}"></a></li>-->
+                        <!--                <li class="menu-item"><a th:href="@{/visit_time}">Visit time page</a></li>-->
+                        <!--            <div class="menu-item"><a th:href="@{/login_form}" th:text="#{str.login}"></a></div>-->
+                        <li class="menu-item"><a th:href="@{/add_user_page}" th:text="#{str.adminAdduser}"></a></li>
+                        <li class="menu-item"><a th:href="@{/list_of_users}" th:text="#{str.listOf}"></a></li>
+
+                    </div>
+                    <div th:case="0">
+                        <div class="menu-item"><a th:href="@{/}" th:text="#{str.homePage}"></a></div>
+                        <!--            <div class="menu-item"><a th:href="@{/chat}" th:text="#{str.chat}"></a></div>-->
+                        <div class="menu-item"><a th:href="@{/visit}" th:text="#{str.visit}"></a></div>
+
+                        <!--            <div class="menu-item"><a th:href="@{/hello}" th:text="#{str.name}"></a></div>-->
+                        <!--                <div class="menu-item"><a th:href="@{/visit_time}">Visit time page</a></div>-->
+                        <!--            <div class="menu-item"><a th:href="@{/login_form}" th:text="#{str.login}"></a></div>-->
+                        <!--            <div class="menu-item"><a th:href="@{/add_user_page}" th:text="#{str.adminAdduser}"></a></div>-->
+                        <div class="menu-item"><a th:href="@{/list_of_users}" th:text="#{str.listOf}"></a></div>
+                        <div class="menu-item"><a th:href="@{/history}" th:text="#{str.history}"></a></div>
+
+
+                    </div>
+                    <div th:case="1">
+
+                        <div class="menu-item"><a th:href="@{/}" th:text="#{str.homePage}"></a></div>
+                        <div class="menu-item"><a th:href="@{/chat}" th:text="#{str.chat}"></a></div>
+                        <!--            <div class="menu-item"><a th:href="@{/visit}" th:text="#{str.chat}"></a></div>-->
+                        <!--            <div class="menu-item"><a th:href="@{/hello}" th:text="#{str.name}"></a></div>-->
+                        <!--            <div class="menu-item"><a th:href="@{/visit_time}">Visit time page</a></div>-->
+                        <!--            <div class="menu-item"><a th:href="@{/login_form}" th:text="#{str.login}"></a></div>-->
+                        <!--            <div class="menu-item"><a th:href="@{/add_user_page}" th:text="#{str.adminAdduser}"></a></div>-->
+                        <!--            <div class="menu-item"><a th:href="@{/list_of_users}" th:text="#{str.listOf}"></a></div>-->
+
+                    </div>
+                </div>
+<!--            </div>-->
+        </div>
+    </div>
+</nav>
+</body>
+</html>

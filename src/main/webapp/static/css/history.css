@@ -1,0 +1,21 @@
+body{
+    background: url("../images/cover1.jpg") no-repeat;
+    background-size: cover;
+    /*background-size: cover;*/
+}
+.text-center {
+    text-align: center;
+    color: #dddfed;
+}
+.language-menu{
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: right;padding:5px;margin:5px 0px;
+    color: #fff;
+    margin-top: -3px;
+    height: 40px;
+    font-size: 20px;
+    font-family: Helvetica;
+}
+.lang-menu-item{
+    color: #fff;
+}

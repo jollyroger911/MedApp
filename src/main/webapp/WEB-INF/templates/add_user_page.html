@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <link rel="shortcut icon" class="favicon" type="image/x-icon" th:href="@{/images/favicon2.ico}"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="#{str.adminPage}"></title>
+    <link rel="stylesheet" th:href="@{/css/addUser.css}"/>
+    <!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap1.min.css}">
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="language-menu">
+    <a th:href="@{/add_user_page?lang=en}" class="lang-menu-item">English</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/add_user_page?lang=nl}" class="lang-menu-item">Dutch</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/add_user_page?lang=ru}" class="lang-menu-item">Русский</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/login?logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
+</div>
+<!--<div class="container-fluid bg">-->
+<div class="main-menu" th:replace="fragments/header2"></div>
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-12"></div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <h1 class="first" th:text="#{str.admin.one}"></h1>
+            <form class="input-form-admin-2" action="#" data-th-action="@{/}" th:object="${personAdd}" method="post">
+                <!--                input-form-admin-->
+                <fieldset>
+                    <div class="form-group">
+                        <div>
+                            <strong class="text-form" th:text="#{str.admin.two}"> </strong>
+                            <input class="input-add-user" type="text" th:value="${newLogin}"
+                                   data-th-name="newLogin"/> </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <strong class="text-form" th:text="#{str.admin.three}"> </strong>
+                            <input class="input-add-user" type="text" th:value="${newPassword}"
+                                   data-th-name="newPassword"/> </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <strong class="text-form" th:text="#{str.admin.who}"> </strong>
+                            <input class="input-add-user" type="text" th:value="${newWho}" data-th-name="newWho"/> </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <strong class="text-form" th:text="#{str.name}"> </strong>
+                            <input class="input-add-user" type="text" th:value="${name}" data-th-name="name"/> </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <strong class="text-form" th:text="#{str.surname}"> </strong>
+                            <input class="input-add-user" type="text" th:value="${surname}"
+                                   data-th-name="surname"/> </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn text-form-button" type="submit" value="Add user" data-th-value="#{add.user}"/>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="col-md-1 col-sm-4 col-xs-12"></div>
+    </div>
+</div>
+<!--</div>-->
+<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container text-center">
+        <div class="navbar-text-center ">
+            <p class="footer-text" th:replace="fragments/footer" th:insert="~{fragments/footer::copy}"></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

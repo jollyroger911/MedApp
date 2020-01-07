@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a th:href="@{/sameUserError?lang=en}">Admin (English)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/sameUserError?lang=nl}">Admin (Dutch)</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/sameUserError?lang=ru}">Админ (Rus)</a>
+</div>
+<strong th:text="#{str.error.userExists}"></strong>
+<div><a th:href="@{/add_user_page}" th:text="#{str.error.tryAgain}"></a></div>
+</body>
+</html>
