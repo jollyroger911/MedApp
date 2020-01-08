@@ -105,7 +105,7 @@ function sendMessage(event) {
 function onMessageReceived(payload) {
    // alert(payload.body);
     var message = JSON.parse(payload.body);
-    alert(username);
+   // alert(username);
     if(message.sender === destUsername || message.sender === username) {
         var messageElement = document.createElement('li');
 
