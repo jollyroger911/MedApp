@@ -7,6 +7,8 @@ var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
+//var sentMessages = document.getElementsByClassName(".sent-messages");
+//var avatarElements = document.getElementsByTagName(".i");
 var stompClient = null;
 var username = null;
 var destUsername = null;
@@ -19,6 +21,7 @@ var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
+//sentMessagesLight();
 connect();
 function connect() {
     username = document.querySelector('#name').value.trim();
@@ -149,7 +152,21 @@ function getAvatarColor(messageSender) {
         hash = 31 * hash + messageSender.charCodeAt(i);
     }
     var index = Math.abs(hash % colors.length);
-    return colors[index];
+    if(messageSender === username)
+        return colors[0];
+    else
+    return colors[6];
+}
+
+function sentMessagesLight(){
+    for(let i = 0; i < sentMessages.length; i++){
+        if(sentMessages[i].sender === username){
+            avatarElements[i].style['background-color'] = colors[0];
+        }
+        else {
+            avatarElements[i].style['background-color'] = colors[6];
+        }
+    }
 }
 //connect();
 usernameForm.addEventListener('submit', connect, true);

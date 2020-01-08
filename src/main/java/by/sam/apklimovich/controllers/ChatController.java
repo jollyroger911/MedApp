@@ -76,7 +76,7 @@ public class ChatController {
       //  this.chat.setRecieverId(personDto.getDestId());
         chatService.createChat(chat, personDto);
       //  model.addAttribute("receiverData", personService.getPersonsDataForChat(personDto.getDestId()));
-        model.addAttribute("messagesList", chat.getCurrentMessages());
+     //   model.addAttribute("messagesList", messageService.findMessagesByChatId(chat));
         return "chat5";
     }
 

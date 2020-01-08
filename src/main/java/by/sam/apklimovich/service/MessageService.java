@@ -2,6 +2,7 @@ package by.sam.apklimovich.service;
 
 import by.sam.apklimovich.entity.Message;
 import by.sam.apklimovich.model.ChatDto;
+import by.sam.apklimovich.model.ChatMessage;
 import by.sam.apklimovich.repository.MessageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,9 @@ public class MessageService {
     @Autowired
     MessageRepository messageRepository;
 
+    @Autowired
+    PersonService personService;
+
     public void createMessage() {
         Logger logger = LoggerFactory.getLogger(MessageService.class);
         logger.info("Message Service object created ");
@@ -25,14 +29,27 @@ public class MessageService {
         messageRepository.flush();
     }
 
-    public String getLastMessageOfChat(ChatDto chat){
-        ArrayList<Message> ar = findMessagesByChatId(chat.getChatId());
-        return ar.get(ar.size()-1).getMessage();
+//    public String getLastMessageOfChat(ChatDto chat){
+//        ArrayList<Message> ar = findMessagesByChatId(chat.getChatId());
+//        return ar.get(ar.size()-1).getMessage();
+//    }
+
+    public ArrayList<ChatMessage> findMessagesByChatId(ChatDto chat) {
+        ArrayList<Message> messages = messageRepository.findByChatId(chat.getChatId());
+        ArrayList<ChatMessage> messagesAL = new ArrayList<>();
+        String user1 = personService.getPersonsNameById(chat.getSenderId());
+        //String user2 = personService.getPersonsNameById(chat.getRecieverId());
+        for (Message message:messages
+             ) {
+            ChatMessage cm = new ChatMessage();
+            cm.setContent(message.getMessage());
+            cm.setSender(user1);
+            cm.setFirstLetter(user1.charAt(0) + "");
+            cm.setContent(message.getMessage());
+            messagesAL.add(cm);
+        }
+        if(messagesAL == null)
+            messagesAL.add(new ChatMessage());
+        return messagesAL;
     }
-
-    public ArrayList<Message> findMessagesByChatId(long chatId) {
-        return messageRepository.findByChatId(chatId);
-    }
-
-
 }

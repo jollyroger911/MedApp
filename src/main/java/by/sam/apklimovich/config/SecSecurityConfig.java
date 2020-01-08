@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -35,13 +36,19 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/static/**", "/i18n/**", "/messages/**", "/resources/**", "/static/favicon.ico").permitAll().anyRequest().authenticated()
                 .and()
                 .formLogin()
-               .loginPage("/login")
+                .loginPage("/login")
                 .permitAll()
                 .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .clearAuthentication(true)
-                .logoutUrl("/login?logout")
+                .logout().clearAuthentication(true)
+                .logoutSuccessUrl("/login?logout")
+                .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true)
+//                .logout()
+//                .logoutUrl("/login?logout")
+//                .logoutSuccessUrl("/")
+//                .invalidateHttpSession(true)
+//                .clearAuthentication(true)
+
 
                 .permitAll()
 

@@ -9,6 +9,10 @@ public class ChatMessage {
     private Long destId;
 
 
+
+    private String FirstLetter;
+
+
     public enum MessageType {
         CHAT,
         JOIN,
@@ -62,5 +66,12 @@ public class ChatMessage {
 
     public void setDestId(Long destId) {
         this.destId = destId;
+    }
+    public String getFirstLetter() {
+        return FirstLetter;
+    }
+
+    public void setFirstLetter(String firstLetter) {
+        FirstLetter = firstLetter;
     }
 }
