@@ -16,15 +16,15 @@
     <script th:src="@{/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div class="language-menu">
-    <a th:href="@{/?lang=en}" class="lang-menu-item">English</a>
-    &nbsp;|&nbsp;
-    <a th:href="@{/?lang=nl}" class="lang-menu-item">Dutch</a>
-    &nbsp;|&nbsp;
-    <a th:href="@{/?lang=ru}" class="lang-menu-item">Русский</a>
-    |&nbsp;
-    <a th:href="@{/logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
-</div>
+<!--<div class="language-menu">-->
+<!--    <a th:href="@{/?lang=en}" class="lang-menu-item">English</a>-->
+<!--    &nbsp;|&nbsp;-->
+<!--    <a th:href="@{/?lang=nl}" class="lang-menu-item">Dutch</a>-->
+<!--    &nbsp;|&nbsp;-->
+<!--    <a th:href="@{/?lang=ru}" class="lang-menu-item">Русский</a>-->
+<!--    |&nbsp;-->
+<!--    <a th:href="@{/logout}" class="lang-menu-item" th:text="#{str.logout}"></a>-->
+<!--</div>-->
 <div class="main-menu" th:replace="fragments/header2"></div>
 <div class="history">
     <tr th:each="item : ${patHistory}">

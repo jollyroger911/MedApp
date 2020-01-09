@@ -25,15 +25,15 @@
 <body>
 <div sec:authorize="isAuthenticated()">
 <!--<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">-->
-<div class="language-menu">
-    <a th:href="@{/?lang=en}" class="lang-menu-item">English</a>
-    &nbsp;|&nbsp;
-    <a th:href="@{/?lang=nl}" class="lang-menu-item">Dutch</a>
-    &nbsp;|&nbsp;
-    <a th:href="@{/?lang=ru}" class="lang-menu-item">Русский</a>
-    |&nbsp;
-    <a th:href="@{/logout}" class="lang-menu-item" th:text="#{str.logout}"></a>
-</div>
+<!--<div class="language-menu">-->
+<!--    <a th:href="@{/?lang=en}" class="lang-menu-item">English</a>-->
+<!--    &nbsp;|&nbsp;-->
+<!--    <a th:href="@{/?lang=nl}" class="lang-menu-item">Dutch</a>-->
+<!--    &nbsp;|&nbsp;-->
+<!--    <a th:href="@{/?lang=ru}" class="lang-menu-item">Русский</a>-->
+<!--    |&nbsp;-->
+<!--    <a th:href="@{/logout}" class="lang-menu-item" th:text="#{str.logout}"></a>-->
+<!--</div>-->
 <div class="main-menu" th:replace="fragments/header2"></div>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">

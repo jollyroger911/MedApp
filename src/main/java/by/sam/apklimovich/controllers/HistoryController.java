@@ -25,6 +25,9 @@ public class HistoryController {
         model.addAttribute("currentUserRole", personDto.getWho());
         model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         model.addAttribute("patHistory", visitService.getHistoryByPatId(personDto.getId()));
+        model.addAttribute("langValRu", "patient_history?lang=ru");
+        model.addAttribute("langValEn", "patient_history?lang=en");
+        model.addAttribute("langValNl", "patient_history?lang=nl");
         return "patient_history";
     }
 }

@@ -40,6 +40,9 @@ public class AdminController {
         logger.info("get controller at add user page works");
         if (personDto.getWho() == 2) {
             model.addAttribute("personAdd", new NewPersonDto());
+            model.addAttribute("langValRu", "add_user_page?lang=ru");
+            model.addAttribute("langValEn", "add_user_page?lang=en");
+            model.addAttribute("langValNl", "add_user_page?lang=nl");
             return "add_user_page";
         } else {
             return "index";

@@ -55,6 +55,9 @@ public class PersonsListController {
       //  model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         model.addAttribute("person", personDto);
         model.addAttribute("chatDto", chatDto);
+        model.addAttribute("langValRu", "list_of_users?lang=ru");
+        model.addAttribute("langValEn", "list_of_users?lang=en");
+        model.addAttribute("langValNl", "list_of_users?lang=nl");
         return "list_of_users";
     }
 

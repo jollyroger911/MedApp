@@ -43,6 +43,9 @@ public class VisitController {
         model.addAttribute("doctorsList", personService.findAllPersonsByWho(DOCTOR));
         model.addAttribute("currentUserRole", personDto.getWho());
         model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
+        model.addAttribute("langValRu", "visit?lang=ru");
+        model.addAttribute("langValEn", "visit?lang=en");
+        model.addAttribute("langValNl", "visit?lang=nl");
         return "visit_time";
     }
 

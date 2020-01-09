@@ -67,6 +67,9 @@ public class MainController {
         model.addAttribute("currentDate", today);
         model.addAttribute("currentUserRole", personDto.getWho());
         personDto.setCurrentDate(Date.valueOf(today));
+        model.addAttribute("langValRu", "?lang=ru");
+        model.addAttribute("langValEn", "?lang=en");
+        model.addAttribute("langValNl", "?lang=nl");
         return "index";
     }
 
