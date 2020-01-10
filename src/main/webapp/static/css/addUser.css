@@ -67,3 +67,12 @@ input.text-form-button{
     border-radius:5px;
     color: #411669;
 }
+.btn{
+    margin-top:-4px;
+}
+.pat{
+    margin-right:8px;
+}
+.doc{
+    margin-right:8px;
+}

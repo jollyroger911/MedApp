@@ -54,7 +54,24 @@
                     <div class="form-group">
                         <div>
                             <strong class="text-form" th:text="#{str.admin.who}"> </strong>
-                            <input class="input-add-user" type="text" th:value="${newWho}" data-th-name="newWho"/> </p>
+<!--                            <input class="input-add-user" type="text" th:value="${newWho}" data-th-name="newWho"/> </p>-->
+<!--                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled">-->
+<!--                            <script>-->
+<!--                                $(function() {-->
+<!--                                    $('#toggle-two').bootstrapToggle({-->
+<!--                                        on: 'Enabled',-->
+<!--                                        off: 'Disabled'-->
+<!--                                    });-->
+<!--                                })-->
+<!--                            </script>-->
+<!--                            <div class="input-group">-->
+<!--                                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">-->
+<!--                                <div class="input-group">-->
+                                    <button class="btn btn-outline-secondary input-add-user doc" type="button" th:text="#{str.doctor}"></button>
+                                    <button class="btn btn-outline-secondary input-add-user pat" type="button" th:text="#{str.patient}"></button>
+<!--                                </div>-->
+<!--                            </div>-->
+
                         </div>
                     </div>
                     <div class="form-group">

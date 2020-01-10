@@ -7,6 +7,7 @@ import by.sam.apklimovich.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -70,8 +71,9 @@ public class PersonService {
     public boolean addUser(NewPersonDto newPersonDto) {
         personRepository.findAll();
         if (personRepository.findByLogin(newPersonDto.getNewLogin()) == null && newPersonDto.getNewLogin() != null && newPersonDto.getNewPassword().length() > 3){
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             personRepository.save(new Person(newPersonDto.getNewWho(), newPersonDto.getNewLogin(),
-                    newPersonDto.getNewPassword(), newPersonDto.getName(), newPersonDto.getSurname()));
+                    passwordEncoder.encode(newPersonDto.getNewPassword()), newPersonDto.getName(), newPersonDto.getSurname()));
             personRepository.flush();
             return true;
         }

@@ -6,6 +6,7 @@ import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.repository.PersonRepository;
 import by.sam.apklimovich.repository.VisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,14 +27,15 @@ public class LoginService {
 
     public void isFirstStart() {
         if (personRepository.findAll().size() == 0) {
-            Person pa = new Person(2, "admin", "admin");
-            Person p1 = new Person(0, "user", "user");
-            Person p2 = new Person(1, "doctor", "doctor");
-            Person p3 = new Person(1, "doctor1", "doctor1");
-            Person p4 = new Person(1, "doctor2", "doctor2");
-            Person p5 = new Person(1, "doctor3", "doctor3");
-            Person p6 = new Person(0, "user2", "user2");
-            Person p7 = new Person(0, "user1", "user1");
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            Person pa = new Person(2, "admin", passwordEncoder.encode("admin"));
+            Person p1 = new Person(0, "user", passwordEncoder.encode("user"));
+            Person p2 = new Person(1, "doctor", passwordEncoder.encode("doctor"));
+            Person p3 = new Person(1, "doctor1", passwordEncoder.encode("doctor1"));
+            Person p4 = new Person(1, "doctor2", passwordEncoder.encode("doctor2"));
+            Person p5 = new Person(1, "doctor3", passwordEncoder.encode("doctor3"));
+            Person p6 = new Person(0, "user2", passwordEncoder.encode("user2"));
+            Person p7 = new Person(0, "user1", passwordEncoder.encode("user1"));
             pa.setFirstName("admin");
             pa.setLastName("admin");
             p1.setFirstName("Anton");
@@ -195,8 +197,9 @@ public class LoginService {
     }
 
     public boolean  checkCredentials(String username, String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         Person pList = findByLogin(username);
-        if (pList.getPassword().equals(password) && pList != null) {
+        if (passwordEncoder.matches(password, pList.getPassword()) && pList != null) {
 //            pDto.setWho(pList.getWho());
 //            pDto.setId(pList.getId());
 //            pDto.setName(pList.getFirstName());

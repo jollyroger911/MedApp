@@ -38,9 +38,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             //authentication.setAuthenticated(true);
             return new UsernamePasswordAuthenticationToken(
                    name, password, new ArrayList<>());
-
         } else {
-
             return authentication;
         }
     }
