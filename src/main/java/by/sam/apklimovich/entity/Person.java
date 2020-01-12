@@ -31,6 +31,17 @@ public class Person {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "description")
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public long getId() {
         return id;
     }

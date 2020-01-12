@@ -12,4 +12,5 @@ public interface VisitRepository extends JpaRepository<Visit, Long> {
     Visit findByDoctorIdAndVisitTime(long doctorId, String visitTime);
     ArrayList<Visit> findAllByPatientIdAndStatus(long patientId, boolean status);
     ArrayList<Visit> findByDoctorIdAndDate(long doctorId, Date date);
+    ArrayList<Visit> findAllByDoctorIdAndStatus(long doctorId, boolean status);
 }

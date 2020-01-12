@@ -7,11 +7,16 @@ import by.sam.apklimovich.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContext;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Service
 @Transactional
@@ -98,10 +103,31 @@ public class PersonService {
         return result;
     }
 
+    public List<PersonDto> getDoctors(int who){
+        List<Person> list = findAllPersonsByWho(who);
+        List<PersonDto> listPersons = new ArrayList<PersonDto>();
+        for(int i = 0; i < list.size(); i++){
+            Locale locale;
+            LocaleContext lc = LocaleContextHolder.getLocaleContext();
+            locale = lc.getLocale();
+//            String loc = locale.getLanguage();
+//            loc = loc +"_"+loc.toUpperCase();
+            ResourceBundle bundle = ResourceBundle.getBundle("i18n/messages", Locale.forLanguageTag(locale.getLanguage()));
+            String message = bundle.getString(list.get(i).getDescription());
+            listPersons.add(new PersonDto(list.get(i).getFirstName(), list.get(i).getLastName(), list.get(i).getId(), message));
+        }
+        return listPersons;
+    }
+
     public List<Person> findAllPersonsByWho(int who){
         return personRepository.findByWho(who);
     }
     public List<Person> findAllPersons(){
         return personRepository.findAll();
+    }
+
+    public String getDocDescriptionByDocId(long id){
+        Person p = personRepository.findById(id).get();
+        return p.getDescription();
     }
 }

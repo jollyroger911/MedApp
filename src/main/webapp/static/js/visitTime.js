@@ -30,7 +30,7 @@ $(document).ready(function (e) {
                 if ($(event.target).children().length === 0 || flag) {
                     exchange = target;
                     for (let i = 0; i < response.length; i++) {
-                        document.getElementById(target.id).innerHTML += '<option id="childDiv"  value="1">'  + response[i] + '</option>';
+                        document.getElementById(target.id).innerHTML += '<option id="childDiv">'  + response[i] + '</option>';
                     }
 
                     flag = false;

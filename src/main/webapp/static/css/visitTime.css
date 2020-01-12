@@ -4,13 +4,7 @@ body{
     background-size: cover;
     /*background-size: cover;*/
 }
-.selectors{
-    width:200px;
-    position:right;
-    height:25px;
-    border-radius:5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
+
 body { position: absolute; left:0; right: 0; min-height: 100%; background:#fff; margin:0; padding:0; font-size: 100%; }
 body, td {
     font-family: 'Helvetica Neue', Helvetica, 'Lucida Grande', Tahoma, Arial, Verdana, sans-serif;
@@ -118,7 +112,7 @@ body{
     position: relative;
     text-align: center;
 }
-.selectors { margin-top: 10px; }
+.selectors { margin-top: 0px; }
 
 .app-code-sample {
     max-width: 80%;
@@ -309,4 +303,37 @@ body{
 }
 @media screen and (min-width: 1600px) {
     .preview { padding: 10px 160px; }
+}
+.person-item{
+    display:inline;
+
+
+}
+.doctors-initials
+{
+    border-color:black;
+    border:solid;
+    margin-top:40px;
+    border-radius:5px;
+    border-width:1px;
+    color:#411669;
+
+}
+.input-select{
+    float:right;
+    margin-right:10px;
+    margin-top:10px;
+    order:1;
+    border-radius:5px;
+    border:solid 1px #411669;
+}
+.selectors{
+    background-color:azure;
+    order:4;
+    width:200px;
+    float: right;
+    margin-top:10px;
+    height:25px;
+    border-radius:5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }

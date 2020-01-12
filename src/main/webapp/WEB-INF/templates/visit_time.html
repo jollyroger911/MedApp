@@ -31,37 +31,35 @@
 <!--</div>-->
 
 <div class="main-menu" th:replace="fragments/header2"></div>
-<tr class="messages-list" th:value="${doctorsList}">
-<tr class="messages-list" th:each="doctor : ${doctorsList}">
-      <input id="hidden-input" type="hidden" value="1">
-    <div class="person-item">
-        <td th:text="${doctor.firstName}"> firstName</td>
-        <td th:text="${doctor.firstName}"> lastName</td>
-
-        <!--        <select th:id="${doctor.id}" class="date-selectors">-->
-
-        <!--        </select>-->
-<!--        <div class="dropdown">-->
-<!--            <button class="btn btn-secondary dropdown-toggle" type="button" th:id="${doctor.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                ааа-->
-
-<!--            <div class="dropdown-menu dropdown-menu-right" th:id="${doctor.id} + dropdown-menu" aria-labelledby="dropdownMenuButton">-->
-<!--                <button th:id="${doctor.id}" class="selectors dropdown-item" type="button"></button>-->
-<!--            </div>-->
-            <select th:id="${doctor.id}" class="selectors" >
-<!--            </button>-->
-            </select>
-<!--        </div>-->
-
-        <!--        <form th:action="@{|/visit_time/${doctor.id}|}" method="post">-->
-        <!--        <form th:action="@{/visit_time}" method="post">-->
-
-        <input type="submit" th:value="#{time.choose}" id="submit-visit"/>
-        <!--        </form>-->
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-12"></div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="one-doctor-item">
+                <tr class="messages-list" th:value="${doctorsList}">
+                <tr class="messages-list" th:each="doctor : ${doctorsList}">
+                <div class="person-item">
+                      <input id="hidden-input" type="hidden" value="1">
+                        <div class="doctors-initials">
+                            <td th:text="${doctor.name}"> firstName</td>
+                            <td th:text="${doctor.surname}"> lastName</td>
+                            <td th:text="${doctor.description}"> description</td>
+<!--                            <textarea th:text="${doctor.description}">-->
+<!--                            </textarea>-->
+                        </div>
+                    <div class="buttons-and-inputs">
+                        <select th:id="${doctor.id}" class="selectors" >
+                        </select>
+                        <input type="submit" class="input-select" th:value="#{time.choose}" id="submit-visit"/>
+                    </div>
+                    </div>
+                </tr>
+            </div>
+            <input id="destVisitTime" class="form-control" th:value=" ${chosenVisitTime}" type="hidden"/>
+            <input id="destDocId" class="form-control" th:value=" ${chosenDoctorId}" type="hidden"/>
+        </div>
     </div>
-</tr>
-<input id="destVisitTime" class="form-control" th:value=" ${chosenVisitTime}" type="hidden"/>
-<input id="destDocId" class="form-control" th:value=" ${chosenDoctorId}" type="hidden"/>
+</div>
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container text-center">
         <div class="navbar-text-center ">

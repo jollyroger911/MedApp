@@ -1,19 +1,87 @@
 package by.sam.apklimovich.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.validation.constraints.Size;
 import java.sql.Date;
 
 
 public class PersonDto {
-
-
     @Size(min = 1)
     private String name;
 
     public String authorizedValue;
 
+    @Size(min = 3)
+    private String login;
+
+    @Size(min = 3)
+    private String password;
+
+    private int who;
+
+    private String status;
+
+    public Date visitDate;
+
+
+    @Size(min = 1)
+    private String surname;
+
+    private long id;
+
+    private String personCred;
+
+    private long destId;
+
+    private long secondUserIs;
+
+    private String visitData;
+
+    private String newLogin;
+
+    private String newPassword;
+
+    private int newWho;
+
+    public String content;
+
+    private String visitTime;
+
+    private long visitDoctorId;
+
+    public Date currentDate;
+
+    public String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(Date currentDate) {
+        this.currentDate = currentDate;
+    }
+
+    public long getDestId() {
+        return destId;
+    }
+
+    public void setDestId(long destId) {
+        this.destId = destId;
+    }
+
+    public PersonDto() {
+    }
+
+    public String getPersonCred() {
+        return personCred;
+    }
     public String getAuthorizedValue() {
         return authorizedValue;
     }
@@ -38,43 +106,6 @@ public class PersonDto {
         this.password = password;
     }
 
-    @Size(min = 3)
-    private String login;
-
-    @Size(min = 3)
-    private String password;
-
-    private int who;
-
-    private String status;
-
-    public Date visitDate;
-
-    public Date getVisitDate() {
-        return visitDate;
-    }
-
-    public void setVisitDate(Date visitDate) {
-        this.visitDate = visitDate;
-    }
-
-    @Size(min = 1)
-    private String surname;
-
-    private long id;
-
-    public long getDestId() {
-        return destId;
-    }
-
-    public void setDestId(long destId) {
-        this.destId = destId;
-    }
-
-    private long destId;
-
-    private long secondUserIs;
-
     public long getSecondUserIs() {
         return secondUserIs;
     }
@@ -83,28 +114,26 @@ public class PersonDto {
         this.secondUserIs = secondUserIs;
     }
 
-    private String visitData;
-
-    private String newLogin;
-    private String newPassword;
-    private int newWho;
-
-    public Date currentDate;
-
-    public Date getCurrentDate() {
-        return currentDate;
+    public void setPersonCred(String personCred) {
+        this.personCred = personCred;
     }
 
-    public void setCurrentDate(Date currentDate) {
-        this.currentDate = currentDate;
+    public PersonDto(String name, String surname, long id, String description) {
+        this.name = name;
+        this.surname = surname;
+        this.id = id;
+        this.description = description;
     }
 
-    public String content;
+    public PersonDto(String personCred, String visitTime, String description){
+        this.personCred = personCred;
+        this.visitTime = visitTime;
+        this.description = description;
+    }
 
-    private String visitTime;
-    private long visitDoctorId;
-
-    public PersonDto() {
+    public PersonDto(String personCred, String visitTime){
+        this.personCred = personCred;
+        this.visitTime = visitTime;
     }
 
     PersonDto(String name, String surname, int id, String data) {
@@ -112,6 +141,14 @@ public class PersonDto {
         this.surname = surname;
         this.id = id;
         this.visitData = data;
+    }
+
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
     }
 
     public String getVisitTime() {

@@ -42,7 +42,8 @@ public class VisitController {
         if(!authentication.getPrincipal().equals("anonymousUser")) {
             personDto = personService.getUserInfoByUsername(personDto, currentUserName);
         }
-        model.addAttribute("doctorsList", personService.findAllPersonsByWho(DOCTOR));
+
+        model.addAttribute("doctorsList", personService.getDoctors(DOCTOR));
         model.addAttribute("currentUserRole", personDto.getWho());
         model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         model.addAttribute("langValRu", "visit?lang=ru");
