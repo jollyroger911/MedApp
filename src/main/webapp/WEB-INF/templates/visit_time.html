@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" class="favicon" type="image/x-icon" th:href="@{/images/favicon2.ico}"/>
-    <title th:text="#{str.visit}"></title>
-    <link rel="stylesheet" th:href="@{/css/visitTime.css}"/>
+<meta charset="UTF-8">
+<link rel="shortcut icon" class="favicon" type="image/x-icon" th:href="@{/images/favicon2.ico}"/>
+<title th:text="#{str.visit}"></title>
+<link rel="stylesheet" th:href="@{/css/visitTime.css}"/>
 <!--    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/visitTime.js}"></script>
-    <script type="text/javascript" th:src="@{/js/alertOnVisit.js}"></script>
-    <link rel="stylesheet" th:href="@{/css/visitTime.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<!--<script th:src="@{/js/bootstrap-select.js}"></script>-->
+<!--<link rel="stylesheet" th:href="@{/css/bootstrap-select.css}">-->
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/visitTime.js}"></script>
+<!--    <script type="text/javascript" th:src="@{/js/alertOnVisit.js}"></script>-->
+<link rel="stylesheet" th:href="@{/css/visitTime.css}"/>
 
 </head>
 <body>
@@ -36,20 +38,30 @@
         <td th:text="${doctor.firstName}"> firstName</td>
         <td th:text="${doctor.firstName}"> lastName</td>
 
-<!--        <select th:id="${doctor.id}" class="date-selectors">-->
+        <!--        <select th:id="${doctor.id}" class="date-selectors">-->
 
-<!--        </select>-->
+        <!--        </select>-->
+<!--        <div class="dropdown">-->
+<!--            <button class="btn btn-secondary dropdown-toggle" type="button" th:id="${doctor.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                ааа-->
 
-        <select  th:id="${doctor.id}" class="selectors">
+<!--            <div class="dropdown-menu dropdown-menu-right" th:id="${doctor.id} + dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                <button th:id="${doctor.id}" class="selectors dropdown-item" type="button"></button>-->
+<!--            </div>-->
+            <select th:id="${doctor.id}" class="selectors" >
+<!--            </button>-->
+            </select>
+<!--        </div>-->
 
-        </select>
+        <!--        <form th:action="@{|/visit_time/${doctor.id}|}" method="post">-->
+        <!--        <form th:action="@{/visit_time}" method="post">-->
 
-<!--        <form th:action="@{|/visit_time/${doctor.id}|}" method="post">-->
-        <form th:action="@{/visit_time}" method="post">
-            <input type="submit" th:value="#{time.choose}" id="submit-visit"/>
-        </form>
+        <input type="submit" th:value="#{time.choose}" id="submit-visit"/>
+        <!--        </form>-->
     </div>
 </tr>
+<input id="destVisitTime" class="form-control" th:value=" ${chosenVisitTime}" type="hidden"/>
+<input id="destDocId" class="form-control" th:value=" ${chosenDoctorId}" type="hidden"/>
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container text-center">
         <div class="navbar-text-center ">

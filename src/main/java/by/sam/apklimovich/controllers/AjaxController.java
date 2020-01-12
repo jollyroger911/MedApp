@@ -1,22 +1,23 @@
 package by.sam.apklimovich.controllers;
 
-import by.sam.apklimovich.entity.Message;
 import by.sam.apklimovich.model.ChatDto;
-import by.sam.apklimovich.model.IllnessDto;
 import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
 import by.sam.apklimovich.service.MessageService;
+import by.sam.apklimovich.service.PersonService;
 import by.sam.apklimovich.service.VisitService;
-import jdk.internal.net.http.websocket.MessageEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 
@@ -30,17 +31,21 @@ public class AjaxController {
     @Autowired
     private ChatService chatService;
 
+    @Autowired
+    private PersonService personService;
 
     private ChatDto chat;
 
     @Autowired
     public VisitService visitService;
 
+//    @Value("${your.chosenTime}")
+//    private String chosenTimeAlert;
 
     private PersonDto personDto;
 
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
-    public ResponseEntity<String> demo1(String selected ,MessageDto message, Model model) {
+    public ResponseEntity<String> demo1(String selected, MessageDto message, Model model) {
         try {
 //            model.addAttribute("chatMeas", message);
             message.setContent(selected);
@@ -57,6 +62,9 @@ public class AjaxController {
         try {
             String str = selected;
             long idValue = Long.parseLong(id);
+            PersonDto personDto = new PersonDto();
+//            model.addAttribute("chosenDoctorId", id);
+//            model.addAttribute("chosenVisitTime", selected);
             personDto.setVisitTime(str);
             personDto.setVisitDoctorId(idValue);
             ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(idValue), HttpStatus.OK);
@@ -67,14 +75,22 @@ public class AjaxController {
     }
 
     @RequestMapping(value = "/demo3", method = RequestMethod.POST)
-    public ResponseEntity<String> demo3() {
+    public ResponseEntity<String> demo3(String id, String selected) {
         try {
-            ResponseEntity<String> responseEntity = new ResponseEntity<String>(personDto.getVisitTime(), HttpStatus.OK);
+            long destDoctorId = Long.parseLong(id);
+            PersonDto personDto = new PersonDto();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String currentUserName = authentication.getName();
+            personDto = personService.getUserInfoByUsername(personDto, currentUserName);
+            visitService.setVisitDetails(selected, destDoctorId, personDto.getId());
+            //getResourceBundle().getText("notificationChangeAlert");
+            ResponseEntity<String> responseEntity = new ResponseEntity<String>(selected, HttpStatus.OK);
             return responseEntity;
         } catch (Exception e) {
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
     }
+
     @RequestMapping(value = "/demo4", method = RequestMethod.POST)
     public ResponseEntity<Integer> demo4() {
         try {

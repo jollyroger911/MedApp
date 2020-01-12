@@ -4,6 +4,13 @@ body{
     background-size: cover;
     /*background-size: cover;*/
 }
+.selectors{
+    width:200px;
+    position:right;
+    height:25px;
+    border-radius:5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 body { position: absolute; left:0; right: 0; min-height: 100%; background:#fff; margin:0; padding:0; font-size: 100%; }
 body, td {
     font-family: 'Helvetica Neue', Helvetica, 'Lucida Grande', Tahoma, Arial, Verdana, sans-serif;
