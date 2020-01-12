@@ -1,6 +1,7 @@
 package by.sam.apklimovich.controllers;
 
 import by.sam.apklimovich.model.ChatDto;
+import by.sam.apklimovich.model.ChatMessage;
 import by.sam.apklimovich.model.MessageDto;
 import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.ChatService;
@@ -108,6 +109,26 @@ public class AjaxController {
             return responseEntity;
         } catch (Exception e) {
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @RequestMapping(value = "/demo7", method = RequestMethod.POST)
+    public ResponseEntity<ArrayList<ChatMessage>> demo7(String idOne, String idTwo) {
+        try {
+            long idSender = Long.parseLong(idOne);
+            long idDest = Long.parseLong(idTwo);
+            PersonDto personDto = new PersonDto();
+            ChatDto chat = new ChatDto();
+            chat = chatService.getChatIds(idSender, idDest);
+            if(chat != null) {
+                ResponseEntity<ArrayList<ChatMessage>> responseEntity = new ResponseEntity<ArrayList<ChatMessage>>(messageService.findMessagesByChatId(chat), HttpStatus.OK);
+                return responseEntity;
+            }
+            else {
+                ResponseEntity<ArrayList<ChatMessage>> responseEntity = new ResponseEntity<ArrayList<ChatMessage>>(new ArrayList<ChatMessage>(), HttpStatus.OK);
+                return responseEntity;
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<ArrayList<ChatMessage>>(HttpStatus.BAD_REQUEST);
         }
     }
 //    @RequestMapping(value = "/demo6", method = RequestMethod.POST)

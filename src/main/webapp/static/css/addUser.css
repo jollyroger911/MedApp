@@ -63,16 +63,16 @@ body{
 }
 input.text-form-button{
     border:solid 1px #411669;
-    width:40%;
+    width:44%;
     border-radius:5px;
     color: #411669;
 }
 .btn{
-    margin-top:-4px;
+    margin-top:4px;
 }
 .pat{
-    margin-right:8px;
+    margin-right:270px;
 }
 .doc{
-    margin-right:8px;
+    margin-right:0px;
 }

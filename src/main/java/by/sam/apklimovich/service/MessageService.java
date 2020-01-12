@@ -21,6 +21,11 @@ public class MessageService {
     @Autowired
     PersonService personService;
 
+//    public ArrayList<ChatMessage> getMessagesListByChatId(long id){
+//        ArrayList<Message> ar = messageRepository.findByChatId(id);
+//        ar.forEach();
+//    }
+
     public void createMessage() {
         Logger logger = LoggerFactory.getLogger(MessageService.class);
         logger.info("Message Service object created ");
@@ -38,14 +43,20 @@ public class MessageService {
         ArrayList<Message> messages = messageRepository.findByChatId(chat.getChatId());
         ArrayList<ChatMessage> messagesAL = new ArrayList<>();
         String user1 = personService.getPersonsNameById(chat.getSenderId());
-        //String user2 = personService.getPersonsNameById(chat.getRecieverId());
+        String user2 = personService.getPersonsNameById(chat.getRecieverId());
         for (Message message:messages
              ) {
             ChatMessage cm = new ChatMessage();
             cm.setContent(message.getMessage());
-            cm.setSender(user1);
-            cm.setFirstLetter(user1.charAt(0) + "");
-            cm.setContent(message.getMessage());
+            cm.setSender(personService.getPersonsNameById(message.getSenderId()));
+//            if(message.getSenderId() == chat.getSenderId()) {
+//                cm.setSender(user1);
+//                cm.setFirstLetter(user1.charAt(0) + "");
+//            }
+//            else {
+//                cm.setSender(user2);
+//                cm.setFirstLetter(user2.charAt(0) + "");
+//            }
             messagesAL.add(cm);
         }
         if(messagesAL == null)

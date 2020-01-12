@@ -52,16 +52,44 @@ public class ChatService {
         return chatRepository.findByFirstUserAndSecondUser(oneId, twoId);
     }
 
+    public ChatDto getChatIds(long one, long two){
+        Chat chat = findByFIrstUserAndSecondUser(one, two);
+        ChatDto chatDto = new ChatDto();
+        if(chat == null){
+            chat = findByFIrstUserAndSecondUser(two, one);
+            chatDto.setSenderId(two);
+            chatDto.setRecieverId(one);
+        }else {
+            chatDto.setSenderId(one);
+            chatDto.setRecieverId(two);
+        }
+        if(chat == null){
+            return null;
+        }
+        else {
+            //chatDto.setSenderId(chat.getFirstUser());
+            //chatDto.setRecieverId(chat.getSecondUser());
+            chatDto.setChatId(chat.getId());
+            return chatDto;
+        }
+    }
+
     public void createChat(ChatDto chat, PersonDto personDto) {
         Logger logger = LoggerFactory.getLogger(ChatService.class);
         logger.info("Chat Service object created ");
-        if (findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()) == null) {
+        if (findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()) == null && findByFIrstUserAndSecondUser(personDto.getDestId(), personDto.getId()) == null) {
             chatRepository.findAll();
             chatRepository.save(new Chat(personDto.getId(), personDto.getDestId()));
             chatRepository.flush();
             chat.setChatId(findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()).getId());
-        } else {
+        } else if(findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()) != null && findByFIrstUserAndSecondUser(personDto.getDestId(), personDto.getId()) == null){
             chat.setChatId(findByFIrstUserAndSecondUser(personDto.getId(), personDto.getDestId()).getId());
+            chat.setSenderId(personDto.getId());
+            chat.setRecieverId(personDto.getDestId());
+            chat.setCurrentMessages(messageRepository.findByChatId(chat.getChatId()));
+        }
+        else {
+            chat.setChatId(findByFIrstUserAndSecondUser(personDto.getDestId(), personDto.getId()).getId());
             chat.setSenderId(personDto.getId());
             chat.setRecieverId(personDto.getDestId());
             chat.setCurrentMessages(messageRepository.findByChatId(chat.getChatId()));
