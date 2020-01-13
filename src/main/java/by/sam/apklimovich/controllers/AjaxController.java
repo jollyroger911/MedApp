@@ -9,7 +9,6 @@ import by.sam.apklimovich.service.MessageService;
 import by.sam.apklimovich.service.PersonService;
 import by.sam.apklimovich.service.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -45,7 +44,6 @@ public class AjaxController {
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
     public ResponseEntity<String> demo1(String selected, MessageDto message, Model model) {
         try {
-//            model.addAttribute("chatMeas", message);
             message.setContent(selected);
             chatService.addMessageToChat(message.getContent(), chat.getChatId(), message.getReceiver());
             ResponseEntity<String> responseEntity = new ResponseEntity<String>(selected, HttpStatus.OK);
@@ -61,8 +59,6 @@ public class AjaxController {
             String str = selected;
             long idValue = Long.parseLong(id);
             PersonDto personDto = new PersonDto();
-//            model.addAttribute("chosenDoctorId", id);
-//            model.addAttribute("chosenVisitTime", selected);
             personDto.setVisitTime(str);
             personDto.setVisitDoctorId(idValue);
             ResponseEntity<ArrayList<String>> responseEntity = new ResponseEntity<ArrayList<String>>(visitService.getFreeVisitTimeByDocId(idValue), HttpStatus.OK);
@@ -81,7 +77,6 @@ public class AjaxController {
             String currentUserName = authentication.getName();
             personDto = personService.getUserInfoByUsername(personDto, currentUserName);
             visitService.setVisitDetails(selected, destDoctorId, personDto.getId());
-            //getResourceBundle().getText("notificationChangeAlert");
             ResponseEntity<String> responseEntity = new ResponseEntity<String>(selected, HttpStatus.OK);
             return responseEntity;
         } catch (Exception e) {
@@ -128,18 +123,4 @@ public class AjaxController {
             return new ResponseEntity<ArrayList<ChatMessage>>(HttpStatus.BAD_REQUEST);
         }
     }
-//    @RequestMapping(value = "/demo6", method = RequestMethod.POST)
-//    public ResponseEntity<ArrayList<Date>> demo5(String id, Date selected) {
-//        try {
-//           //String str = selected;
-//            long idValue = Long.parseLong(id);
-//           // personDto.setVisitTime(str);
-//            personDto.setVisitDate(selected);
-//            personDto.setVisitDoctorId(idValue);
-//            ResponseEntity<ArrayList<Date>> responseEntity = new ResponseEntity<ArrayList<Date>>(visitService.getFreeVisitDateByDocIdAndDate(idValue, selected), HttpStatus.OK);
-//            return responseEntity;
-//        } catch (Exception e) {
-//            return new ResponseEntity<ArrayList<Date>>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
 }

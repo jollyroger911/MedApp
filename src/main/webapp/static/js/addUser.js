@@ -10,8 +10,3 @@ $(document).ready(function (e) {
     });
 });
 
-
-
-// $(".pat")[0].click(function(){
-//     pat.value = 0;
-// });

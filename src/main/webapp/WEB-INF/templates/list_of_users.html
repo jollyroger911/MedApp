@@ -28,17 +28,49 @@
 <!--</div>-->
 
 <div class="main-menu" th:replace="fragments/header2"></div>
-<div>
-    <tr th:each="person : ${persons}">
-        <div class="person-item">  
-            <td th:text="${person.firstName}"> firstName</td>
-            <td th:text="${person.lastName}"> lastName</td>
-            <form th:action="@{|/list_of_users/${person.id}|}" method="post">
-                <input type="submit" th:value="#{str.startChat}"/>
-            </form>
+
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-md-3 col-sm-2 col-xs-12"></div>
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            <div>
+                <tr th:each="person : ${persons}">
+                    <div name="f" class="form-container">
+                        <div class="person-item">  
+                            <span class="d-inline border-span">
+                                <div class="doc-na-sur">
+                                <h4 class="h3 dName" th:text="${person.firstName}"> firstName</h4>
+                                <br><h4 class="h4 dSurname" th:text="${person.lastName}"> lastName</h4>
+
+                                </div>
+                                <div class="doc-na-sur">
+                                    <h4 th:switch="${person.id}" class="doc-image">
+                                        <img th:case="3" class="doc-image-item" th:src="@{/images/dentist.jpg}"
+                                             th:width="170px">
+                                        <img th:case="4" class="doc-image-item" th:src="@{/images/cardio.jpg}"
+                                             th:width="180px">
+                                        <img th:case="5" class="doc-image-item" th:src="@{/images/dermo.jpg}"
+                                             th:width="160px">
+                                        <img th:case="6" class="doc-image-item" th:src="@{/images/cosme.jpg}"
+                                             th:width="160px">
+                                        <img th:case="*" class="doc-image-item" th:src="@{/images/noPic.png}"
+                                             th:width="160px">
+                                    </h4>
+                                </div>
+                                <form th:action="@{|/list_of_users/${person.id}|}" method="post">
+                                    <input type="submit" class="start-chat-btn"  th:value="#{str.startChat}"/>
+                                </form>
+                        </span>
+                        </div>
+                    </div>
+                </tr>
+            </div>
         </div>
-    </tr>
+    </div>
 </div>
+
+
+
 <!--<div th:replace="fragments/footer" th:insert="~{fragments/footer::copy}">&copy; 2011 The Static Templates</div>-->
 <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
     <div class="container text-center">
