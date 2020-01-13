@@ -27,15 +27,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
         Logger logger = LoggerFactory.getLogger(CustomAuthenticationProvider.class);
-        logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!A U T H E N T I C A T I O N !!!!!!!!!!!!!!!!! ");
+        logger.info("!!!A U T H E N T I C A T I O N !!! ");
         logger.info(authentication.toString());
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
         loginService.isFirstStart();
         authentication = SecurityContextHolder.getContext().getAuthentication();
-        //String currentPrincipalName = authentication.getName();
         if (loginService.checkCredentials(name, password)) {
-            //authentication.setAuthenticated(true);
             return new UsernamePasswordAuthenticationToken(
                    name, password, new ArrayList<>());
         } else {
