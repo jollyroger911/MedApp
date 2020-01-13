@@ -40,9 +40,6 @@ public class AjaxController {
     @Autowired
     public VisitService visitService;
 
-//    @Value("${your.chosenTime}")
-//    private String chosenTimeAlert;
-
     private PersonDto personDto;
 
     @RequestMapping(value = "/demo1", method = RequestMethod.POST)
@@ -111,12 +108,12 @@ public class AjaxController {
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
     }
+
     @RequestMapping(value = "/demo7", method = RequestMethod.POST)
     public ResponseEntity<ArrayList<ChatMessage>> demo7(String idOne, String idTwo) {
         try {
             long idSender = Long.parseLong(idOne);
             long idDest = Long.parseLong(idTwo);
-            PersonDto personDto = new PersonDto();
             ChatDto chat = new ChatDto();
             chat = chatService.getChatIds(idSender, idDest);
             if(chat != null) {

@@ -20,15 +20,6 @@
 
 </head>
 <body>
-<!--<div class="language-menu">-->
-<!--    <a th:href="@{/visit?lang=en}" class="lang-menu-item">English</a>-->
-<!--    &nbsp;|&nbsp;-->
-<!--    <a th:href="@{/visit?lang=nl}" class="lang-menu-item">Dutch</a>-->
-<!--    &nbsp;|&nbsp;-->
-<!--    <a th:href="@{/visit?lang=ru}" class="lang-menu-item">Русский</a>-->
-<!--    &nbsp;|&nbsp;-->
-<!--    <a th:href="@{/logout}" class="lang-menu-item" th:text="#{str.logout}"></a>-->
-<!--</div>-->
 
 <div class="main-menu" th:replace="fragments/header2"></div>
 <div class="container-fluid bg">
@@ -41,11 +32,11 @@
                 <div class="person-item">
                       <input id="hidden-input" type="hidden" value="1">
                         <div class="doctors-initials">
-                            <td th:text="${doctor.name}"> firstName</td>
-                            <td th:text="${doctor.surname}"> lastName</td>
-                            <td th:text="${doctor.description}"> description</td>
-<!--                            <textarea th:text="${doctor.description}">-->
-<!--                            </textarea>-->
+                            <span class="d-inline border-span">
+                            <p class="h3" th:text="${doctor.name}"> firstName</p>
+                            <p class="h4" th:text="${doctor.surname}"> lastName</p>
+                            <p class="h3 text-right" th:text="${doctor.description}"> description</p>
+                                </span>
                         </div>
                     <div class="buttons-and-inputs">
                         <select th:id="${doctor.id}" class="selectors" >
