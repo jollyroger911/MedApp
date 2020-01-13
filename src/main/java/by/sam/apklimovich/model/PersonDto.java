@@ -132,6 +132,13 @@ public class PersonDto {
         this.description = description;
     }
 
+    public PersonDto(String personCred, String visitTime, String description, long id){
+        this.personCred = personCred;
+        this.visitTime = visitTime;
+        this.description = description;
+        this.id = id;
+    }
+
     public PersonDto(String personCred, String visitTime){
         this.personCred = personCred;
         this.visitTime = visitTime;

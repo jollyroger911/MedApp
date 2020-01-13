@@ -33,10 +33,14 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/static/**", "/i18n/**", "/messages/**", "/resources/**", "/static/favicon.ico").permitAll().anyRequest().authenticated()
+                .authorizeRequests().antMatchers("/login/**", "/login?logout/**","/", "/css/**", "/js/**", "/images/**", "/static/**", "/i18n/**", "/messages/**", "/resources/**", "/static/favicon.ico").permitAll().anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+
+                //.and()
+//                .formLogin().loginPage("login/?lang=ru").and().formLogin().loginPage("login/?lang=en").and().formLogin()
+//                .loginPage("login/?lang=nl")
                 .permitAll()
                 .and()
                 .logout().clearAuthentication(true)

@@ -60,9 +60,9 @@ public class VisitController {
         PersonDto personDto = new PersonDto();
         personDto.setVisitDoctorId(Long.parseLong(docId));
         personDto.setVisitTime(cvt);
-      //  if(!authentication.getPrincipal().equals("anonymousUser")) {
+        if(!authentication.getPrincipal().equals("anonymousUser")) {
             personDto = personService.getUserInfoByUsername(personDto, currentUserName);
-      //  }
+        }
         visitService.setVisitDetails(personDto.getVisitTime(), personDto.getVisitDoctorId(), personDto.getId());
         //   logger.info(chat.getContent());
         return "redirect:/visit";

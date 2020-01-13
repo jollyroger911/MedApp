@@ -1,5 +1,5 @@
 body{
-    background: url("../images/cover1.jpg") no-repeat;
+    background: url("../images/cover1.jpg");
     background-size: cover;
     /*background-size: cover;*/
 }
@@ -18,4 +18,29 @@ body{
 }
 .lang-menu-item{
     color: #fff;
+}
+.form-container{
+    border: 0px solid #fff; padding: 30px 60px; margin-top: 1vh;
+    -webkit-box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+    -moz-box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+    box-shadow: -1px 3px 23px 8px rgba(72,107,179,1);
+    border-radius:5px;
+}
+.person-item{
+    padding-bottom:50px;
+}
+h4{
+    display:inline;
+}
+.doc-image-item{
+    margin-left:385px;
+    margin-top:-25px
+}
+.border-span{
+    display:inline;
+}
+
+.select-group{
+    margin-left:0px;
+    margin-top:-50px;
 }

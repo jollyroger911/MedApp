@@ -1,6 +1,7 @@
 package by.sam.apklimovich.service;
 
 import by.sam.apklimovich.entity.Person;
+import by.sam.apklimovich.entity.Visit;
 import by.sam.apklimovich.model.NewPersonDto;
 import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.repository.PersonRepository;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -21,6 +23,8 @@ import java.util.ResourceBundle;
 @Service
 @Transactional
 public class PersonService {
+    @Autowired
+    VisitService visitService;
 
     @Autowired
     PersonRepository personRepository;
@@ -28,7 +32,7 @@ public class PersonService {
     static int DOCTOR = 1;
     static int PATIENT = 0;
 
-    public PersonDto getUserInfoByUsername(PersonDto personDto, String name){
+    public PersonDto getUserInfoByUsername(PersonDto personDto, String name) {
         Person p = personRepository.findByLogin(name);
         personDto.setId(p.getId());
         personDto.setWho(p.getWho());
@@ -37,7 +41,8 @@ public class PersonService {
         return personDto;
     }
 
-    public String getDestinationUsername(long destId){
+
+    public String getDestinationUsername(long destId) {
         return personRepository.findById(destId).get().getLogin();
     }
 
@@ -49,7 +54,7 @@ public class PersonService {
         personRepository.flush();
     }
 
-    public String getPersonsNameById(long id){
+    public String getPersonsNameById(long id) {
         Person p = personRepository.findById(id).get();
         StringBuilder stringBuilder = new StringBuilder(p.getFirstName());
         stringBuilder.append(" ");
@@ -75,59 +80,71 @@ public class PersonService {
 
     public boolean addUser(NewPersonDto newPersonDto) {
         personRepository.findAll();
-        if (personRepository.findByLogin(newPersonDto.getNewLogin()) == null && newPersonDto.getNewLogin() != null && newPersonDto.getNewPassword().length() > 3){
+        if (personRepository.findByLogin(newPersonDto.getNewLogin()) == null && newPersonDto.getNewLogin() != null && newPersonDto.getNewPassword().length() > 3) {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             personRepository.save(new Person(newPersonDto.getNewWho(), newPersonDto.getNewLogin(),
                     passwordEncoder.encode(newPersonDto.getNewPassword()), newPersonDto.getName(), newPersonDto.getSurname()));
             personRepository.flush();
+            if (newPersonDto.getNewWho() == 1) {
+                visitService.createNewDoctorsVisitTime(personRepository.findByLogin(newPersonDto.getNewLogin()).getId());
+            }
             return true;
-        }
-        else {
+        } else {
             personRepository.flush();
             return false;
         }
     }
 
-    public String getPersonsDataForChat(long id){
+    public String getPersonsDataForChat(long id) {
         Person p = personRepository.findById(id).get();
         String result = p.getFirstName() + " " + p.getLastName();
-        if (p.getWho() == DOCTOR){
+        if (p.getWho() == DOCTOR) {
             result += " (DOCTOR)";
-        }
-        else if(p.getWho() == PATIENT){
+        } else if (p.getWho() == PATIENT) {
             result += " (PATIENT)";
-        }
-        else {
+        } else {
             result += " (ADMIN)";
         }
         return result;
     }
 
-    public List<PersonDto> getDoctors(int who){
+    public List<PersonDto> getDoctors(int who) {
         List<Person> list = findAllPersonsByWho(who);
         List<PersonDto> listPersons = new ArrayList<PersonDto>();
-        for(int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             Locale locale;
             LocaleContext lc = LocaleContextHolder.getLocaleContext();
             locale = lc.getLocale();
 //            String loc = locale.getLanguage();
 //            loc = loc +"_"+loc.toUpperCase();
             ResourceBundle bundle = ResourceBundle.getBundle("i18n/messages", Locale.forLanguageTag(locale.getLanguage()));
-            String message = bundle.getString(list.get(i).getDescription());
+            String message;
+            if (list.get(i).getDescription() == null) {
+                message = bundle.getString("message.newDoc");
+            } else {
+                message = bundle.getString(list.get(i).getDescription());
+            }
             listPersons.add(new PersonDto(list.get(i).getFirstName(), list.get(i).getLastName(), list.get(i).getId(), message));
         }
         return listPersons;
     }
 
-    public List<Person> findAllPersonsByWho(int who){
+    public List<Person> findAllPersonsByWho(int who) {
         return personRepository.findByWho(who);
     }
-    public List<Person> findAllPersons(){
+
+    public List<Person> findAllPersons() {
         return personRepository.findAll();
     }
 
-    public String getDocDescriptionByDocId(long id){
+    public String getDocDescriptionByDocId(long id) {
         Person p = personRepository.findById(id).get();
-        return p.getDescription();
+        if(p.getDescription() == null){
+            return "message.newDoc";
+        }
+        else {
+            return p.getDescription();
+        }
     }
+
 }

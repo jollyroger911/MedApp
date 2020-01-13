@@ -14,22 +14,11 @@
     <link rel="stylesheet" th:href="@{/css/login.css}"/>
 </head>
 <body>
-<!--    <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">-->
-<!--    <div class="language-menu">-->
-<!--        <a th:href="@{/login?lang=en}" class="lang-menu-item">Login (English)</a>-->
-<!--        &nbsp;|&nbsp;-->
-<!--        <a th:href="@{/login?lang=nl}" class="lang-menu-item">Login (Dutch)</a>-->
-<!--        &nbsp;|&nbsp;-->
-<!--        <a th:href="@{/login?lang=ru}" class="lang-menu-item">Вход (Rus)</a>-->
-<!--    </div>-->
 <div class="main-menu" th:replace="fragments/header2"></div>
 <div class="container-fluid bg">
-
-
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12"></div>
         <div class="col-md-4 col-sm-4 col-xs-12">
-
             <form name="f" th:action="@{/login}" method="post" class="form-container">
                 <div class="form-group">
                     <label for="exampleInputUsername1" th:text="#{text.username}"></label>

@@ -40,7 +40,7 @@ public class HistoryController {
             model.addAttribute("patHistory", visitService.getHistoryByPatId(personDto.getId()));
         }
         else if(personDto.getWho() == DOCTOR) {
-            model.addAttribute("patHistory", visitService.getVisitsByDicId(personDto.getId()));
+            model.addAttribute("patHistory", visitService.getVisitsByDocId(personDto.getId()));
         }
         model.addAttribute("langValRu", "history?lang=ru");
         model.addAttribute("langValEn", "history?lang=en");

@@ -34,7 +34,7 @@
     color: #dddfed;
 }
 body{
-    background: url("http://localhost:8080/MedicineApp/images/cover1.jpg") no-repeat;
+    background: url("../images/cover1.jpg") no-repeat;
     background-size: cover;
     /*background-size: cover;*/
 }

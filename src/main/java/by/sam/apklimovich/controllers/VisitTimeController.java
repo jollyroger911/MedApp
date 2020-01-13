@@ -36,10 +36,10 @@ public class VisitTimeController {
 
     @RequestMapping(value = "/visit", method = RequestMethod.POST)
     public String VisitTimeChosen(@ModelAttribute @Valid PersonDto person, Model model) {
-        model.addAttribute("time1", person);
+      //  model.addAttribute("time1", person);
 
-        personDto.getVisitTime();
-        logger.info(person.getName());
-        return "visit_time";
+        //personDto.getVisitTime();
+       // logger.info(person.getName());
+        return "redirect:/visit";
     }
 }
