@@ -1,6 +1,5 @@
 package by.sam.apklimovich.controllers;
 
-import by.sam.apklimovich.entity.Person;
 import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.PersonService;
 import by.sam.apklimovich.service.VisitService;
@@ -36,10 +35,9 @@ public class HistoryController {
         personDto = personService.getUserInfoByUsername(personDto, currentUserName);
         model.addAttribute("currentUserRole", personDto.getWho());
         model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
-        if(personDto.getWho() == PATIENT) {
+        if (personDto.getWho() == PATIENT) {
             model.addAttribute("patHistory", visitService.getHistoryByPatId(personDto.getId()));
-        }
-        else if(personDto.getWho() == DOCTOR) {
+        } else if (personDto.getWho() == DOCTOR) {
             model.addAttribute("patHistory", visitService.getVisitsByDocId(personDto.getId()));
         }
         model.addAttribute("langValRu", "history?lang=ru");

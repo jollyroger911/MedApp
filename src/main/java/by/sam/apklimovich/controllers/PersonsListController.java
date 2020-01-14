@@ -22,11 +22,7 @@ import java.util.List;
 public class PersonsListController {
     @Autowired
     private PersonService personService;
-
-
     private PersonDto personDto;
-
-
     static final int DOCTOR = 1;
     static final int PATIENT = 0;
 
@@ -37,7 +33,7 @@ public class PersonsListController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
         PersonDto personDto = new PersonDto();
-        if(!authentication.getPrincipal().equals("anonymousUser")) {
+        if (!authentication.getPrincipal().equals("anonymousUser")) {
             personDto = personService.getUserInfoByUsername(personDto, currentUserName);
         }
         logger.info("get controller");
@@ -52,7 +48,7 @@ public class PersonsListController {
 
         model.addAttribute("persons", persons);
         model.addAttribute("currentUserRole", personDto.getWho());
-      //  model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
+        //  model.addAttribute("currUserStatusAndName", personDto.getAuthorizedValue());
         model.addAttribute("person", personDto);
         model.addAttribute("chatDto", chatDto);
         model.addAttribute("langValRu", "list_of_users?lang=ru");
@@ -67,7 +63,6 @@ public class PersonsListController {
         model.addAttribute("personDestIdValue", new Long(person.getDestId()));
         //personDto.setDestId(person.getDestId());
         // logger.info(id.toString() + " THIS IS ID");
-
         return "redirect:/chat";
     }
 

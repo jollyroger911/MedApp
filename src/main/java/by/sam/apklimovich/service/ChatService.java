@@ -67,8 +67,6 @@ public class ChatService {
             return null;
         }
         else {
-            //chatDto.setSenderId(chat.getFirstUser());
-            //chatDto.setRecieverId(chat.getSecondUser());
             chatDto.setChatId(chat.getId());
             return chatDto;
         }
@@ -102,8 +100,6 @@ public class ChatService {
         messageRepository.findAll();
         messageRepository.save(new Message(message, chatId, senderId));
         messageRepository.flush();
-//        chat.setCurrentMessages( messageService.findMessagesByChatId(chat.getChatId()));
-        //chat.addToMessages(message);
         logger.info(message);
     }
 

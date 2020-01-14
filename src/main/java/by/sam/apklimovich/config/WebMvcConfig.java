@@ -64,12 +64,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return encoder;
     }
 
-
-//    @Controller
-//    static class FaviconController {
-//        @RequestMapping("images/favicon.png")
-//        String favicon() {
-//            return "forward:/images/favicon.png";
-//        }
-//    }
 }

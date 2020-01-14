@@ -1,6 +1,5 @@
 package by.sam.apklimovich.security;
 
-import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.service.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +19,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private LoginService loginService;
 
-
-    public PersonDto personDto;
-
     @Override
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
@@ -35,7 +31,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         authentication = SecurityContextHolder.getContext().getAuthentication();
         if (loginService.checkCredentials(name, password)) {
             return new UsernamePasswordAuthenticationToken(
-                   name, password, new ArrayList<>());
+                    name, password, new ArrayList<>());
         } else {
             return authentication;
         }

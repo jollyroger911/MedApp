@@ -16,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -33,54 +32,19 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/login/**", "/login?logout/**","/", "/css/**", "/js/**", "/images/**", "/static/**", "/i18n/**", "/messages/**", "/resources/**", "/static/favicon.ico").permitAll().anyRequest().authenticated()
+                .authorizeRequests().antMatchers("/login/**", "/login?logout/**", "/", "/css/**", "/js/**", "/images/**", "/static/**", "/i18n/**", "/messages/**", "/resources/**", "/static/favicon.ico").permitAll().anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-
-                //.and()
-//                .formLogin().loginPage("login/?lang=ru").and().formLogin().loginPage("login/?lang=en").and().formLogin()
-//                .loginPage("login/?lang=nl")
                 .permitAll()
                 .and()
                 .logout().clearAuthentication(true)
                 .logoutSuccessUrl("/login?logout")
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
-//                .logout()
-//                .logoutUrl("/login?logout")
-//                .logoutSuccessUrl("/")
-//                .invalidateHttpSession(true)
-//                .clearAuthentication(true)
-
-
                 .permitAll()
-
-               // .failureUrl("/login?error")
                 .and().httpBasic();
     }
-//    @Override
-//    protected void configure( HttpSecurity http) throws Exception {
-//        http
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/anonymous*").anonymous()
-//                .antMatchers("/login_form*").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login_form")
-//                .loginProcessingUrl("/login_form")
-//                .defaultSuccessUrl("/", true)
-//                //.failureUrl("/error/403?error=true")
-//                .failureHandler(authenticationFailureHandler())
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .deleteCookies("JSESSIONID")
-//                .logoutSuccessHandler(logoutSuccessHandler());
-//    }
 
     @Bean
     public LogoutSuccessHandler logoutSuccessHandler() {

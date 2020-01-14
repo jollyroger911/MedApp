@@ -54,7 +54,6 @@ public class VisitController {
 
     @RequestMapping(value = "/visit_time", method = RequestMethod.POST)
     public String doctorSubmit(MessageDto message, @ModelAttribute("chosenVisitTime") String cvt, @ModelAttribute("chosenDoctorId") String docId) {
-        // model.addAttribute("chatMeas", message);9
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
         PersonDto personDto = new PersonDto();

@@ -6,6 +6,7 @@ import by.sam.apklimovich.model.PersonDto;
 import by.sam.apklimovich.repository.PersonRepository;
 import by.sam.apklimovich.repository.VisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -203,6 +204,7 @@ public class LoginService {
     public boolean  checkCredentials(String username, String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         Person pList = findByLogin(username);
+        if(pList == null) throw new UsernameNotFoundException(username);
         if (passwordEncoder.matches(password, pList.getPassword()) && pList != null) {
 //            pDto.setWho(pList.getWho());
 //            pDto.setId(pList.getId());
