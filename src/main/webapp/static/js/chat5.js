@@ -146,7 +146,7 @@ function loadMessages() {
     $(document).ready(function () {
         $.ajax({
             type: 'POST',
-            url: "/MedicineApp/ajax/demo7",
+            url: "/MedicineApp/ajax/messagesLoadAjax",
             data: {
                 idOne: senderId,
                 idTwo: destId

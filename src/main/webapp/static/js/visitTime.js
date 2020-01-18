@@ -9,7 +9,7 @@ $(document).ready(function (e) {
 
         $.ajax({
             type: 'POST',
-            url: "/MedicineApp/ajax/demo2",
+            url: "/MedicineApp/ajax/visitTimeAjax",
             data:  {
                 id: target.id,
                 selected: target.value

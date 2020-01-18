@@ -25,7 +25,7 @@ $(document).ready(function (e) {
         let message = document.getElementById("myInput").value;
        $.ajax({
            type: 'POST',
-           url: "/MedicineApp/ajax/demo1",
+           url: "/MedicineApp/ajax/chatScript",
            data: {
                selected: message
            },

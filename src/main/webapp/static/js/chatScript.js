@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $(document.getElementsByClassName("send-button")[0]).click(function(){
         $.ajax({ type: 'GET',
-            url: "/MedicineApp/ajax/demo1",
+            url: "/MedicineApp/ajax/chatScript",
             success : function(response) {
                 console.log(response);
                 for(let i = 0; i < response.length; i++) {

@@ -2,7 +2,7 @@ $(document).ready(function () {
     let role;
     $.ajax({
         type: 'GET',
-        url: "/MedicineApp/ajax/demo4",
+        url: "/MedicineApp/ajax/headerAjax",
         success: function (response) {
             role = response;
             console.log(role);

@@ -41,8 +41,8 @@ public class AjaxController {
 
     private PersonDto personDto;
 
-    @RequestMapping(value = "/demo1", method = RequestMethod.POST)
-    public ResponseEntity<String> demo1(String selected, MessageDto message, Model model) {
+    @RequestMapping(value = "/chatScript", method = RequestMethod.POST)
+    public ResponseEntity<String> chatScript(String selected, MessageDto message, Model model) {
         try {
             message.setContent(selected);
             chatService.addMessageToChat(message.getContent(), chat.getChatId(), message.getReceiver());
@@ -53,8 +53,8 @@ public class AjaxController {
         }
     }
 
-    @RequestMapping(value = "/demo2", method = RequestMethod.POST)
-    public ResponseEntity<ArrayList<String>> demo2(String id, String selected) {
+    @RequestMapping(value = "/visitTimeAjax", method = RequestMethod.POST)
+    public ResponseEntity<ArrayList<String>> visitTimeAjax(String id, String selected) {
         try {
             String str = selected;
             long idValue = Long.parseLong(id);
@@ -68,8 +68,8 @@ public class AjaxController {
         }
     }
 
-    @RequestMapping(value = "/demo3", method = RequestMethod.POST)
-    public ResponseEntity<String> demo3(String id, String selected) {
+    @RequestMapping(value = "/alertOnVisit", method = RequestMethod.POST)
+    public ResponseEntity<String> alertOnVisit(String id, String selected) {
         try {
             long destDoctorId = Long.parseLong(id);
             PersonDto personDto = new PersonDto();
@@ -84,8 +84,8 @@ public class AjaxController {
         }
     }
 
-    @RequestMapping(value = "/demo4", method = RequestMethod.POST)
-    public ResponseEntity<Integer> demo4() {
+    @RequestMapping(value = "/headerAjax", method = RequestMethod.POST)
+    public ResponseEntity<Integer> headerAjax() {
         try {
             ResponseEntity<Integer> responseEntity = new ResponseEntity<Integer>(personDto.getWho(), HttpStatus.OK);
             return responseEntity;
@@ -104,8 +104,8 @@ public class AjaxController {
         }
     }
 
-    @RequestMapping(value = "/demo7", method = RequestMethod.POST)
-    public ResponseEntity<ArrayList<ChatMessage>> demo7(String idOne, String idTwo) {
+    @RequestMapping(value = "/messagesLoadAjax", method = RequestMethod.POST)
+    public ResponseEntity<ArrayList<ChatMessage>> messagesLoadAjax(String idOne, String idTwo) {
         try {
             long idSender = Long.parseLong(idOne);
             long idDest = Long.parseLong(idTwo);
