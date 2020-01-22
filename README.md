@@ -1,3 +1,5 @@
+Current final version of the project stored in WebSocket-chat branch.
+
 The idea of the project is a "medical" application, that allows to have an online doctor consultation (online chat), look through personal medical history, make an appointments, etc.
 
 Acces to an application must be provided by admin(in work).  
