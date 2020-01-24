@@ -94,8 +94,8 @@ public class AjaxController {
         }
     }
 
-    @RequestMapping(value = "/demo5", method = RequestMethod.POST)
-    public ResponseEntity<String> demo5() {
+    @RequestMapping(value = "/ajaExample", method = RequestMethod.POST)
+    public ResponseEntity<String> ajaxExample() {
         try {
             ResponseEntity<String> responseEntity = new ResponseEntity<String>(personDto.getName() + " " + personDto.getSurname(), HttpStatus.OK);
             return responseEntity;

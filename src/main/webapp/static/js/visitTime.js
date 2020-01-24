@@ -45,7 +45,7 @@ $(document).ready(function (e) {
         $(document.getElementById(exchange.id)).empty();
         $.ajax({
             type: 'POST',
-            url: "/MedicineApp/ajax/demo3",
+            url: "/MedicineApp/ajax/alertOnVisit",
             data:  {
                 id: destDoctorId.value,
                 selected: destTime.value
